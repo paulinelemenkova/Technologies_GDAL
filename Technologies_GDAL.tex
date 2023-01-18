@@ -171,6 +171,32 @@ The method presentation is shown by the projection transformation by GDAL utilit
 
 The next part of the research was continued in the GRASS GIS version 7.6, as described below. It included the coordinates transformation (several projections were tested) that has been done by ‘proj’. The ‘proj’ is a cartographic projection filter of the PROJ software which allows converting between the geographic and projection coordinates within one datum WGS84. The maps projections were tested in PROJ via the ‘gdalwarp’ before importing them into a GRASS GIS. It was possible using ‘gdalwarp’ utility of GDAL, which is specially designed to re-project maps to the target projections, coordinate systems, ellipsoid, or geodetic datum (in this case, the datum was selected as a constant WGS84 and was not changed throughout the research). 
 
+\subsection{Displaying raster grids in GRASS GIS}
+
+Now when the file was reprojected, it was imported to GRASS GIS by ‘r.in.gdal’. Displaying the dataset was done using the sequence of the following GRASS modules shown in Listing 1 (see Appendix), based on GRASS modular techniques \cite{Brown} and visualized in Fig. \ref{Fig:4}. The cartographic elements include grid ticks, legend and the title, which were placed on the map in Fig. \ref{Fig:5} using the code in Listing 2 (see Appendix). Generating continuous fields of bathymetric contours (isolines) were derived from the raster ETOPO1\_KKT\_WGS84 file using GRASS module r.contour by script (in this example the step parameter was set to 750 m) and visualized in Fig. \ref{Fig:6}. GRASS GIS script for plotting topographic isolines is shown in Listing 3 (see Appendix).
+
+\vspace{6pt}
+\begin{figure}[h]
+ \centering
+    \includegraphics[width=0.95\textwidth]{Fig_6.jpg}\\
+  \caption{Plotting isolines by r.contour module and visualizing raster in ‘elevation’ color table. Source: author.}\label{Fig:6}
+\end{figure}
+\vspace{12pt}
+
+\subsection{Transforming raster grid into cartographic projections by PROJ}
+
+The PROJ, a generic coordinate transformation software library (https://proj.org/) was used to transform grid in Lat/Lon geospatial coordinates from one coordinate reference system (CRS) to another. The method includes the PROJ transformation which performs a variety of operations with cartographic data starting from the simple and well-known projections (e.g., Mercator) to the very complex transformations across many reference coordinate frames. The PROJ was used for testing various projections (conic, cylindtrical, azimuthal) selected from the variety of available projections in PROJ: Cassini-Soldner equirectangular; Equal Area Cylindrical; 2-point Equidistant Azimuthal; Oblique Mercator \cite{Snyder}. The PROJ 7.0.0. was first installed via the Homebrew package manager via the commands: ‘brew install proj’ and ‘brew upgrade proj’. 
+ 
+ Originally made as a technical tool for cartographic projections, PROJ gradually transformed into being a functional generic coordinate transformation engine. The supported projections were checked up by command ‘cs2cs -lp’ from the GRASS GIS console \cite{Evenden}, PROJ, 2020). The PROJ was applied for the scale cartographic projections and coordinate transformation (Fig. \ref{Fig:7}), thus presenting geodetic transformations of varying complexity. Thus, in this study, the visualization of various cartographic projections in GRASS GIS (Fig. \ref{Fig:7}) was performed by the modules of GRASS GIS d.rast, r.contour, d.vect, d.grid, d.text. The script is based on the developed methodology of data processing by GRASS GIS \cite{Dassau}. It was also used for plotting contour maps (Fig. \ref{Fig:7}) with an example of Cassini-Soldner projection in Listing 4 (see Appendix).
+ 
+ \vspace{6pt}
+\begin{figure}[h]
+ \centering
+    \includegraphics[width=0.90\textwidth]{Fig_7.jpg}
+  \caption{Comparison of 4 maps visualized in GRASS GIS in 4 different cartographic projections transformed by the ‘gdalwarp’ GDAL utility and PROJ parameters (projections from left to right, top to bottom): Cassini-Soldner equirectangular; Equal Area Cylindrical; Two Point Equidistant Azimuthal; Oblique Mercator. Source: author.}\label{Fig:7}
+\end{figure}
+\vspace{12pt}
+
 \subsection{Subsection}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
