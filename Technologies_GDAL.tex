@@ -220,7 +220,7 @@ The PROJ, a generic coordinate transformation software library (https://proj.org
 \subsection{Plotting bar graph histogram for elevation map}
 The next research step included data analysis focused on distribution: how often the data in various range diapason are repeated, in other works, the most frequent depths or elevations over the study area, which is a common way of analysis of the spatially distributed data \cite{Antrop,Bailey,Burrough}. An increase in values of a specific depth reflects the number of times the elevation was recorded on a bathymetric grid in subsequent region of the study area, that is, the frequency of data. This was done by plotting histograms in two ways: as bar charts and as pie charts using the GRASS GIS d.histogram module for calculating depths distribution \cite{Mitasovaetal1995} and visualized in Fig. \ref{Fig:8}. 
 
-A competent analysis of geospatial data distribution is focused to demonstrate a range of variations in the data, including skewness, how values (or intervals) of the topography are varies, organisation of categorical data, select relevant peaks in interpretation and description of the dataset or other resources showing correlation of the geographic phenomena (e.g., aspect and slope) with another factor (e.g., relief). There are various types of the statistical analysis for review, critically evaluate the topographic datasets, and then present a graph, e.g. histogram of other methods, e.g. pie charts reviewed in relevant publications \cite{ Lemenkova2019f}. This research focused on cartographic workflow by the GRASS GIS rather than complex statistical analysis. Therefore, the two general types of statistical data analysis were selected: the pie charts and the histograms (Fig. \ref{Fig:8}). 
+A competent analysis of geospatial data distribution is focused to demonstrate a range of variations in the data, including skewness, how values (or intervals) of the topography are varies, organisation of categorical data, select relevant peaks in interpretation and description of the dataset or other resources showing correlation of the geographic phenomena (e.g., aspect and slope) with another factor (e.g., relief). There are various types of the statistical analysis for review, critically evaluate the topographic datasets, and then present a graph, e.g., histograms or pie charts \cite{ Lemenkova2019f}. This research focused on cartographic workflow by the GRASS GIS rather than complex statistical analysis. Therefore, the two general types of statistical data analysis were selected: the pie charts and the histograms (Fig. \ref{Fig:8}). 
 
 \vspace{6pt}
 \begin{figure}[h]
@@ -312,16 +312,16 @@ The visualized raster maps were displayed using tested various system palettes (
 
 The morphometry is an approach of quantitative GIS based terrain analysis, which is increasingly required by geomorphologists for relief visualization based on elevation DEM, landforms geomorphological modelling and mapping as well as in regional studies. The geomorphometric terrain analysis may include various approaches, for instance: analysis and interpretation of the land or seafloor surface as continuous field, selecting geomorphological landforms as separate study objects, extracted from a continuous field of DEM by topographic spatial analysis, slope analysis, as shown in various papers \cite{HofierkaSuri,Mitas1999,Mitasovaetal1996}. The slope gradient indicates the terrain roughness and represents basic land surface discreteness. A slope gradient can be used for indication of the terrain roughness, while the aspect can be applied for mapping slope distribution depending on the compass orientation of the terrain. 
 
-The findings revealed that topography of the Kuril-Kamchatka Trench was varying reflecting its regional geologic evolution and tectonic setting that largely affect the structure of the relief. The isoline representation in Fig. \ref{Fig:8} was compared with previous existing research on Kuril-Kamchatka Trench \cite{Lemenkova2019a}, where the research has been performed using the combination of the GMT, Octave/MATLAB and statistical visualization of the data distribution. These research presented other source for displaying height differences using the statistical data visualization. Another example of bathymetric data processing specifically for the north Pacific Ocean area was performed using scripting approach by GMT syntax which has its specific language operated from the command line. Scripts of GMT were used to rapidly cross-section gthe bathymetric data as a series of  profiles of the deep-sea trench \cite{Lemenkova2021e}. Also, the results performed a multidimensional and dynamic geographic phenomenon that can be studied using various types of data processing in GRASS GIS: visualization of the slope, aspect, curvature and statistical data distribution of elevation data.
+The findings revealed that topography of the Kuril-Kamchatka Trench was varying reflecting its regional geologic evolution and tectonic setting that largely affect the structure of the relief. The isoline representation in Fig. \ref{Fig:8} was compared with previous existing research on Kuril-Kamchatka Trench \cite{Lemenkova2019a}, where the research has been performed using the combination of the GMT, Octave/MATLAB and statistical visualization of the data distribution. These research presented other source for displaying height differences using the statistical data visualization. Another example of bathymetric data processing specifically for the north Pacific Ocean area was performed using scripting approach by GMT syntax which has its specific language operated from the command line. Scripts of GMT were used to rapidly cross-section gthe bathymetric data as a series of profiles of the deep-sea trench \cite{Lemenkova2021e}. Also, the results performed a multidimensional and dynamic geographic phenomenon that can be studied using various types of data processing in GRASS GIS: visualization of the slope, aspect, curvature and statistical data distribution of elevation data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
 
 The geomorphometric parameters include slope, aspect, and curvature in both the down‐slope and across‐slope directions, which is presented in this case study based on the GRASS GIS modules. The theoretical approaches in geomorphometric studies \cite{Chapman} have been implemented in practical applications of GRASS GIS and developed in GRASS module r.slope.aspect, as demonstrated in this study. The results demonstrate how the GRASS GIS can be utilised for cartographic data processing via the console by scripting to identify topographic variability in the study area through data processing, and visualise raster grids in various projections. 
 
-The GRASS GIS modules were used for assessing the morphometrics in the land-surface parameters over the study area based on the ETOPO1-derived basin geomorphometry: profile and tangential curvature, slope and aspect maps, histograms of elevation distribution. Other examples of automatization in the cartographic processes include the machine-learning approaches of rapid vectorization of the bathymetric isolines \cite{Lemenkova2020e}, geomorphometric analysis \cite{Clarke,Sofia}, landscape studies \cite{Lemenkova2020g}, geospatial analysis based on shell scripting using statistical libraries \cite{Lemenkova2019g}, topographic mapping using the GMT and QGIS \cite{Lemenkova2022a,Lemenkova2020b,Lemenkova2020c}, discourse on fractals in the ocean floor topography quantifying repetitive patters by modelling \cite{Malinverno}.
+The GRASS GIS modules were used for assessing the morphometrics in the land-surface parameters over the study area based on the ETOPO1-derived basin geomorphometry: profile and tangential curvature, slope and aspect maps, histograms of elevation distribution. Other examples of automatization in the cartographic processes include the machine-learning approaches of rapid vectorization of the isolines \cite{Lemenkova2020e}, geomorphometric analysis \cite{Clarke,Sofia}, landscape studies \cite{Lemenkova2020g}, geospatial analysis based on shell scripting using scripting libraries \cite{su142315966}, topographic mapping using the GMT and QGIS \cite{Lemenkova2022a,LemenkovaDebeir2022JAES,Lemenkova2020c}, discourse on fractals in the ocean floor topography quantifying repetitive patters by modelling \cite{Malinverno}.
 
-Unlike the traditional GIS software, existing in the literature \cite{Klaucoetal2013,Lemenkova2021c,Klaucoetal2017}, the architecture of the GRASS GIS presents a collection of modules that can be stored as a sequence in a shell script and used for producing maps. In this research the GRASS GIS demonstrated effectiveness for mapping and visualization, compatibility with libraries, such as GDAL, PROJ, R \cite{Bivand2000,Bivand1999,Grohmann}, technical flexibility combining GUI and command-line based method of data processing. Similar to GMT with existing examples of studies \cite{Lemenkova2021b}, GRASS GIS uses a scripting programming approach which enables to speed up the repeated tasks through the executable scripts. Like scripts in a UNIX shell, R and Python environments, GRASS GIS and GMT scripts \cite{Lemenkova2021g} used to automate the workflow repeatedly performed for different maps using the same algorithm for various study areas \cite{Lemenkova2022b,Lemenkova2022c}.
+Unlike the traditional GIS software, the architecture of the GRASS GIS presents a collection of modules that can be stored as a sequence in a shell script and used for producing maps. In this research the GRASS GIS demonstrated effectiveness for mapping and visualization, compatibility with libraries, such as GDAL, PROJ, R \cite{Bivand2000,Bivand1999,app122412554,Grohmann}, technical flexibility combining GUI and command-line based method of data processing. Similar to GMT with existing examples of studies \cite{Lemenkova2021b}, GRASS GIS uses a scripting programming approach which enables to speed up the repeated tasks through the executable scripts. Like scripts in a UNIX shell, R and Python environments \cite{jimaging8120317}, GRASS GIS and GMT scripts \cite{Lemenkova2021g} used to automate the workflow repeatedly performed for different maps using the same algorithm for various study areas \cite{Lemenkova2022b,Lemenkova2022c}.
 
 \appendixtitles{yes} 
 \appendixstart
@@ -488,53 +488,97 @@ PROJ & a library for performing conversions between cartographic projections
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Optional
-\appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
-\appendixstart
-\appendix
-\section[\appendixname~\thesection]{}
-\subsection[\appendixname~\thesubsection]{}
-The appendix 
-
-\section[\appendixname~\thesection]{}
-All appendix 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{adjustwidth}{-\extralength}{0cm}
 %\printendnotes[custom] % Un-comment to print a list of endnotes
 
 \reftitle{References}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{thebibliography}{3}
 
 \bibitem{Ajvazi}
- Ajvazi, B., Czimber, K., \emph{A comparative analysis of different DEM interpolation methods in GIS: case study of Rahovec, Kosovo}, Geodesy and Cartography, \textbf{45}, \emph{1}, pp. 43--48, 2019. https://doi.org/10.3846/gac.2019.7921
- 
- \bibitem{Antrop}
- Antrop, M., De Maeyer, P., Neutens, T., Van de Weghe, N., \emph{Geografische informatiesystemen}, Gent: Academia press, 2013.
- 
- \bibitem{Armstrong}
- Armstrong, M. P., \emph{Geography and computational science}, Annals of the American Association of Geographers, \textbf{90}, \emph{1}, pp. 146--156, 2000. https://doi.org/10.1111/0004-5608.00190 
- 
- \bibitem{Bailey}
- Bailey, T., Gatrell, A., \emph{Interactive spatial data analysis}, Harlow Essex England New York NY: Longman Scientific \& Technical J Wiley, 1995.
- 
+ Ajvazi, B., Czimber, K., 
+\newblock A comparative analysis of different DEM interpolation methods in GIS: case study of Rahovec, Kosovo
+\newblock {\em Geodesy and Cartography} {\bf 2019}, {\em 45},~43--48. 
+\newblock {{https://doi.org/10.3846/gac.2019.7921}}.
+
+\bibitem{Antrop}
+ Antrop, M., De Maeyer, P., Neutens, T., Van de Weghe, N.,
+\newblock Geografische informatiesystemen
+\newblock {\em Gent: Academia Press} {\bf 2013}. 
+
+\bibitem{Armstrong}
+ Armstrong, M. P., 
+\newblock Geography and computational science
+\newblock {\em Annals of the American Association of Geographers} {\bf 2000}, {\em 90},~146--156. 
+\newblock {{https://doi.org/10.1111/0004-5608.00190}}.
+
+\bibitem{Bailey}
+ Bailey, T., Gatrell, A., 
+\newblock Interactive spatial data analysis
+\newblock {\em Harlow Essex England New York NY: Longman Scientific \& Technical J Wiley} {\bf 1995}
+
 \bibitem{Balram}
-Balram, S., \emph{Teaching and Learning Pedagogies in Higher Education Geographic Information Science}, Balram S., Boxall J. (eds). GIScience Teaching and Learning Perspectives. Advances in Geographic Information Science. Springer, Cham, 2019. https://doi.org/10.1007/978-3-030-06058-9\_1
- 
- \bibitem{Barnes}
- Barnes, N., \emph{Publish your computer code: it is good enough}, Nature, \textbf{467}, \emph{7317}, pp. 753--753, 2010. https://doi.org/10.1038/467753a
- 
- \bibitem{Basith}
-Basith, A., Prastyani, R., \emph{Evaluating ACOMP, FLAASH and QUAC on Worldview-3 for satellite derived bathymetry (SDB) in shallow water}, Geodesy and Cartography, \textbf{46}, \emph{3}, pp. 151--158, 2020. https://doi.org/10.3846/gac.2020.11426
+Balram, S.,  
+\newblock Teaching and Learning Pedagogies in Higher Education Geographic Information Science
+\newblock {\em Balram S., Boxall J. (eds). GIScience Teaching and Learning Perspectives. Advances in Geographic Information Science. Springer, Cham} {\bf 2019}, {\em XX},~XX--XX. 
+
+\bibitem{Barnes}
+ Barnes, N., 
+\newblock Publish your computer code: it is good enough
+\newblock {\em Nature} {\bf 2010}, {\em 467},~753--753. 
+\newblock {{https://doi.org/10.1038/467753a}}.
+
+\bibitem{Basith}
+Basith, A., Prastyani, R.,
+\newblock Evaluating ACOMP, FLAASH and QUAC on Worldview-3 for satellite derived bathymetry (SDB) in shallow water
+\newblock {\em Geodesy and Cartography} {\bf 2020}, {\em 46},~151--158. 
+\newblock {{https://doi.org/10.3846/gac.2020.11426}}.
+
+\bibitem{app122412554}
+Lemenkova, P. and Debeir, O.,
+\newblock R Libraries for Remote Sensing Data Classification by K-Means Clustering and NDVI Computation in Congo River Basin, DRC
+\newblock {\em Applied Sciences} {\bf 2022}, {\em 12},~12554. 
+\newblock {{https://doi.org/10.3390/app122412554}}.
+
+\bibitem{jimaging8120317}
+Lemenkova, P. and Debeir, O.
+\newblock Satellite Image Processing by Python and R Using Landsat 9 OLI/TIRS and SRTM DEM Data on Côte d'Ivoire, West Africa
+\newblock {\em Journal of Imaging} {\bf 2022}, {\em 8},~317. 
+\newblock {{https://doi.org/10.3390/jimaging8120317}}.
+
+\bibitem{Wesseletal2019}
+Wessel, P., Luis, J. F., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. F., Tian, D., 
+\newblock The Generic Mapping Tools version 6
+\newblock {\em Geochemistry, Geophysics, Geosystems} {\bf 2019}, {\em 20},~5556--5564. 
+\newblock {{https://doi.org/10.1029/2019GC008515}}.
+
+\bibitem{su142315966}
+Lemenkova, P. and Debeir, O.,
+\newblock Seismotectonics of Shallow-Focus Earthquakes in Venezuela with Links to Gravity Anomalies and Geologic Heterogeneity Mapped by a GMT Scripting Language
+\newblock {\em Sustainability} {\bf 2022}, {\em 14},~15966. 
+\newblock {{https://doi.org/10.3390/su142315966}}.
+
+\bibitem{LemenkovaDebeir2022JAES}
+Lemenkova, P. and Debeir, O. 
+\newblock Satellite Altimetry and Gravimetry Data for Mapping Marine Geodetic and Geophysical Setting of the Seychelles and the Somali Sea, Indian Ocean
+\newblock {\em Journal of Applied Engineering Sciences} {\bf 2022}, {\em 12},~191--202. 
+\newblock {{https://doi.org/10.2478/jaes-2022-0026}}.
 
 \bibitem{Lemenkova2021g}
-Lemenkova, P. \emph{The visualization of geophysical and geomorphologic data from the area of Weddell Sea by the Generic Mapping Tools}, Studia Quaternaria \textbf{38}, \emph{1}, 19--32, 2021. https://doi.org/10.24425/sq.2020.133759 
- 
- \bibitem{Bivand2000}
-Bivand, R., \emph{Using the R statistical data analysis language on GRASS 5.0 GIS database files}, Computers \& Geosciences, \textbf{26}, \emph{9--10}, pp. 1043--1052, 2000. https://doi.org/10.1016/S0098-3004(00)00057-1
- 
- \bibitem{Bivand1999}
+Lemenkova, P.,
+\newblock The visualization of geophysical and geomorphologic data from the area of Weddell Sea by the Generic Mapping Tools
+\newblock {\em Studia Quaternaria} {\bf 2021}, {\em 38},~19--32. 
+\newblock {{https://doi.org/10.24425/sq.2020.133759}}.
+
+\bibitem{Bivand2000}
+Bivand, R.,
+\newblock Using the R statistical data analysis language on GRASS 5.0 GIS database files
+\newblock {\em Computers \& Geosciences} {\bf 2000}, {\em 26},~1043--1052. 
+\newblock {{https://doi.org/10.1016/S0098-3004(00)00057-1}}.
+%=====================================
+
+\bibitem{Bivand1999}
  Bivand, R. S., \emph{Integrating GRASS 5.0 and R: GIS and modern statistics for data analysis}, Proceedings 7th Scandinavian Research Conference on Geographical Information Science, \emph{ Aalborg, Denmark}, pp. 111--127, 1999.
  
  \bibitem{Boulton}
@@ -599,8 +643,6 @@ Guan, Q., Hu, S., Liu, Y., Yun, S., \emph{High-Performance GeoComputation with t
  \bibitem{Lemenkova2021a}Lemenkova, P. \emph{Dataset compilation by GRASS GIS for thematic mapping of Antarctica: Topographic surface, ice thickness, subglacial bed elevation and sediment thickness}. Czech Polar Rep. \textbf{11}, \emph{1}, 67--85 (2021). https://doi.org/10.5817/CPR2021-1-6
  
  \bibitem{Lemenkova2020a}Lemenkova, P. \emph{GRASS GIS for topographic and geophysical mapping of the Peru-Chile Trench}. Forum Geografic \textbf{19}, e\emph{2},143--157 (2020). https://doi.org/10.5775/fg.2020.009.d 
- 
- \bibitem{Lemenkova2021c}Lemenkova, P., \emph{Mapping topographic, geophysical and gravimetry data of Pakistan - a contribution to geological understanding of Sulaiman Fold Belt and Muslim Bagh Ophiolite Complex}. Geophysica \textbf{56}, \emph{1--2}, pp. 3--26 (2021). https://doi.org/10.5281/zenodo.5779189
  
  \bibitem{Lemenkova2022a}P. Lemenkova, Console-Based Mapping of Mongolia Using GMT Cartographic Scripting Toolset for Processing TerraClimate Data. Geosciences, \textbf{12}(3), 140 (2022). https://doi.org/10.3390/geosciences12030140 
  
@@ -668,9 +710,6 @@ Sofia, G., \emph{Combining geomorphometry, feature extraction techniques and Ear
  \bibitem{Snyder}
 Snyder, J. P., \emph{Map projections – a working manua}, Journal Title, \emph{l. U.S. Geological Professional Paper}, \textbf{1395}, pp. 383, 1987.
  
-  \bibitem{Lemenkova2020b}
- Lemenkova, P., \emph{Variations in the bathymetry and bottom morphology of the Izu-Bonin Trench modelled by GMT}, Bulletin of Geography. Physical Geography Series, \textbf{18}, \emph{1}, pp. 41--60, 2020. https://doi.org/10.2478/bgeo-2020-0004
- 
  \bibitem{Lemenkova2020c}
  Lemenkova, P., \emph{GEBCO Gridded Bathymetric Datasets for Mapping Japan Trench Geomorphology by Means of GMT Scripting Toolset}, Geodesy and Cartography, \textbf{46}, \emph{(3)}, pp. 98--112, 2020. https://doi.org/10.3846/gac.2020.11524 
  
@@ -713,18 +752,6 @@ Mitasova, H., Mitas, L., Brown, W., Gerdes, D., Kosinovsky, I., Baker, T., \emph
   \bibitem{Lemenkova2019g}
 Lemenkova, P., \emph{Testing Linear Regressions by StatsModel Library of Python for Oceanological Data Interpretation}, Aquatic Sciences and Engineering, \textbf{34}, pp. 51--60, 2019. https://doi.org/10.26650/ASE2019547010
  
- \bibitem{Klaucoetal2017}
-Klaučo, M., Gregorová, B., Koleda, P., Stankov, U., Marković, V., Lemenkova, P., \emph{Land planning as a support for sustainable development based on tourism: A case study of Slovak Rural Region}, Environmental Engineering and Management Journal, \textbf{2}, \emph{16}, pp. 449--458, 2017. https://doi.org/10.30638/eemj.2017.045
- 
- \bibitem{Wesseletal2019}
-Wessel, P., Luis, J. F., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. F., Tian, D., \emph{The Generic Mapping Tools version 6}, Geochemistry, Geophysics, Geosystems, \textbf{20}, pp. 5556--5564, 2019. https://doi.org/10.1029/2019GC008515
- 
- \bibitem{Lemenkova2020d}
- Lemenkova, P., \emph{GMT Based Comparative Geomorphological Analysis of the Vityaz and Vanuatu Trenches, Fiji Basin}, Geodetski List, \textbf{74}, \emph{1}, pp. 19--39, 2020. https://doi.org/10.6084/m9.figshare.12249773 URL: https://hrcak.srce.hr/237683
- 
- \bibitem{Klaucoetal2013}
-Klaučo, M., Gregorová, B., Stankov, U., Marković, V., Lemenkova, P., \emph{Determination of ecological significance based on geostatistical assessment: a case study from the Slovak Natura 2000 protected area}, Open Geosciences, \textbf{5}, \emph{1}, pp. 28--42, 2013. https://doi.org/10.2478/s13533-012-0120-0 
- 
  \bibitem{Lemenkova2019f}
 Lemenkova, P., \emph{Statistical Analysis of the Mariana Trench Geomorphology Using R Programming Language}, Geodesy and Cartography, \textbf{45}, \emph{2}, pp. 57--84, 2019. https://doi.org/10.3846/gac.2019.3785 
  
@@ -734,6 +761,7 @@ Lemenkova, P. \emph{Geodynamic setting of Scotia Sea and its effects on geomorph
   \bibitem{Kralidis}
 Kralidis A.T., \emph{Geospatial Open Source and Open Standards Convergences}, Open Source Approaches in Spatial Data Handling. Advances in Geographic Information Science, \textbf{2}, \emph{Springer, Berlin, Heidelberg}, 2008. https://doi.org/10.1007/978-3-540-74831-1\_1
 
+ 
 \end{thebibliography}
 %=====================================
 % References, variant A: external bibliography
