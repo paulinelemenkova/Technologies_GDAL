@@ -107,7 +107,7 @@ The spatial analysis in GIS focuses on complex problems regarding the topographi
 
 On the contrary, the free availability of GIS may cause its popularity and create an increased demand of the reported examples of its applications used in a geospatial studies \cite{Christl,Turton} including programming coding and scripting, machine learning and automatization, artificial intelligence and big data processing as pointed out in a variety of contemporary studies on geoinformatics \cite{Barnes,Issaka}. The benefits of the open source GIS and scripting are widely discussed including easily data integration in a number of scenarios and geospatial research, handling 2D and 3D raster datasets, spatial information exchange and processing \cite{Ajvazi,Brovelli,Guan,Kralidis}. 
 
-Open source data (or at least, low cost data), scripting approaches and methods used in geographic research and Earth science education \cite{Rey,Basith,Lemenkov,Habib} tend to become progressively popular and perspective in view of the increased forms of the distance-based GIS education and flexible learning context \cite{Balram}. Common sources of open geodata are topographic and bathymetric grids (GEBCO, SRTM, ETOPO1, ETOPO5), geophysical datasets (e.g. EGM96, EGM2008), geological surveys, local data from the online repositories, embedded datasets, OpenStreetMap of Google Earth imagery, remote sensing data (e.g., Landsat TM or Sentinel-2A), professional and governmental repositories, personal findings and data received from the fieldwork.
+Open source data, scripting approaches and methods used in geographic research and Earth science education \cite{Rey,Basith,s23010056,Habib} tend to become progressively popular and perspective in view of the increased forms of the distance-based GIS education and flexible learning context \cite{Balram}. Common sources of open geodata are topographic and bathymetric grids (GEBCO, SRTM, ETOPO1, ETOPO5), geophysical datasets (e.g. EGM96, EGM2008), geological surveys, local data from the online repositories, embedded datasets, OpenStreetMap of Google Earth imagery, remote sensing data (e.g., Landsat TM or Sentinel-2A), professional and governmental repositories, personal findings and data received from the fieldwork.
 
 Cartographers have access to an ever-growing pool of such datasets that focuses on discipline-specific topics (e.g. geomorphology, soils, hydrology, climate changes, land cover studies, geology, etc.) as well as various GIS software and references from other related geoscience disciplines. The open source geospatial data available online (e.g.,GEBCO, SRTM, ETOPO1, various DEM) to assist in GIS mapping are wide and varied. Many of these datasets are now available in digital formats (both raster of vector ones) and commonly accessed through the internet via geospatial data repositories. The open source geospatial data describe a collaboration of datasets in Earth sciences (topography, geology, soils, climate and environmental surveys). Increasingly, geospatial data sources are developing online repositories for their data storage such as the NOAA, GloVis (remote sensing data as satellite imagery), GEBCO, etc. Availability of geospatial data access to a cartographer is determined by their open source access (e.g. OpenStreetMaps, Google Earth, Landsat TM) or embedded datasets (country boundaries as basic GIS layers). There is a wide variety of Earth scientists who do regularly access such resources and use them in GIS-based analysis.
 
@@ -319,7 +319,7 @@ The findings revealed that topography of the Kuril-Kamchatka Trench was varying 
 
 The geomorphometric parameters include slope, aspect, and curvature in both the down‐slope and across‐slope directions, which is presented in this case study based on the GRASS GIS modules. The theoretical approaches in geomorphometric studies \cite{Chapman} have been implemented in practical applications of GRASS GIS and developed in GRASS module r.slope.aspect, as demonstrated in this study. The results demonstrate how the GRASS GIS can be utilised for cartographic data processing via the console by scripting to identify topographic variability in the study area through data processing, and visualise raster grids in various projections. 
 
-The GRASS GIS modules were used for assessing the morphometrics in the land-surface parameters over the study area based on the ETOPO1-derived basin geomorphometry: profile and tangential curvature, slope and aspect maps, histograms of elevation distribution. Other examples of automatization in the cartographic processes include the machine learning approaches of rapid vectorization of the isolines \cite{Lemenkova2020e}, morphometric landscape analysis \cite{Clarke,land12010261,Sofia}, geospatial analysis based on shell scripting using scripting libraries \cite{su142315966}, topographic mapping using the GMT and QGIS \cite{Lemenkova2022a,LemenkovaDebeir2022JAES,Lemenkova2020c}, discourse on fractals in the ocean floor topography quantifying repetitive patters by modelling \cite{Malinverno}.
+The GRASS GIS modules were used for assessing the morphometrics in the land-surface parameters over the study area based on the ETOPO1-derived basin morphometry: profile and tangential curvature, slope and aspect maps, histograms of elevation distribution. Other examples of automatisation in the cartographic processes include the machine learning approaches of rapid vectorisation of the isolines \cite{Lemenkova2020e}, morphometric landscape analysis \cite{Clarke,land12010261,Sofia}, geospatial analysis based on shell scripting using scripting libraries \cite{su142315966}, topographic mapping using the GMT and QGIS \cite{Lemenkova2022a,LemenkovaDebeir2022JAES,Lemenkova2020c}, discourse on fractals in the ocean floor topography quantifying repetitive patters by modelling \cite{Malinverno}.
 
 Unlike the traditional GIS software, the architecture of the GRASS GIS presents a collection of modules that can be stored as a sequence in a shell script and used for producing maps. In this research the GRASS GIS demonstrated effectiveness for mapping and visualization, compatibility with libraries, such as GDAL, PROJ, R \cite{Bivand2000,Bivand1999,app122412554,Grohmann}, technical flexibility combining GUI and command-line based method of data processing. Similar to GMT with existing examples of studies \cite{Lemenkova2021b}, GRASS GIS uses a scripting programming approach which enables to speed up the repeated tasks through the executable scripts. Like scripts in a UNIX shell, R and Python environments \cite{jimaging8120317}, GRASS GIS and GMT scripts \cite{Lemenkova2021g} used to automate the workflow repeatedly performed for different maps using the same algorithm for various study areas \cite{Lemenkova2022b}.
 
@@ -861,47 +861,76 @@ Neteler M., Beaudette D., Cavallini P., Lami L., Cepicky J.,
 \newblock GRASS GIS. Open Source Approaches in Spatial Data Handling.
 \newblock {\em Advances in Geographic Information Science} {\bf 2008}, {\em 2},~XX--XX. 
 \newblock {{https://doi.org/10.1007/978-3-540-74831-1\_9}}.
-%====================================
 
- 
-  \bibitem{Neteler2000}
- Neteler, M., \emph{GRASS-Handbuch}, Geosynthesis 11. Der praktische Leitfaden zum Geographischen Informationssystem GRASS, \emph{University of Hannover}, 2000.
- 
- \bibitem{Lemenkov}
-Lemenkov, V., Lemenkova, P. \emph{Using TeX Markup Language for 3D and 2D Geological Plotting}. Foundations of Computing and Decision Sciences, \textbf{46}, \emph{3}, 43--69, 2021. https://doi.org/10.2478/fcds-2021-0004
- 
- \bibitem{Zevenbegen}
- Zevenbegen, L. W., Thorne, C. R., \emph{Quantitative analysis of land surface topography}, Earth Surface Processed and Landforms, \textbf{12}, pp. 47--56, 1987. https://doi.org/10.1002/esp.3290120107
- 
- \bibitem{Schmidt}
- Schmidt, J., Evans, I. S., Brinkmann, J., \emph{Comparison of polynomial models for land surface curvature calculation}, International Journal of Geographical Information Science, \textbf{17}, pp. 797--814, 2003. https://doi.org/10.1080/13658810310001596058 
- 
- \bibitem{Rey}
-Rey, S. J., \emph{Code as Text: Open Source Lessons for Geospatial Research and Education}, GeoComputational Analysis and Modeling of Regional Systems. Advances in Geographic Information Science, \emph{Thill JC., Dragicevic S. (eds)}, Springer, Cham, 2018. https://doi.org/10.1007/978-3-319-59511-5\_2 
- 
-  \bibitem{Mitasovaetal1996}
- Mitasova, H., Hofierka, J., Zlocha, M., Iverson, L., \emph{Modeling topographic potential for erosion and deposition using GIS}, International Journal of Geographical Information Science, \textbf{10}, \emph{5}, pp. 629--641, 1996. https://doi.org/10.1080/02693799608902101
- 
-   \bibitem{Lemenkova2019a}
-Lemenkova, P. \emph{Topographic surface modelling using raster grid datasets by GMT: example of the Kuril-Kamchatka Trench, Pacific Ocean}. Reports on Geodesy and Geoinformatics, \textbf{108}, \emph{9--22}. https://doi.org/10.2478/rgg-2019-0008 
- 
- \bibitem{Mitasovaetal1995}
-Mitasova, H., Mitas, L., Brown, W., Gerdes, D., Kosinovsky, I., Baker, T., \emph{Modeling spatially and temporally distributed phenomena: New methods and tools for GRASS GIS}, International Journal of Geographical Information Science, Special issue on Integrating GIS and Environmental modeling \textbf{9}, \emph{4}, pp. 433--446, 1995. https://doi.org/10.1080/02693799508902048 
- 
- \bibitem{Mitasova1985}
- Mitasova, H., \emph{Cartographic aspects of computer surface modeling}, PhD thesis, \emph{Slovak Technical University, Bratislava}, 1985.
- 
-  \bibitem{Lemenkova2019g}
-Lemenkova, P., \emph{Testing Linear Regressions by StatsModel Library of Python for Oceanological Data Interpretation}, Aquatic Sciences and Engineering, \textbf{34}, pp. 51--60, 2019. https://doi.org/10.26650/ASE2019547010
- 
- \bibitem{Lemenkova2019f}
-Lemenkova, P., \emph{Statistical Analysis of the Mariana Trench Geomorphology Using R Programming Language}, Geodesy and Cartography, \textbf{45}, \emph{2}, pp. 57--84, 2019. https://doi.org/10.3846/gac.2019.3785 
- 
+\bibitem{Neteler2000}
+ Neteler, M.,
+\newblock GRASS-Handbuch
+\newblock {\em Geosynthesis 11. Der praktische Leitfaden zum Geographischen Informationssystem GRASS. University of Hannover} {\bf 2000}.
+
+\bibitem{s23010056}
+Lemenkova, P. and De Plaen, R. and Lecocq, T. and Debeir, O.,
+\newblock Computer Vision Algorithms of DigitSeis for Building a Vectorised Dataset of Historical Seismograms from the Archive of Royal Observatory of Belgium
+\newblock {\em Sensors} {\bf 2023}, {\em 23},~56. 
+\newblock {{https://doi.org/10.3390/s23010056}}.
+
+\bibitem{Zevenbegen}
+Zevenbegen, L. W., Thorne, C. R.,
+\newblock Quantitative analysis of land surface topography
+\newblock {\em Earth Surface Processed and Landforms} {\bf 1987}, {\em 12},~47--56. 
+\newblock {{https://doi.org/10.1002/esp.3290120107}}.
+
+\bibitem{Schmidt}
+Schmidt, J., Evans, I. S., Brinkmann, J.,
+\newblock Comparison of polynomial models for land surface curvature calculation
+\newblock {\em International Journal of Geographical Information Science} {\bf 2003}, {\em 17},~797--814. 
+\newblock {{https://doi.org/10.1080/13658810310001596058}}.
+
+\bibitem{Rey}
+Rey, S. J.,
+\newblock Code as Text: Open Source Lessons for Geospatial Research and Education
+\newblock {\em GeoComputational Analysis and Modeling of Regional Systems. Advances in Geographic Information Science. Springer, Cham} {\bf 2018}~7--21. 
+\newblock {{https://doi.org/10.1007/978-3-319-59511-5\_2}}.
+
+\bibitem{Mitasovaetal1996}
+Mitasova, H., Hofierka, J., Zlocha, M., Iverson, L.,
+\newblock Modeling topographic potential for erosion and deposition using GIS
+\newblock {\em International Journal of Geographical Information Science} {\bf 1996}, {\em 10},~629--641. 
+\newblock {{https://doi.org/10.1080/02693799608902101}}.
+
+\bibitem{Lemenkova2019a}
+Lemenkova, P.
+\newblock Topographic surface modelling using raster grid datasets by GMT: example of the Kuril-Kamchatka Trench, Pacific Ocean
+\newblock {\em Reports on Geodesy and Geoinformatics} {\bf 2019}, {\em 108},~9--22. 
+\newblock {{https://doi.org/10.2478/rgg-2019-0008}}.
+
+\bibitem{Mitasovaetal1995}
+Mitasova, H., Mitas, L., Brown, W., Gerdes, D., Kosinovsky, I., Baker, T.,
+\newblock Modeling spatially and temporally distributed phenomena: New methods and tools for GRASS GIS
+\newblock {\em International Journal of Geographical Information Science} {\bf 1995}, {\em 9},~433--446. 
+\newblock {{https://doi.org/10.1080/02693799508902048}}.
+
+\bibitem{Mitasova1985}
+Mitasova, H., 
+\newblock Cartographic aspects of computer surface modeling
+\newblock {\em PhD thesis. Slovak Technical University, Bratislava} {\bf 1985}.
+
+\bibitem{Lemenkova2019f}
+Lemenkova, P.,
+\newblock Statistical Analysis of the Mariana Trench Geomorphology Using R Programming Language
+\newblock {\em Geodesy and Cartography} {\bf 2019}, {\em 45},~57--84. 
+\newblock {{https://doi.org/10.3846/gac.2019.3785}}.
+
 \bibitem{Lemenkova2020e}
-Lemenkova, P. \emph{Geodynamic setting of Scotia Sea and its effects on geomorphology of South Sandwich Trench, Southern Ocean}. Polish Polar Research, \textbf{42}, \emph{1}, 1--23, 2020. https://doi.org/10.24425/ppr.2021.136510
+Lemenkova, P.,
+\newblock Geodynamic setting of Scotia Sea and its effects on geomorphology of South Sandwich Trench, Southern Ocean
+\newblock {\em Polish Polar Research} {\bf 2020}, {\em 42},~1--23. 
+\newblock {{https://doi.org/10.24425/ppr.2021.136510}}.
 
-  \bibitem{Kralidis}
-Kralidis A.T., \emph{Geospatial Open Source and Open Standards Convergences}, Open Source Approaches in Spatial Data Handling. Advances in Geographic Information Science, \textbf{2}, \emph{Springer, Berlin, Heidelberg}, 2008. https://doi.org/10.1007/978-3-540-74831-1\_1
+\bibitem{Kralidis}
+Kralidis A.T., 
+\newblock Geospatial Open Source and Open Standards Convergences
+\newblock {\em Open Source Approaches in Spatial Data Handling. Advances in Geographic Information Science. Springer, Berlin, Heidelberg} {\bf 2008}, {\em 2},~1--20. 
+\newblock {{https://doi.org/10.1007/978-3-540-74831-1\_1}}.
 
  
 \end{thebibliography}
