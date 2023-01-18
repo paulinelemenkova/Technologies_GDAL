@@ -33,6 +33,26 @@
 \usepackage{gensymb} % for \textdegree
 \usepackage{tabularx}
 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{RGB}{204, 0, 153}
+%    
+\lstdefinestyle{mystyle}{ 
+    numberstyle=\tiny\color{codegray},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=t,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
 %=================================================================
 % Full title of the paper (Capitalized)
 \Title{GDAL and PROJ libraries integrated with GRASS GIS for terrain modelling and projecting the georeferenced raster image}
@@ -303,9 +323,15 @@ The GRASS GIS modules were used for assessing the morphometrics in the land-surf
 
 Unlike the traditional GIS software, existing in the literature \cite{Klaucoetal2013,Lemenkova2021c,Klaucoetal2017}, the architecture of the GRASS GIS presents a collection of modules that can be stored as a sequence in a shell script and used for producing maps. In this research the GRASS GIS demonstrated effectiveness for mapping and visualization, compatibility with libraries, such as GDAL, PROJ, R \cite{Bivand2000,Bivand1999,Grohmann}, technical flexibility combining GUI and command-line based method of data processing. Similar to GMT with existing examples of studies \cite{Lemenkova2021b}, GRASS GIS uses a scripting programming approach which enables to speed up the repeated tasks through the executable scripts. Like scripts in a UNIX shell, R and Python environments, GRASS GIS and GMT scripts \cite{Lemenkova2021g} used to automate the workflow repeatedly performed for different maps using the same algorithm for various study areas \cite{Lemenkova2022b,Lemenkova2022c}.
 
-\section{Listings}
-\subsection{GRASS GIS script-1}
-\begin{verbatim}
+\appendixtitles{yes} 
+\appendixstart
+\appendix
+\section[\appendixname~\thesection]{GRASS GIS Scripts}
+\label{app1}
+\subsection[\appendixname~\thesubsection]{GRASS GIS Script for}
+\renewcommand{\thelstlisting}{A\arabic{lstlisting}}
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS script-1 (Mapping ETOPO1 raster file)]
 #!/bin/sh
 # raster file imported to the Location folder 'Kamchatka'
 r.in.gdal -o input=/Users/pauline/ETOPO1_KKT_WGS84.tif output=ETOPO1_KKT_WGS84.tif 
@@ -321,7 +347,7 @@ r.colors ETOPO1_KKT_WGS84 col=srtm_plus
 r.info ETOPO1_KKT_WGS84
 # display a legend on a map
 d.rast.leg map= ETOPO1_KKT_WGS84 
-# providing simple numerical output of category numbers or range of values in a raster
+# providing numerical output of category numbers or range of values in a raster
 r.describe ETOPO1_KKT_WGS84 
 #  print a list of category numbers and associated labels
 r.cats
@@ -329,10 +355,9 @@ r.cats
 g.region -e 
 # Removing auxiliary files
 g.remove type=raster name=ETOPO1_KKT_WGS84.tiff -f
-\end{verbatim}
+\end{lstlisting}
 
-\subsection{GRASS GIS script-2}
-\begin{verbatim}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script-2 (adding cartographic elements)]
 #!/bin/sh
 g.region rast=ETOPO1_KKT_WGS84.tif -p
 d.mon wx0
@@ -343,10 +368,9 @@ d.legend raster=ETOPO1_KKT_WGS84 title=Elevation,m title_fontsize=12 \
 d.northarrow style=fancy_compass rotation=0 label=N -w color=black fill_color=gray fontsize=10
 d.grid size=02:00:00 -a -d color=red width=0.1 fontsize=8 text_color=white
 d.text text="Region of Kuril-Kamchatka Trench" color=yellow bgcolor=gray size=8
-\end{verbatim}
+\end{lstlisting}
 
-\subsection{GRASS GIS script-3}
-\begin{verbatim}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script-3 (visualising raster grid)]
 #!/bin/sh
 d.mon wx0
 r.info ETOPO1_KKT_WGS84
@@ -356,10 +380,9 @@ d.grid size=03:00:00 -a -d color=red width=0.1 fontsize=8 text_color=white
 d.text text="Kuril-Kamchatka Area" color='255:255:255' size=5
 r.contour ETOPO1_KKT_WGS84 out=Bathymetry750 step=750 --overwrite
 d.vect Bathymetry750 color='102:37:4' width=0
-\end{verbatim}
+\end{lstlisting}
 
-\subsection{GRASS GIS script-4 (Cassini-Soldner projection)}
-\begin{verbatim}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script-4 (Cassini-Soldner projection)]
 #!/bin/sh
 g.list rast
 r.info ETOPO1_KKT_C
@@ -372,10 +395,9 @@ r.contour ETOPO1_KKT_C out=Bathymetry1000C step=1000
 d.vect Bathymetry1000C color='blue' width=0
 d.grid -g size=2.5 color='255:0:0'
 d.text text="Cassini-Soldner prj" color='0:0:51' bgcolor='224:224:224' size=3
-\end{verbatim}
+\end{lstlisting}
 
-\subsection{GRASS GIS script-5 (Oblique Mercator projection)}
-\begin{verbatim}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script-5 (Oblique Mercator projection)]
 #!/bin/sh
 g.list rast
 r.info ETOPO1_KKT_OM
@@ -387,10 +409,9 @@ r.contour ETOPO1_KKT_OM out=Bathymetry1000OM step=1000
 d.vect Bathymetry1000OM color='blue' width=0
 d.grid -g size=2.5 color='255:0:0'
 d.text text="Oblique Mercator prj" color='0:0:51' bgcolor='224:224:224' size=3
-\end{verbatim}
+\end{lstlisting}
 
-\subsection{GRASS GIS script-6 (Equal-Area Cylindrical projection)}
-\begin{verbatim}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script-6 (Equal-Area Cylindrical projection)]
 #!/bin/sh
 g.list rast
 r.info ETOPO1_KKT_EAC
@@ -403,10 +424,9 @@ r.contour ETOPO1_KKT_EAC out=Bathymetry1000 step=1000
 d.vect Bathymetry1000 color='blue' width=0
 d.grid -g size=2.5 color='255:0:0'
 d.text text="Equal Area Cylindrical prj" color='0:0:51' bgcolor='224:224:224' size=3
-\end{verbatim}
+\end{lstlisting}
 
-\subsection{GRASS GIS script-7 (2 Point Equidistant Azimuthal projection)}
-\begin{verbatim}
+\begin{lstlisting}[language=bash,caption=GRASS GIS script-7 (2 Point Equidistant Azimuthal projection)]
 #!/bin/sh
 g.list rast
 r.info ETOPO1_KKT_2p
@@ -419,7 +439,7 @@ r.contour ETOPO1_KKT_2p out=Bathymetry1000 step=1000
 d.vect Bathymetry1000 color='blue' width=0
 d.grid -g size=2.5 color='255:0:0'
 d.text text="2 Point Equidist. Azimuth." color='0:0:51' bgcolor='224:224:224' size=3
-\end{verbatim}
+\end{lstlisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \authorcontributions{Supervision, conceptualization, methodology, software, resources, funding acquisition, and project administration, O.D.; writing---original draft preparation, methodology, software, data curation, visualization, formal analysis, validation, writing---review and editing, and investigation, P.L. All authors have read and agreed to the published version of the manuscript.}
