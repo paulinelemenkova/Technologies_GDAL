@@ -158,8 +158,6 @@ The GRASS GIS uses a modular system organised by the name according to their fun
 \end{figure}
 \vspace{6pt}
 
-%--------------------------CHECKED 18.01.2023.
-
 \subsection{Data capture and organisation}
 
 The data used in this project include the open source datasets available online. We used the georeferenced Tag Image File Format (TIFF) file of the ETOPO1 grid by NOAA (\href{https://www.ngdc.noaa.gov/mgg/global/}{NOAA}) as a base map (ETOPO1 Bedrock: Grid of Earth's surface depicting the bedrock underneath the ice sheets), Figure \ref{Fig:1}. The check of metadata for the raster maps was performed by the $‘g.list -f rast’$ GRASS GIS module. The information on the data grids was checked up by command ‘r.info’ module which returns the min/max coordinates of the study area, resolution, number of classes, cartographic projection, scale, geometry with the number of centroids, points, lines, boundaries and islands, and the type of data (3D or 2D). 
@@ -180,12 +178,14 @@ The ‘g.region -p’ command was used to retrieve the information on the data e
 
 \subsection{Data processing by GDAL}
 
-The initial operations with raster file were performed by the Geospatial Data Abstraction Library (GDAL), a translator library for raster and vector geospatial data formats (GDAL documentation: https://gdal.org/ The input to the reference list \cite{GDAL/OGR} which was run from the console of the GMT. In general, GDAL was used to re-project raster files to the supported projection, to perform image mosaicing and transformations (Fig. \ref{Fig:2}). In this study, three GDAL utilities were used in the following code:\\ 
-$‘gdalwarp’, ‘gdal\_translate’ and ‘gdalinfo’$ command (Fig. \ref{Fig:2}). The ‘gdalwarp’ utility was used to re-projection and warping of the initial original file (ETOPO1\_Bed\_g\_geotiff.tif) from XY Cartesian coordinates to the World Geodetic System 1984 (WGS84) \cite{Defense}. 
+The initial operations with raster file were performed by the Geospatial Data Abstraction Library (GDAL), a translator library for raster and vector geospatial data formats (GDAL documentation: https://gdal.org/ . The input to the reference list \cite{GDAL/OGR} was run from the console of the GMT. In general, the GDAL was used to re-project raster files to the supported cartographic projection, as well as to perform image mosaicing and transformations (Fig. \ref{Fig:2}). In this study, we used three GDAL utilities using the following code:\\ 
+$‘gdalwarp’, ‘gdal\_translate’ and ‘gdalinfo’$ command (Fig. \ref{Fig:2}). The ‘gdalwarp’ utility was used to re-projection and warping of the initial original file (ETOPO1\_Bed\_g\_geotiff.tif) from the XY Cartesian coordinates to the World Geodetic System 1984 (WGS84) \cite{Defense}. 
 
-The transformation uses the European Petroleum Survey Group (EPSG) number which in this case is 4326 (corresponds to the WGS84). The warping was done by the command for Spatial Reference System (SRS): $gdalwarp -t\_srs EPSG:4326 \\ETOPO1\_Bed\_g\_geotiff.tif ETOPO1\_WGS84.tif$. The next step contains using the utility ‘gdal\_translate’  (Fig. \ref{Fig:3}) with the argument $‘-projwin\_srs <srs\_def>’$, which specifies the projwin SRS GDAL in which it interprets the coordinates (here, given coordinates in the EPSG system). 
+%--------------------------CHECKED 18.01.2023.
 
-Using the gdal\_translate (Fig. \ref{Fig:3}), the file was subset (i.e. cut off the target square area from the whole big file with clockwise going coordinates (in degrees), W=140.0000 N=60.0000 E=170.0000 S=40.0000), but not reprojected: the re-projection was done in the previous step by the ‘grdalwarp’ utility. Now the subsetting of the target area was done by the following command: $gdal\_translate -projwin 140.0000 60.0000 \\170.0000 40.0000 ETOPO1\_WGS84.tif ETOPO1\_KKT\_WGS84.tif.$ 
+The transformation uses the European Petroleum Survey Group (EPSG) number, which in this case is 4326 (corresponds to the WGS84). The warping was done by the command for Spatial Reference System (SRS) as follows: $gdalwarp -t\_srs EPSG:4326 \\ETOPO1\_Bed\_g\_geotiff.tif ETOPO1\_WGS84.tif$. The next step contains running the utility ‘gdal\_translate’  (Fig. \ref{Fig:3}) with the argument $‘-projwin\_srs <srs\_def>’$, which specifies the projwin SRS GDAL, in which it interprets the coordinates (here, given coordinates in the EPSG system). 
+
+Using the gdal\_translate (Fig. \ref{Fig:3}), the file was subset, or clipped, to the target square area from the global extent with clockwise going coordinates in degrees as follows: W=140 N=60 E=170 S=40. The re-projection was done by the ‘grdalwarp’ utility. The subsetting of the target area was done by the following command: $gdal\_translate -projwin 140.0000 60.0000 \\170.0000 40.0000 ETOPO1\_WGS84.tif ETOPO1\_KKT\_WGS84.tif.$ 
 
 \vspace{6pt}
 \begin{figure}[h]
@@ -195,9 +195,9 @@ Using the gdal\_translate (Fig. \ref{Fig:3}), the file was subset (i.e. cut off 
 \end{figure}
 \vspace{12pt}
 
-The method presentation is shown by the projection transformation by GDAL utility ‘gralwarp’ using the PROJ library. It demonstrates the transformation of the TIFF file in the WGS84 geoid datum warped to a Two Point Equidistant Azimuthal projection using PROJ arguments: $gdalwarp -t\_srs '+proj=tpeqd +lat\_1=45 +lat\_2=55 +lon\_1=100 +lon\_2=120' ETOPO1\_KKT\_WGS84.tif ETOPO1\_KKT\_2p.tif -overwrite$. Now the file was reprojected to the WGS84 and subset (cut off) from the initial big raster grid. A gdalinfo utility was then used to check up again the correctness of the performed operations and the output data: $gdalinfo ETOPO1\_KKT\_WGS84.tif.$
+The method presentation is shown by the projection transformation by GDAL utility ‘gralwarp’ using the PROJ library. It demonstrates the transformation of the TIFF file in the WGS84 geoid datum warped to a Two Point Equidistant Azimuthal projection using the PROJ arguments: $gdalwarp -t\_srs '+proj=tpeqd +lat\_1=45 +lat\_2=55 +lon\_1=100 +lon\_2=120' ETOPO1\_KKT\_WGS84.tif ETOPO1\_KKT\_2p.tif -overwrite$. Now the file was reprojected to the WGS84 and subset (cut off) from the initial raster grid with global extent. A gdalinfo utility was used to check up the correctness of the performed operations and the output data as follows: $gdalinfo ETOPO1\_KKT\_WGS84.tif.$
 
-The next part of the research was continued in the GRASS GIS version 7.6, as described below. It included the coordinates transformation (several projections were tested) that has been done by ‘proj’. The ‘proj’ is a cartographic projection filter of the PROJ software which allows converting between the geographic and projection coordinates within one datum WGS84. The maps projections were tested in PROJ via the ‘gdalwarp’ before importing them into a GRASS GIS. It was possible using ‘gdalwarp’ utility of GDAL, which is specially designed to re-project maps to the target projections, coordinate systems, ellipsoid, or geodetic datum (in this case, the datum was selected as a constant WGS84 and was not changed throughout the research). 
+The next step was continued in the GRASS GIS version 7.6 and included the coordinates transformation that was done by ‘proj’ with several tested projections. The ‘proj’ is a cartographic projection filter of the PROJ software which allows converting between the geographic and projection coordinates within one datum WGS84. The maps projections were tested in PROJ via the ‘gdalwarp’ utility of GDAL before importing them into the GRASS GIS. The ‘gdalwarp’ is specially designed to reproject maps to the target projections, coordinate systems, ellipsoid, or geodetic datum. In this case, we selected the datum as a constant WGS84 and kept it constant for this project. 
 
 \subsection{Displaying raster grids in GRASS GIS}
 
