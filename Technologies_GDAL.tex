@@ -197,6 +197,19 @@ The PROJ, a generic coordinate transformation software library (https://proj.org
 \end{figure}
 \vspace{12pt}
 
+\subsection{Plotting bar graph histogram for elevation map}
+The next research step included data analysis focused on distribution: how often the data in various range diapason are repeated, in other works, the most frequent depths or elevations over the study area, which is a common way of analysis of the spatially distributed data \cite{Antrop,Bailey,Burrough}. An increase in values of a specific depth reflects the number of times the elevation was recorded on a bathymetric grid in subsequent region of the study area, that is, the frequency of data. This was done by plotting histograms in two ways: as bar charts and as pie charts using the GRASS GIS d.histogram module for calculating depths distribution \cite{Mitasovaetal1995} and visualized in Fig. \ref{Fig:8}. 
+
+A competent analysis of geospatial data distribution is focused to demonstrate a range of variations in the data, including skewness, how values (or intervals) of the topography are varies, organisation of categorical data, select relevant peaks in interpretation and description of the dataset or other resources showing correlation of the geographic phenomena (e.g., aspect and slope) with another factor (e.g., relief). There are various types of the statistical analysis for review, critically evaluate the topographic datasets, and then present a graph, e.g. histogram of other methods, e.g. pie charts reviewed in relevant publications \cite{ Lemenkova2019f}. This research focused on cartographic workflow by the GRASS GIS rather than complex statistical analysis. Therefore, the two general types of statistical data analysis were selected: the pie charts and the histograms (Fig. \ref{Fig:8}). 
+
+\vspace{6pt}
+\begin{figure}[h]
+ \centering
+    \includegraphics[width=0.90\textwidth]{Fig_8.jpg}\\
+  \caption{Bar graph histogram for elevation map (left), pie graph of heights distribution, Kuril-Kamchatka region, based on raster grid ETOPO1. Source: author.}\label{Fig:8}
+\end{figure}
+\vspace{12pt}
+
 \subsection{Subsection}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
