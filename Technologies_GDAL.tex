@@ -162,7 +162,7 @@ Using the gdal\_translate (Fig. \ref{Fig:3}), the file was subset (i.e. cut off 
 \vspace{6pt}
 \begin{figure}[h]
  \centering
-    \includegraphics[width=0.95\textwidth]{Fig_5.jpg}\\
+    \includegraphics[width=0.95\textwidth]{Fig_5.jpg}
   \caption{Raster projected from XY to WGS84 Lat/Lon coordinates with cartographic elements. Source: author.}\label{Fig:5}
 \end{figure}
 \vspace{12pt}
@@ -232,10 +232,51 @@ Thus, the correlation between the profile and tangential curvature reflects the 
 
 where $p=\left(\frac{\delta z}{\delta x}\right)^2+\left(\frac{\delta z}{\delta y}\right)^2$ and $q=1+p$ for both cases.
 
-\subsection{Subsection}
+The input data was taken as elevation raster map (ETOPO1 raster grid covering the Kuril-Kamchatka region) using the developed methodology \cite{Mitasova1985,Hofierka2009,Horn}. The r.slope.aspect used for plotting (Fig. \ref{Fig:9}) generates raster maps of slope, aspect (computed counterclockwise from the east), profile curvature and tangential curvature from initial raster map ETOPO1 raster grid that contained elevation values. 
+
+The input elevation raster map was specified aș ETOPO1\_KKT\_WGS84 the output raster map was named as ‘slope’. The computation was done by the following code: $‘r.slope.aspect elevation=ETOPO1\_KKT\_WGS84 \\slope=slope aspect=aspect pcurvature=pcurv tcurvature=tcurv’$. The results are shown on the facetted plot (Fig. \ref{Fig:9}) showing four subplots of geomorphic analysis of the slope, aspect, profile curvature and tangential curvature in the study area (Fig. \ref{Fig:9}).
+
+\vspace{6pt}
+\begin{figure}[H]
+ \centering
+    \includegraphics[width=0.90\textwidth]{Fig_9.jpg}
+  \caption{Slope, aspect, profile and tangential curvature maps, Kuril-Kamchatka region, based on raster grid ETOPO1. Source: author.}\label{Fig:9}
+\end{figure}
+\vspace{12pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results}
+\section{Results and Discussion}
+
+An example of the topographic data visualization and geomorphometric analysis is provided in this study with a case of GRASS GIS based mapping of the Kuril-Kamchatka region. The study involved a ETOPO1 raster grid as a source of cartographic data including derived new information fro this initial grid: slope, aspect, curvature and general statistical data analysis (a histogram and a pie chart). Several projections have been tested and visualized using PROJ. 
+
+The data transformation was performed using GDAL integrated with GRASS GIS. Visualisations of cartographic projections were recorded in separate plots in the GRASS GIS and later presented in a facetted plot (Fig. \ref{Fig:7}) for comparison: Cassini-Soldner equirectangular; Equal Area Cylindrical; Two Point Equidistant Azimuthal; Oblique Mercator. A range of literature sources were also examined including geology and tectonic setting of the Kuril-Kamchatka region, existing maps and published journal article on the Pacific Ocean seafloor.
+
+Critical synthesis and analysis of a geomorphological setting of the study area is largely based on the an experiential GIS techniques of cartographic data visualization. A range of GRASS GIS modules to cartographic transformations were used to visualise better projection and colour palettes using GRASS GIS functionality. The topographic data analysis demonstrated the varied data distribution pattern in the Kuril-Kamchatka Trench summarised in Table \ref{tab:t1}. 
+
+\begin{table}[H]
+\caption{Percentage of the topographic data distribution over the study area}
+\label{tab:t1}
+\begin{center}
+\vskip -6pt
+\footnotesize
+\begin{tabular}{ |c|c| } 
+ \hline
+ Data Interval (m) & Percentage (\%)  \\ 
+ \hline
+ \hline
+ Below 400 & 24 \\
+ \hline 
+ -5,000 to -6,000 & 13  \\ 
+ \hline
+ -3,000 to -4,000 & 4 \\ 
+ \hline
+ -2,000 to 3,000 & 2 \\ 
+ \hline
+ -6,000 to 7,000 & $< 1$ \\
+ \hline
+\end{tabular}
+\end{center}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
