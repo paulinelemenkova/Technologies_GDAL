@@ -109,7 +109,7 @@ Therefore, a vital part of the spatial data interpretation is visualization and 
 
 In recent years, open source tools of computer vision and machine learning for data analysis became increasingly successful in analysing spatial data and cartographic tasks \cite{Brovelli}. Free availability of open source GIS cause its popularity and create an increased demand with reported cases in a geospatial analysis \cite{Christl,Turton}. Much progress has been made, for instance, by applications of programming scripts  that aim at automatisation of processing of a given data set. Examples are artificial intelligence and big data processing pointed out in selected studies on geoinformatics \cite{Barnes,Issaka}. The benefits of the open source GIS and scripting are widely discussed and mentioned easily data integration in a number of scenarios and geospatial research, handling 2D and 3D raster datasets \cite{land12010261}, spatial information exchange and processing \cite{Ajvazi,Guan,Kralidis}. 
 
-Open source data, scripting approaches and methods used in geographic research and Earth sciences  \cite{Rey,s23010056} tend to become progressively popular and perspective in view of the raising amounts of spatial data and the need to process these data accurately yet rapidly. Common sources of open geospatial data include topographic and bathymetric grids \cite{Basith,Habib} using GEBCO, SRTM DEM, ETOPO1 or ETOPO5, geophysical datasets (EGM96, EGM2008) \cite{Lemenkova2020a}, geological data \cite{Lemenkova2021a}, local data from the online repositories, embedded datasets, OpenStreetMap of Google Earth imagery, remote sensing data such as Landsat TM or Sentinel-2A satellite images.
+Open source data, scripting approaches and methods used in geographic research and Earth sciences  \cite{Rey,s23010056} tend to become progressively popular and perspective in view of the raising amounts of spatial data and the need to process these data accurately yet rapidly. Common sources of open geospatial data include topographic and bathymetric grids \cite{Basith,Habib} using General Bathymetric Chart of the Oceans (GEBCO), SRTM DEM, ETOPO1 or ETOPO5, geophysical datasets (EGM96, EGM2008) \cite{Lemenkova2020a}, geological data \cite{Lemenkova2021a}, local data from the online repositories, embedded datasets, OpenStreetMap of Google Earth imagery, remote sensing data such as Landsat TM or Sentinel-2A satellite images.
 
 For many types of spatial data, cartographic modelling approaches hereby have to address the problem of automation while handling these data. An ever-growing pool of spatial datasets encompass multi-format data formats that vary in resolution, source and scale. These data can be used for the diverse purposes in Earth science such as hydrology and geomorphology \cite{Teixeira}, soils and landscape changes \cite{Savulescu}, environmental coastal studies \cite{Hernandez}, climate changes, land cover studies, geology, and many more. Various GIS software can be applied to process open source geospatial data available online with aim at spatial analysis. Many of the topographic datasets are available in raster of vector digital formats, accessed  via online repositories, e.g., OpenStreetMaps or Google Earth. Increasingly, geospatial data sources are developing online repositories for their data storage such as the NOAA, GloVis providing an access to remote sensing datasets. A regular access to such resources enables their use in spatial analysis and arises the question of effective methods for processing these data.
 
@@ -160,27 +160,27 @@ The GRASS GIS uses a modular system organised by the name according to their fun
 
 %--------------------------CHECKED 18.01.2023.
 
-\subsection{Data capture and organization}
+\subsection{Data capture and organisation}
 
-The data used in this project includes the open datasets available in the online sources via internet. A georeferenced TIFF file of the ETOPO1 grid by NOAA was downloaded from the publicly available source: (\href{https://www.ngdc.noaa.gov/mgg/global/}{NOAA}) and used in this research as a base map following the exiting examples of the applications of NOAA products in geosciences \cite{Lemenkova2020f} (ETOPO1 Bedrock: Grid of Earth's surface depicting the bedrock underneath the ice sheets), Fig. \ref{Fig:1}. The information on the available data for raster maps was performed by the $‘g.list -f rast’$ GRASS GIS module. The information on the data grids was checked up by command ‘r.info’ module, which returns the min/max coordinates of the study area, its resolution, number of classes, cartographic projection, scale, type of map, geometry (number of centroids, points, lines, boundaries and islands), 3D or 2D. 
+The data used in this project include the open source datasets available online. We used the georeferenced TIFF file of the ETOPO1 grid by NOAA (\href{https://www.ngdc.noaa.gov/mgg/global/}{NOAA}) as a base map (ETOPO1 Bedrock: Grid of Earth's surface depicting the bedrock underneath the ice sheets), Figure \ref{Fig:1}. The check of metadata for the raster maps was performed by the $‘g.list -f rast’$ GRASS GIS module. The information on the data grids was checked up by command ‘r.info’ module which returns the min/max coordinates of the study area, resolution, number of classes, cartographic projection, scale, geometry with the number of centroids, points, lines, boundaries and islands, and the type of data (3D or 2D). 
 
 \vspace{6pt}
 \begin{figure}[h]
  \centering
     \includegraphics[width=0.95\textwidth]{Fig_4.jpg}\\
-  \caption{Subset of the study area (Kuril-Kamchatka region), in Cartesian XY coordinates (metadata: left) visualized on a display (GRASS GIS GUI: right). Source: authors.}\label{Fig:4}
+  \caption{Subset of the study area (Kuril-Kamchatka region), in the Cartesian XY coordinates (metadata: left) visualized on a display (GRASS GIS GUI: right). Source: authors.}\label{Fig:4}
 \end{figure}
 \vspace{12pt}
 
-The command ‘d.mon’ displays the raster map in a selected monitor: the monitors were used for the visualization of various grids by commands ‘d.mon wx0’ and ‘d.mon wx1’.
-The GRASS GIS project management has a certain similarity to the ArcGIS in terms of data storage: each raster or vector map consists of several auxiliary files which include various data types, categories, header, and other specific information. The information on the projection of the current mapset was checked up by commands: ‘g.proj -p’ (general description), $‘g.proj -w’$ (here the AOI extension and mathematical approximation are as follows: standard parallels, latitude of origin, central meridian, false easting and northing). 
+The command ‘d.mon’ displays a raster map in a selected monitor. The monitors are used in the GRASS GIS system for visualization of various grids by the commands ‘d.mon wx0’ and ‘d.mon wx1’.
+The project management in GRASS GIS has a certain similarity to the ArcGIS in terms of data storage. Thus, each raster or vector map consists of several auxiliary files which include various data types, categories, header and other specific information. The information on the projection of the current mapset was checked up by the commands: ‘g.proj -p’ (general description), $‘g.proj -w’$ (here: the AOI extension and mathematical approximation are as follows: standard parallels, latitude of origin, central meridian, false easting and northing). 
 
 The trial directories were removed from the Unix utility ‘rm’ from a console by commands in two steps: 1) \emph{cd /Users/pauline/grassdata} (changing to the current folder); 2) \emph{rm -r testKKT} (here: removing testing folder for the Kuril-Kamchatka Trench with all files).
-The ‘g.region -p’ command was used to retrieve information on the data extension and selected region (WESN, number of rows, columns and cells, aș well aș additional cartographic data: ellipsoid, datum, zone).
+The ‘g.region -p’ command was used to retrieve the information on the data extension and selected region (WESN, number of rows, columns and cells, aș well aș additional cartographic data: ellipsoid, datum, zone).
 
 \subsection{Data processing by GDAL}
 
-The initial operations with raster file were performed by the GDAL, a translator library for raster and vector geospatial data formats (GDAL documentation: https://gdal.org/ The input to the reference list \cite{GDAL/OGR} which was run from the console of the GMT. In general, GDAL was used to re-project raster files to the supported projection, to perform image mosaicing and transformations (Fig. \ref{Fig:2}). In this study, three GDAL utilities were used in the following code:\\ 
+The initial operations with raster file were performed by the Geospatial Data Abstraction Library (GDAL), a translator library for raster and vector geospatial data formats (GDAL documentation: https://gdal.org/ The input to the reference list \cite{GDAL/OGR} which was run from the console of the GMT. In general, GDAL was used to re-project raster files to the supported projection, to perform image mosaicing and transformations (Fig. \ref{Fig:2}). In this study, three GDAL utilities were used in the following code:\\ 
 $‘gdalwarp’, ‘gdal\_translate’ and ‘gdalinfo’$ command (Fig. \ref{Fig:2}). The ‘gdalwarp’ utility was used to re-projection and warping of the initial original file (ETOPO1\_Bed\_g\_geotiff.tif) from XY Cartesian coordinates to the WGS84 \cite{Defense}. 
 
 The transformation uses the EPSG number which in this case is 4326 (corresponds to the WGS84). The warping was done by the command: $gdalwarp -t\_srs EPSG:4326 \\ETOPO1\_Bed\_g\_geotiff.tif ETOPO1\_WGS84.tif$. The next step contains using the utility ‘gdal\_translate’  (Fig. \ref{Fig:3}) with the argument $‘-projwin\_srs <srs\_def>’$, which specifies the projwin SRS GDAL in which it interprets the coordinates (here, given coordinates in the EPSG system). 
@@ -468,30 +468,30 @@ The following abbreviations are used in this manuscript:\\
 
 \noindent 
 \begin{tabular}{@{}ll}
-GEBCO & General Bathymetric Chart of the Oceans\\
-SRTM & Shuttle Radar Topography Mission\\
-EGM2008 & Earth Gravitational Model of 2008 \\
-EGM96 & Earth Gravitational Model of 1996 \\
-GMT & Generic Mapping Tools \\
-GIS & Geographic Information System \\
-GDAL & Geospatial Data Abstraction Library \\
-ENVI & Environment for Visualizing Images \\
-SAGA & System for Automated Geoscientific Analyses \\
-GRASS & Geographic Resources Analysis Support System \\
-QGIS & Quantum GIS \\ 
-DEM & Digital Elevation Model \\
-UTM & Universal Transverse Mercator \\
-EPSG & European Petroleum Survey Group \\
-WGS84 & World Geodetic System 1984\\
-CLI & Command Line Interface \\
-GUI & Graphical User Interface \\
-TIFF & Tag Image File Format \\
-NOAA & National Oceanic and Atmospheric Administration \\
 AOI & Area of Interest \\
-WESN & West East South North \\
-SRS & Spatial Reference System \\
+CLI & Command Line Interface \\
+DEM & Digital Elevation Model \\
+EGM96 & Earth Gravitational Model of 1996 \\
+EGM2008 & Earth Gravitational Model of 2008 \\
+ENVI & Environment for Visualizing Images \\
+EPSG & European Petroleum Survey Group \\
 ETOPO1 & Earth's surface topography \\
-PROJ & a library for performing conversions between cartographic projections
+GDAL & Geospatial Data Abstraction Library \\
+GEBCO & General Bathymetric Chart of the Oceans\\
+GIS & Geographic Information System \\
+GMT & Generic Mapping Tools \\
+GRASS & Geographic Resources Analysis Support System \\
+GUI & Graphical User Interface \\
+NOAA & National Oceanic and Atmospheric Administration \\
+PROJ & a library for performing conversions between cartographic projections \\
+QGIS & Quantum GIS \\ 
+SAGA & System for Automated Geoscientific Analyses \\
+SRS & Spatial Reference System \\
+SRTM & Shuttle Radar Topography Mission\\
+TIFF & Tag Image File Format \\
+UTM & Universal Transverse Mercator \\
+WGS84 & World Geodetic System 1984\\
+WESN & West East South North
 \end{tabular}
 }
 
@@ -770,12 +770,6 @@ Comparison of angles from surface slope/aspect algorithms
 Hofierka, J., Súri, M., 
 \newblock The solar radiation model for Open Source GIS: Implementation and applications
 \newblock {\em Proceedings of Open Source Free Software GIS – GRASS users conference. Trento, Italy, Sept. 2002} {\bf 2002}, {\em XX},~11--13. 
-
-\bibitem{Lemenkova2020f}
-Lemenkova, P.
-\newblock NOAA Marine Geophysical Data and a GEBCO Grid for the Topographical Analysis of Japanese Archipelago by Means of GRASS GIS and GDAL Library
-\newblock {\em Geomatics and Environmental Engineering} {\bf 2020}, {\em 14},~25--45. 
-\newblock {{https://doi.org/10.7494/geom.2020.14.4.25}}.
 
 \bibitem{Hofierka2009}
 Hofierka, J., Mitasova, H., Neteler, M., 
