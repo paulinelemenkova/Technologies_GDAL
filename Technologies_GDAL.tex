@@ -321,7 +321,7 @@ The geomorphometric parameters include slope, aspect, and curvature in both the 
 
 The GRASS GIS modules were used for assessing the morphometrics in the land-surface parameters over the study area based on the ETOPO1-derived basin geomorphometry: profile and tangential curvature, slope and aspect maps, histograms of elevation distribution. Other examples of automatization in the cartographic processes include the machine learning approaches of rapid vectorization of the isolines \cite{Lemenkova2020e}, morphometric landscape analysis \cite{Clarke,land12010261,Sofia}, geospatial analysis based on shell scripting using scripting libraries \cite{su142315966}, topographic mapping using the GMT and QGIS \cite{Lemenkova2022a,LemenkovaDebeir2022JAES,Lemenkova2020c}, discourse on fractals in the ocean floor topography quantifying repetitive patters by modelling \cite{Malinverno}.
 
-Unlike the traditional GIS software, the architecture of the GRASS GIS presents a collection of modules that can be stored as a sequence in a shell script and used for producing maps. In this research the GRASS GIS demonstrated effectiveness for mapping and visualization, compatibility with libraries, such as GDAL, PROJ, R \cite{Bivand2000,Bivand1999,app122412554,Grohmann}, technical flexibility combining GUI and command-line based method of data processing. Similar to GMT with existing examples of studies \cite{Lemenkova2021b}, GRASS GIS uses a scripting programming approach which enables to speed up the repeated tasks through the executable scripts. Like scripts in a UNIX shell, R and Python environments \cite{jimaging8120317}, GRASS GIS and GMT scripts \cite{Lemenkova2021g} used to automate the workflow repeatedly performed for different maps using the same algorithm for various study areas \cite{Lemenkova2022b,Lemenkova2022c}.
+Unlike the traditional GIS software, the architecture of the GRASS GIS presents a collection of modules that can be stored as a sequence in a shell script and used for producing maps. In this research the GRASS GIS demonstrated effectiveness for mapping and visualization, compatibility with libraries, such as GDAL, PROJ, R \cite{Bivand2000,Bivand1999,app122412554,Grohmann}, technical flexibility combining GUI and command-line based method of data processing. Similar to GMT with existing examples of studies \cite{Lemenkova2021b}, GRASS GIS uses a scripting programming approach which enables to speed up the repeated tasks through the executable scripts. Like scripts in a UNIX shell, R and Python environments \cite{jimaging8120317}, GRASS GIS and GMT scripts \cite{Lemenkova2021g} used to automate the workflow repeatedly performed for different maps using the same algorithm for various study areas \cite{Lemenkova2022b}.
 
 \appendixtitles{yes} 
 \appendixstart
@@ -792,44 +792,77 @@ Issaka, Y., Kumi-Boateng, B.,
 \newblock {\em Geodesy and Cartography} {\bf 2020}, {\em 46},~1--7. 
 \newblock {{https://doi.org/10.3846/gac.2020.7696}}.
 
-%=====================================
- 
- \bibitem{Lemenkova2021b} Lemenkova, P. \emph{Using GMT for 2D and 3D Modeling of the Ryukyu Trench Topography, Pacific Ocean}, Miscellanea Geographica \textbf{25}, emph{4}, 213--225, 2021. \href{https://doi.org/10.2478/mgrsd-2020-0038}{doi: 10.2478/mgrsd-2020-0038}
- 
-  \bibitem{Turton}
- Turton, I., \emph{Geo Tools},  In: Hall G.B., Leahy M.G. (eds) Open Source Approaches in Spatial Data Handling. Advances in Geographic Information Science, \textbf{2}, \emph{Springer, Berlin, Heidelberg}, 2008. https://doi.org/10.1007/978-3-540-74831-1\_8 
- 
- \bibitem{Malinverno}
- Malinverno, A., \emph{Fractals and ocean floor topography}, Fractals in the Earth Sciences, \emph{Plenum Press}, pp. 107--130, 1995. https://doi.org/10.1007/978-1-4899-1397-5\_6  
- 
- \bibitem{Mitas1999}
-Mitas, L., Mitasova, H., \emph{Spatial interpolation}, Geographical Information Systems: Principles, Techniques, Management and Applications, \emph{Longley, P., Goodchild, M., Maguire, D., Rhind, D. (eds.). New York: Wiley}, pp. 481--492, 1999.
+\bibitem{Lemenkova2021b}
+Lemenkova, P.
+\newblock Using GMT for 2D and 3D Modeling of the Ryukyu Trench Topography, Pacific Ocean
+\newblock {\em Miscellanea Geographica} {\bf 2021}, {\em 25},~213--225. 
+\newblock {{https://doi.org/10.2478/mgrsd-2020-0038}}.
 
-\bibitem{Lemenkova2022c} Lemenkova, P. \emph{Tanzania Craton, Serengeti Plain and Eastern Rift Valley: mapping of geospatial data by scripting techniques}, Estonian Journal of Earth Sciences, \textbf{71}(2), 61--79, 2022. \href{https://doi.org/10.3176/earth.2022.05}{doi: 10.3176/earth.2022.05}
- 
- \bibitem{Kiani}
- Kiani, M., Chegini, N., Safari, A., Nazari, B., \emph{Spheroidal spline interpolation and its application in geodesy.}, Geodesy and Cartography, \textbf{46}, \emph{3}, pp. 123--135, 2020. https://doi.org/10.3846/gac.2020.11316
- 
- \bibitem{Teixeira}
-Teixeira, J., Chaminé, H. I., Carvalho, J. M., Pérez-Alberti, A., Rocha, F., \emph{Hydrogeomorphological mapping as a tool in groundwater exploration}, Journal of Maps, \textbf{9}, \emph{2}, pp. 263--273, 2013. https://doi.org/10.1080/17445647.2013.776506
- 
- \bibitem{Sofia}
-Sofia, G., \emph{Combining geomorphometry, feature extraction techniques and Earth-surface processes research: The way forward}, Geomorphology, \textbf{355}, \emph{107055}, 2020. https://doi.org/10.1016/j.geomorph.2020.107055 
- 
- \bibitem{Snyder}
-Snyder, J. P., \emph{Map projections – a working manua}, Journal Title, \emph{l. U.S. Geological Professional Paper}, \textbf{1395}, pp. 383, 1987.
- 
- \bibitem{Lemenkova2020c}
- Lemenkova, P., \emph{GEBCO Gridded Bathymetric Datasets for Mapping Japan Trench Geomorphology by Means of GMT Scripting Toolset}, Geodesy and Cartography, \textbf{46}, \emph{(3)}, pp. 98--112, 2020. https://doi.org/10.3846/gac.2020.11524 
- 
- \bibitem{NetelerMitasova2008}
-Neteler, M., Mitasova, H., \emph{Open Source GIS. A GRASS GIS Approach}, ISBN-13: 978-0-387-35767-6, \emph{3rd Ed. NY: Springer}, 2008.
- 
- \bibitem{Savulescu}
-Sâvulescu, I. Mihai, B., \emph{Mapping forest landscape change in Iezer Mountains, Romanian Carpathians. A GIS approach based on cartographic heritage, forestry data and remote sensing imagery}, Journal of Maps, \textbf{7}, \emph{1}, pp. 429--446, 2011. https://doi.org/10.4113/jom.2011.1170
- 
- \bibitem{Neteleretal2008}
-Neteler M., Beaudette D., Cavallini P., Lami L., Cepicky J., \emph{GRASS GIS}, Open Source Approaches in Spatial Data Handling. Advances in Geographic Information Science, \textbf{2}, \emph{Springer, Berlin, Heidelberg}, 2008. https://doi.org/10.1007/978-3-540-74831-1\_9 
+\bibitem{Turton}
+ Turton, I.,
+\newblock Geo Tools
+\newblock {\em Hall G.B., Leahy M.G. (eds). Open Source Approaches in Spatial Data Handling. Advances in Geographic Information Science, Springer, Berlin, Heidelberg} {\bf 2008}, {\em 2}. 
+\newblock {{https://doi.org/10.1007/978-3-540-74831-1\_8}}. 
+
+\bibitem{Malinverno}
+ Malinverno, A.,
+\newblock Fractals and ocean floor topography
+\newblock {\em Fractals in the Earth Sciences. Plenum Press} {\bf 1995},~107--130. 
+\newblock {{https://doi.org/10.1007/978-1-4899-1397-5\_6}}.
+
+\bibitem{Mitas1999}
+Mitas, L., Mitasova, H.,
+\newblock Spatial interpolation
+\newblock {\em In: Geographical Information Systems: Principles, Techniques, Management and Applications. Longley, P., Goodchild, M., Maguire, D., Rhind, D. (eds.). New York: Wiley } {\bf 1999},~481--492. 
+
+\bibitem{Kiani}
+Kiani, M., Chegini, N., Safari, A., Nazari, B., 
+\newblock Spheroidal spline interpolation and its application in geodesy
+\newblock {\em Geodesy and Cartography} {\bf 2020}, {\em 46},~123--135. 
+\newblock {{https://doi.org/10.3846/gac.2020.11316}}.
+
+\bibitem{Teixeira}
+Teixeira, J., Chaminé, H. I., Carvalho, J. M., Pérez-Alberti, A., Rocha, F.,
+\newblock Hydrogeomorphological mapping as a tool in groundwater exploration
+\newblock {\em Journal of Maps} {\bf 2013}, {\em 9},~263--273. 
+\newblock {{https://doi.org/10.1080/17445647.2013.776506}}.
+
+\bibitem{Sofia}
+Sofia, G.,
+\newblock Combining geomorphometry, feature extraction techniques and Earth-surface processes research: The way forward
+\newblock {\em Geomorphology} {\bf 2020}, {\em 355}. 
+\newblock {{https://doi.org/10.1016/j.geomorph.2020.107055}}.
+
+\bibitem{Snyder}
+Snyder, J. P., 
+\newblock Map projections -- a working manual
+\newblock {\em l. U.S. Geological Professional Paper} {\bf 1987}, {\em 1395},~383. 
+
+\bibitem{Lemenkova2020c}
+Lemenkova, P.,
+\newblock GEBCO Gridded Bathymetric Datasets for Mapping Japan Trench Geomorphology by Means of GMT Scripting Toolset
+\newblock {\em Geodesy and Cartography} {\bf 2020}, {\em 46},~98--112. 
+\newblock {{https://doi.org/10.3846/gac.2020.11524}}.
+
+\bibitem{NetelerMitasova2008}
+Neteler, M., Mitasova, H.,
+\newblock Open Source GIS. A GRASS GIS Approach
+\newblock {\em 3rd Ed. NY: Springer} {\bf 2008}, {\em XX},~XX--XX. 
+\newblock {{ISBN-13: 978-0-387-35767-6}}.
+
+\bibitem{Savulescu}
+Sâvulescu, I. Mihai, B., 
+\newblock Mapping forest landscape change in Iezer Mountains, Romanian Carpathians. A GIS approach based on cartographic heritage, forestry data and remote sensing imagery
+\newblock {\em Journal of Maps} {\bf 2011}, {\em 7},~429--446. 
+\newblock {{https://doi.org/10.4113/jom.2011.1170}}.
+
+\bibitem{Neteleretal2008}
+Neteler M., Beaudette D., Cavallini P., Lami L., Cepicky J., 
+\newblock GRASS GIS. Open Source Approaches in Spatial Data Handling.
+\newblock {\em Advances in Geographic Information Science} {\bf 2008}, {\em 2},~XX--XX. 
+\newblock {{https://doi.org/10.1007/978-3-540-74831-1\_9}}.
+%====================================
+
  
   \bibitem{Neteler2000}
  Neteler, M., \emph{GRASS-Handbuch}, Geosynthesis 11. Der praktische Leitfaden zum Geographischen Informationssystem GRASS, \emph{University of Hannover}, 2000.
