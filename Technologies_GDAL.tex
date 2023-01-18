@@ -288,8 +288,138 @@ The tangential curvature shows values of -67*10-5 to 63*10-5. The terrestrial ar
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
 
+The visualized raster maps were displayed using tested various system palettes (r.colors) specifically intended for the cartographic visualization of the terrain data. The produced maps show spatial analysis over the Kuril-Kamchatka areas performed by the GRASS GIS techniques of raster data conversion, warping and adding cartographic elements (ticks, legend, isolines) on the final layout. Each map sources a range of new visualization of the data relevant to the geomorphology of the Kuril-Kamchatka region. Similar to the GMT techniques (Lemenkova, 2020d), demonstrated method of the GRASS GIS has a command-line possibility of data input which is convenient for controlling the cartographic design and enables to create the print-quality maps. It demonstrated the effectiveness of the GRASS GIS methods to visualize raster grids and perform raster data analysis for mapping geologically complex region of the north Pacific Ocean.
+
+The morphometry is an approach of quantitative GIS based terrain analysis, which is increasingly required by geomorphologists for relief visualization based on elevation DEM, landforms geomorphological modelling and mapping as well as in regional studies. The geomorphometric terrain analysis may include various approaches, for instance: analysis and interpretation of the land or seafloor surface as continuous field, selecting geomorphological landforms as separate study objects, extracted from a continuous field of DEM by topographic spatial analysis, slope analysis, as shown in various papers \cite{HofierkaSuri,Mitas1999,Mitasovaetal1996}. The slope gradient indicates the terrain roughness and represents basic land surface discreteness. A slope gradient can be used for indication of the terrain roughness, while the aspect can be applied for mapping slope distribution depending on the compass orientation of the terrain. 
+
+The findings revealed that topography of the Kuril-Kamchatka Trench was varying reflecting its regional geologic evolution and tectonic setting that largely affect the structure of the relief. The isoline representation in Fig. \ref{Fig:8} was compared with previous existing research on Kuril-Kamchatka Trench \cite{Lemenkova2019a}, where the research has been performed using the combination of the GMT, Octave/MATLAB and statistical visualization of the data distribution. These research presented other source for displaying height differences using the statistical data visualization. Another example of bathymetric data processing specifically for the north Pacific Ocean area was performed using scripting approach by GMT syntax which has its specific language operated from the command line. Scripts of GMT were used to rapidly cross-section gthe bathymetric data as a series of  profiles of the deep-sea trench \cite{Lemenkova2021e}. Also, the results performed a multidimensional and dynamic geographic phenomenon that can be studied using various types of data processing in GRASS GIS: visualization of the slope, aspect, curvature and statistical data distribution of elevation data.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
+
+The geomorphometric parameters include slope, aspect, and curvature in both the down‐slope and across‐slope directions, which is presented in this case study based on the GRASS GIS modules. The theoretical approaches in geomorphometric studies \cite{Chapman} have been implemented in practical applications of GRASS GIS and developed in GRASS module r.slope.aspect, as demonstrated in this study. The results demonstrate how the GRASS GIS can be utilised for cartographic data processing via the console by scripting to identify topographic variability in the study area through data processing, and visualise raster grids in various projections. 
+
+The GRASS GIS modules were used for assessing the morphometrics in the land-surface parameters over the study area based on the ETOPO1-derived basin geomorphometry: profile and tangential curvature, slope and aspect maps, histograms of elevation distribution. Other examples of automatization in the cartographic processes include the machine-learning approaches of rapid vectorization of the bathymetric isolines \cite{Lemenkova2020e}, geomorphometric analysis \cite{Clarke,Sofia}, landscape studies \cite{Lemenkova2020g}, geospatial analysis based on shell scripting using statistical libraries \cite{Lemenkova2019g}, topographic mapping using the GMT and QGIS \cite{Lemenkova2022a,Lemenkova2020b,Lemenkova2020c}, discourse on fractals in the ocean floor topography quantifying repetitive patters by modelling \cite{Malinverno}.
+
+Unlike the traditional GIS software, existing in the literature \cite{Klaucoetal2013,Lemenkova2021c,Klaucoetal2017}, the architecture of the GRASS GIS presents a collection of modules that can be stored as a sequence in a shell script and used for producing maps. In this research the GRASS GIS demonstrated effectiveness for mapping and visualization, compatibility with libraries, such as GDAL, PROJ, R \cite{Bivand2000,Bivand1999,Grohmann}, technical flexibility combining GUI and command-line based method of data processing. Similar to GMT with existing examples of studies \cite{Lemenkova2021b}, GRASS GIS uses a scripting programming approach which enables to speed up the repeated tasks through the executable scripts. Like scripts in a UNIX shell, R and Python environments, GRASS GIS and GMT scripts \cite{Lemenkova2021g} used to automate the workflow repeatedly performed for different maps using the same algorithm for various study areas \cite{Lemenkova2022b,Lemenkova2022c}.
+
+\section{Listings}
+\subsection{GRASS GIS script-1}
+\begin{verbatim}
+#!/bin/sh
+# raster file imported to the Location folder 'Kamchatka'
+r.in.gdal -o input=/Users/pauline/ETOPO1_KKT_WGS84.tif output=ETOPO1_KKT_WGS84.tif 
+# checked up the list of the raster files in the working directory
+g.list rast 
+#starting graphical display (or 'monitor') in which the maps were displayed
+d.mon wx0
+# visualizing raster by d.rast utility which displays grid cell maps in the current graphics region
+d.rast ETOPO1_Bed_g_geotiff 
+#  changing color palette, from default viridis to srtm_plus
+r.colors ETOPO1_KKT_WGS84 col=srtm_plus
+# check of the range of the elevation values (depths/heights) of the map
+r.info ETOPO1_KKT_WGS84
+# display a legend on a map
+d.rast.leg map= ETOPO1_KKT_WGS84 
+# providing simple numerical output of category numbers or range of values in a raster
+r.describe ETOPO1_KKT_WGS84 
+#  print a list of category numbers and associated labels
+r.cats
+# check up and print the current region extent (in this case: NS: 20.000000; EW: 45.000000).
+g.region -e 
+# Removing auxiliary files
+g.remove type=raster name=ETOPO1_KKT_WGS84.tiff -f
+\end{verbatim}
+
+\subsection{GRASS GIS script-2}
+\begin{verbatim}
+#!/bin/sh
+g.region rast=ETOPO1_KKT_WGS84.tif -p
+d.mon wx0
+d.rast ETOPO1_KKT_WGS84
+r.colors ETOPO1_KKT_WGS84 col=srtm_plus
+d.legend raster=ETOPO1_KKT_WGS84 title=Elevation,m title_fontsize=12 \
+	font=Helvetica fontsize=8 -t -b bgcolor=white label_step=2000 border_color=gray -f thin=10
+d.northarrow style=fancy_compass rotation=0 label=N -w color=black fill_color=gray fontsize=10
+d.grid size=02:00:00 -a -d color=red width=0.1 fontsize=8 text_color=white
+d.text text="Region of Kuril-Kamchatka Trench" color=yellow bgcolor=gray size=8
+\end{verbatim}
+
+\subsection{GRASS GIS script-3}
+\begin{verbatim}
+#!/bin/sh
+d.mon wx0
+r.info ETOPO1_KKT_WGS84
+g.region raster=ETOPO1_KKT_WGS84 -p
+d.rast ETOPO1_KKT_WGS84
+d.grid size=03:00:00 -a -d color=red width=0.1 fontsize=8 text_color=white
+d.text text="Kuril-Kamchatka Area" color='255:255:255' size=5
+r.contour ETOPO1_KKT_WGS84 out=Bathymetry750 step=750 --overwrite
+d.vect Bathymetry750 color='102:37:4' width=0
+\end{verbatim}
+
+\subsection{GRASS GIS script-4 (Cassini-Soldner projection)}
+\begin{verbatim}
+#!/bin/sh
+g.list rast
+r.info ETOPO1_KKT_C
+d.mon wx0
+g.region raster=ETOPO1_KKT_C -p
+r.colors ETOPO1_KKT_C col=grey.eq
+d.rast ETOPO1_KKT_C
+d.redraw
+r.contour ETOPO1_KKT_C out=Bathymetry1000C step=1000
+d.vect Bathymetry1000C color='blue' width=0
+d.grid -g size=2.5 color='255:0:0'
+d.text text="Cassini-Soldner prj" color='0:0:51' bgcolor='224:224:224' size=3
+\end{verbatim}
+
+\subsection{GRASS GIS script-5 (Oblique Mercator projection)}
+\begin{verbatim}
+#!/bin/sh
+g.list rast
+r.info ETOPO1_KKT_OM
+d.mon wx0
+g.region raster=ETOPO1_KKT_OM -p
+r.colors ETOPO1_KKT_OM col=grey.eq
+d.rast ETOPO1_KKT_OM
+r.contour ETOPO1_KKT_OM out=Bathymetry1000OM step=1000
+d.vect Bathymetry1000OM color='blue' width=0
+d.grid -g size=2.5 color='255:0:0'
+d.text text="Oblique Mercator prj" color='0:0:51' bgcolor='224:224:224' size=3
+\end{verbatim}
+
+\subsection{GRASS GIS script-6 (Equal-Area Cylindrical projection)}
+\begin{verbatim}
+#!/bin/sh
+g.list rast
+r.info ETOPO1_KKT_EAC
+d.mon wx0
+g.region raster=ETOPO1_KKT_EAC -p
+r.colors ETOPO1_KKT_EAC col=grey.eq
+d.rast ETOPO1_KKT_EAC
+d.redraw
+r.contour ETOPO1_KKT_EAC out=Bathymetry1000 step=1000
+d.vect Bathymetry1000 color='blue' width=0
+d.grid -g size=2.5 color='255:0:0'
+d.text text="Equal Area Cylindrical prj" color='0:0:51' bgcolor='224:224:224' size=3
+\end{verbatim}
+
+\subsection{GRASS GIS script-7 (2 Point Equidistant Azimuthal projection)}
+\begin{verbatim}
+#!/bin/sh
+g.list rast
+r.info ETOPO1_KKT_2p
+d.mon wx0
+g.region raster=ETOPO1_KKT_2p -p
+r.colors ETOPO1_KKT_2p col=grey.eq
+d.rast ETOPO1_KKT_2p
+d.redraw
+r.contour ETOPO1_KKT_2p out=Bathymetry1000 step=1000
+d.vect Bathymetry1000 color='blue' width=0
+d.grid -g size=2.5 color='255:0:0'
+d.text text="2 Point Equidist. Azimuth." color='0:0:51' bgcolor='224:224:224' size=3
+\end{verbatim}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \authorcontributions{Supervision, conceptualization, methodology, software, resources, funding acquisition, and project administration, O.D.; writing---original draft preparation, methodology, software, data curation, visualization, formal analysis, validation, writing---review and editing, and investigation, P.L. All authors have read and agreed to the published version of the manuscript.}
