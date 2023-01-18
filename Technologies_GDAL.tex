@@ -87,6 +87,13 @@ The spatial analysis in GIS focuses on complex problems regarding the topographi
 
 On the contrary, the free availability of GIS may cause its popularity and create an increased demand of the reported examples of its applications used in a geospatial studies \cite{Christl,Turton} including programming coding and scripting, machine learning and automatization, artificial intelligence and big data processing as pointed out in a variety of contemporary studies on geoinformatics \cite{Barnes,Issaka}. The benefits of the open source GIS and scripting are widely discussed including easily data integration in a number of scenarios and geospatial research, handling 2D and 3D raster datasets, spatial information exchange and processing \cite{Ajvazi,Brovelli,Guan,Kralidis}. 
 
+Open source data (or at least, low cost data), scripting approaches and methods used in geographic research and Earth science education \cite{Rey,Basith,Lemenkov,Habib} tend to become progressively popular and perspective in view of the increased forms of the distance-based GIS education and flexible learning context \cite{Balram}. Common sources of open geodata are topographic and bathymetric grids (GEBCO, SRTM, ETOPO1, ETOPO5), geophysical datasets (e.g. EGM96, EGM2008), geological surveys, local data from the online repositories, embedded datasets, OpenStreetMap of Google Earth imagery, remote sensing data (e.g. Landsat TM or Sentinel-2A), professional and governmental repositories, personal findings and data received from the fieldwork.
+
+Cartographers have access to an ever-growing pool of such datasets that focuses on discipline-specific topics (e.g. geomorphology, soils, hydrology, climate changes, land cover studies, geology, etc.) as well as various GIS software and references from other related geoscience disciplines. The open source geospatial data available online (e.g.,GEBCO, SRTM, ETOPO1, various DEM) to assist in GIS mapping are wide and varied. Many of these datasets are now available in digital formats (both raster of vector ones) and commonly accessed through the internet via geospatial data repositories. The open source geospatial data describe a collaboration of datasets in Earth sciences (topography, geology, soils, climate and environmental surveys). Increasingly, geospatial data sources are developing online repositories for their data storage such as the NOAA, GloVis (remote sensing data as satellite imagery), GEBCO, etc. Availability of geospatial data access to a cartographer is determined by their open source access (e.g. OpenStreetMaps, Google Earth, Landsat TM) or embedded datasets (country boundaries as basic GIS layers). There is a wide variety of Earth scientists who do regularly access such resources and use them in GIS-based analysis.
+
+In view of this, the question of how to better process these data, and which GIS to select, becomes the actual and emerging question in contemporary cartography. This study presents the use of GRASS GIS, an open source powerful GIS instrument for topographic analysis, visualization, statistical data analysis and mapping with a case study of the Kuril-Kamchatka region. Besides being a free software, GRASS GIS includes a variety of functional tools for processing both raster and vector data, using both GUI and scripting approach for mapping. Leaving apart the GUI approach as more trivial and easy approach of geospatial data processing, this paper concerns the scripting methods in GRASS GIS with a special case of topographic modelling and manipulation with data using an integration of GRASS GIS with such libraries as GDAL and PROJ the key tools for processing geospatial data formats and projections. 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Materials and Methods}
 
@@ -108,7 +115,7 @@ On the contrary, the free availability of GIS may cause its popularity and creat
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \authorcontributions{Supervision, conceptualization, methodology, software, resources, funding acquisition, and project administration, O.D.; writing---original draft preparation, methodology, software, data curation, visualization, formal analysis, validation, writing---review and editing, and investigation, P.L. All authors have read and agreed to the published version of the manuscript.}
 
-\funding{The publication was funded by the Editorial Office of XXXX, Multidisciplinary Digital Publishing Institute (MDPI), by providing 100\% discount for the APC of this manuscript. This project was supported by the Federal Public Planning Service Science Policy or Belgian Science Policy Office, Federal Science Policy - BELSPO (B2/202/P2/SEISMOSTORM).}
+\funding{The publication was funded by the Editorial Office of Technologies, Multidisciplinary Digital Publishing Institute (MDPI), by providing 100\% discount for the APC of this manuscript. This project was supported by the Federal Public Planning Service Science Policy or Belgian Science Policy Office, Federal Science Policy - BELSPO (B2/202/P2/SEISMOSTORM).}
 
 \institutionalreview{Not applicable.}
 
@@ -159,23 +166,10 @@ PROJ & a library for performing conversions between cartographic projections
 \appendix
 \section[\appendixname~\thesection]{}
 \subsection[\appendixname~\thesubsection]{}
-The appendix is an optional section that can contain details and data supplemental to the main text---for example, explanations of experimental details that would disrupt the flow of the main text but nonetheless remain crucial to understanding and reproducing the research shown; figures of replicates for experiments of which representative data are shown in the main text can be added here if brief, or as Supplementary Data. Mathematical proofs of results not central to the paper can be added as an appendix.
-
-\begin{table}[H] 
-\caption{This is a table caption.\label{tab5}}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\begin{tabularx}{\textwidth}{CCC}
-\toprule
-\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
-\midrule
-Entry 1		& Data			& Data\\
-Entry 2		& Data			& Data\\
-\bottomrule
-\end{tabularx}
-\end{table}
+The appendix 
 
 \section[\appendixname~\thesection]{}
-All appendix sections must be cited in the main text. In the appendices, Figures, Tables, etc. should be labeled, starting with ``A''---e.g., Figure A1, Figure A2, etc.
+All appendix 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{adjustwidth}{-\extralength}{0cm}
@@ -183,10 +177,240 @@ All appendix sections must be cited in the main text. In the appendices, Figures
 
 \reftitle{References}
 
+\begin{thebibliography}{3}
+
+\bibitem{Ajvazi}
+ Ajvazi, B., Czimber, K., \emph{A comparative analysis of different DEM interpolation methods in GIS: case study of Rahovec, Kosovo}, Geodesy and Cartography, \textbf{45}, \emph{1}, pp. 43--48, 2019. https://doi.org/10.3846/gac.2019.7921
+ 
+ \bibitem{Antrop}
+ Antrop, M., De Maeyer, P., Neutens, T., Van de Weghe, N., \emph{Geografische informatiesystemen}, Gent: Academia press, 2013.
+ 
+ \bibitem{Armstrong}
+ Armstrong, M. P., \emph{Geography and computational science}, Annals of the American Association of Geographers, \textbf{90}, \emph{1}, pp. 146--156, 2000. https://doi.org/10.1111/0004-5608.00190 
+ 
+ \bibitem{Bailey}
+ Bailey, T., Gatrell, A., \emph{Interactive spatial data analysis}, Harlow Essex England New York NY: Longman Scientific \& Technical J Wiley, 1995.
+ 
+\bibitem{Balram}
+Balram, S., \emph{Teaching and Learning Pedagogies in Higher Education Geographic Information Science}, Balram S., Boxall J. (eds). GIScience Teaching and Learning Perspectives. Advances in Geographic Information Science. Springer, Cham, 2019. https://doi.org/10.1007/978-3-030-06058-9\_1
+ 
+ \bibitem{Barnes}
+ Barnes, N., \emph{Publish your computer code: it is good enough}, Nature, \textbf{467}, \emph{7317}, pp. 753--753, 2010. https://doi.org/10.1038/467753a
+ 
+ \bibitem{Basith}
+Basith, A., Prastyani, R., \emph{Evaluating ACOMP, FLAASH and QUAC on Worldview-3 for satellite derived bathymetry (SDB) in shallow water}, Geodesy and Cartography, \textbf{46}, \emph{3}, pp. 151--158, 2020. https://doi.org/10.3846/gac.2020.11426
+
+\bibitem{Lemenkova2021g}
+Lemenkova, P. \emph{The visualization of geophysical and geomorphologic data from the area of Weddell Sea by the Generic Mapping Tools}, Studia Quaternaria \textbf{38}, \emph{1}, 19--32, 2021. https://doi.org/10.24425/sq.2020.133759 
+ 
+ \bibitem{Bivand2000}
+Bivand, R., \emph{Using the R statistical data analysis language on GRASS 5.0 GIS database files}, Computers \& Geosciences, \textbf{26}, \emph{9--10}, pp. 1043--1052, 2000. https://doi.org/10.1016/S0098-3004(00)00057-1
+ 
+ \bibitem{Bivand1999}
+ Bivand, R. S., \emph{Integrating GRASS 5.0 and R: GIS and modern statistics for data analysis}, Proceedings 7th Scandinavian Research Conference on Geographical Information Science, \emph{ Aalborg, Denmark}, pp. 111--127, 1999.
+ 
+ \bibitem{Boulton}
+ Boulton, S. J., Stokes, M., \emph{Which DEM is best for analyzing fluvial landscape development in mountainous terrains?}, Geomorphology, \textbf{310}, \emph{168--187}, pp. XX--XX, 2018. https://doi.org/10.1016/J.GEOMORPH.2018.03.002
+ 
+ \bibitem{Brovelli}
+Brovelli, M. A., Mitasova, H., Neteler, M., Raghavan, V., \emph{Free and open source desktop and Web GIS solutions}, Applied Geomatics, \textbf{4}, pp. 65--66, 2012. https://doi.org/10.1007/s12518-012-0082-4 
+ 
+ \bibitem{Brown}
+Brown, W., Astley, M., Baker, T., Mitasova, H., \emph{GRASS as an integrated GIS and visualization environment for spatio-temporal modeling}, Proceedings Auto-carto XII, ACSM/ASPRS, \emph{Charlotte, NC}, pp. 89--99, 1995.
+ 
+ \bibitem{Burrough}
+Burrough, P. A., McDonnell, R. A., \emph{Principles of geographical information systems}, Oxford University Press, Oxford. 1998.
+ 
+  \bibitem{Buterez}
+Buterez,  C., Olariu, B., Mihai, B., Rujoiu-Mare, M., Cruceru, I., \emph{General topography of Prahova County, Romania}, Journal of Maps, \textbf{12}, \emph{1}, pp. 541--545, 2016. https://doi.org/10.1080/17445647.2016.1197162
+ 
+ \bibitem{Chapman}
+ Chapman, C. A., \emph{A new quantitative method of topographic analysis}, American Journal of Science, \textbf{250}, \emph{6}, pp. 428--452, 1952. https://doi.org/10.2475/ajs.250.6.428
+ 
+\bibitem{Christl}
+Christl A., \emph{Free Software and Open Source Business Models}, Hall G.B., Leahy M.G. (eds) Open Source Approaches in Spatial Data Handling. Advances in Geographic Information Science, 2. Springer, Berlin, Heidelberg, 2008. https://doi.org/10.1007/978-3-540-74831-1\_2
+ 
+ \bibitem{Clarke}
+Clarke, K. C., \emph{Computation of the fractal dimension of topographic surfaces using the triangular prism surface area method}, Computers \& Geosciences, \textbf{12}, \emph{5}, pp. 713--722, 1986. https://doi.org/10.1016/0098-3004(86)90047-6
+ 
+  \bibitem{Dassau}
+Dassau, O., Holl, S., Neteler, M., Redslob, M., \emph{An introduction to the practical use of the Free Geographical Information System GRASS 6.0. version 1.2}, \emph{Hannover: GDF Hannover bR.}, 2005.
+ 
+ \bibitem{Defense}
+ Defense Mapping Agency, \emph{Department of Defense World Geodetic System 1984: its definition and relationships with local geodetic systems: Technical Report}, \emph{8350(2), 2nd ed}, 1991.
+ 
+ \bibitem{Dikau}
+ Dikau, R., \emph{The application of a digital relief model to landform analysis in geomorphology}, Raper, J. (ed.). Three dimensional applications in Geographic Information Systems, \emph{aylor \& Francis, London}, pp. 51--77, 1989. https://doi.org/10.1002/esp.3290150515 
+ 
+  \bibitem{Duncan}
+Duncan, D. T., Regan, S. D. , \emph{Mapping multi-day GPS data: a cartographic study in NYC}, Journal of Maps,, \textbf{12}, \emph{4}, pp. 668--670, 2016. https://doi.org/10.1080/17445647.2015.1060180 
+ 
+ \bibitem{Dunn}
+Dunn, M., Hickey, R., \emph{The Effect of Slope Algorithms on Slope estimates within a GIS}, Cartography, \textbf{27}, \emph{1}, pp. 9--15, 1998. https://doi.org/10.1080/00690805.1998.9714086
+ 
+ \bibitem{Evenden}
+ Evenden, G. I., \emph{Cartographic projection procedures for the UNIX environment – a user's manual}, \emph{USGS Open-File Report 90-284}, 1990. https://pubs.usgs.gov/of/1990/0284/report.pdf
+ 
+ \bibitem{Lemenkova2022b} Lemenkova, P. \emph{Seismicity in the Afar Depression and Great Rift Valley, Ethiopia}, Environmental Research, Engineering and Management \textbf{78}, \emph{1}, pp. 83--96, 2022. \href{https://doi.org/10.5755/j01.erem.78.1.29963}{doi: 10.5755/j01.erem.78.1.29963}
+ 
+  \bibitem{Gallant}
+Gallant, J. C., Moore, I. D., Hutchinson, M. F., Gessler, P., \emph{Estimating fractal dimension of profiles: A comparison of methods}, Mathematical Geology, \textbf{26}, \emph{4}, pp. 455--481, 1994. https://doi.org/10.1007/BF02083489
+ 
+ \bibitem{GDAL/OGR}
+ GDAL/OGR contributors, \emph{GDAL/OGR Geospatial Data Abstraction software Library}, \emph{Open Source Geospatial Foundation}, 2020. URL https://gdal.org
+ 
+ \bibitem{Golden}
+Golden Software, Inc., \emph{Full User’s Guide: Surfer 12. Powerful Contouring, Gridding, and Surface Mapping}, \emph{Golden Software, Inc. 809 14th Street, Golden, Colorado 80401-1866, U.S.A.}, 2014. URL: www.GoldenSoftware.com
+ 
+ \bibitem{Grohmann}
+ Grohmann, C.H., \emph{Morphometric analysis in Geographic Information Systems: applications of free software GRASS and R}, Computers \& Geosciences, \textbf{30}, pp. 1055--1067, 2004. https://doi.org/10.1016/j.cageo.2004.08.002 
+ 
+  \bibitem{Guan}
+Guan, Q., Hu, S., Liu, Y., Yun, S., \emph{High-Performance GeoComputation with the Parallel Raster Processing Library}, Thill JC., Dragicevic S. (eds) GeoComputational Analysis and Modeling of Regional Systems. Advances in Geographic Information Science, \emph{Springer, Cham}, 2018. https://doi.org/10.1007/978-3-319-59511-5\_5
+ 
+ \bibitem{Lemenkova2021a}Lemenkova, P. \emph{Dataset compilation by GRASS GIS for thematic mapping of Antarctica: Topographic surface, ice thickness, subglacial bed elevation and sediment thickness}. Czech Polar Rep. \textbf{11}, \emph{1}, 67--85 (2021). https://doi.org/10.5817/CPR2021-1-6
+ 
+ \bibitem{Lemenkova2020a}Lemenkova, P. \emph{GRASS GIS for topographic and geophysical mapping of the Peru-Chile Trench}. Forum Geografic \textbf{19}, e\emph{2},143--157 (2020). https://doi.org/10.5775/fg.2020.009.d 
+ 
+ \bibitem{Lemenkova2021c}Lemenkova, P., \emph{Mapping topographic, geophysical and gravimetry data of Pakistan - a contribution to geological understanding of Sulaiman Fold Belt and Muslim Bagh Ophiolite Complex}. Geophysica \textbf{56}, \emph{1--2}, pp. 3--26 (2021). https://doi.org/10.5281/zenodo.5779189
+ 
+ \bibitem{Lemenkova2022a}P. Lemenkova, Console-Based Mapping of Mongolia Using GMT Cartographic Scripting Toolset for Processing TerraClimate Data. Geosciences, \textbf{12}(3), 140 (2022). https://doi.org/10.3390/geosciences12030140 
+ 
+  \bibitem{Guth}
+ Guth, P. L., \emph{Slope and aspect calculations on gridded digital elevation models: Examples from a geomorphometric toolbox for personal computers}, Zeitschrift fur Geomorphologie \textbf{101}, \emph{N.F. Supplementband}, pp. 31--52, 1995.
+ 
+ \bibitem{Habib}
+Habib, M., Alfugara, A., Pradhan, B., \emph{A low-cost spatial tool for transforming feature positions of CAD-based topographic mapping}, Geodesy and Cartography, \textbf{45}, \emph{4}, pp. 161--168, 2019. https://doi.org/10.3846/gac.2019.10322
+
+\bibitem{Lemenkova2021e}
+Lemenkova, P. \emph{Topography of the Aleutian Trench south-east off Bowers Ridge, Bering Sea, in the context of the geological development of North Pacific Ocean}. Baltica \textbf{34}, \emph{1}, 27--46, 2021. https://doi.org/10.5200/baltica.2021.1.3
+ 
+ \bibitem{Heerdegan}
+Heerdegan, R. G., Beran, M. A. , \emph{Quantifying source areas through land surface curvature and shape}, Journal of Hydrology, \textbf{57}, \emph{3--4}, pp. 359--373, 1982. https://doi.org/10.1016/0022-1694(82)90155-X
+ 
+  \bibitem{Hernandez}
+Hernández-Santana, J. R., Méndez-Linares, A. P., López-Portillo, J. A., Preciado-López, J. C., \emph{Coastal geomorphological cartography of Veracruz State, Mexico}, Journal of Maps, \textbf{12}, \emph{2}, pp. 316--323, 2016. https://doi.org/10.1080/17445647.2015.1016128
+ 
+ \bibitem{Hodgson1995}
+ Hodgson, M. E., \emph{What cell size does the computed slope/aspect angle represent?}, Photogrammetic Engineering \& Remote Sensing, \textbf{61}, \emph{5}, pp. 513--517, 1995.
+ 
+  \bibitem{Lemenkova2020g}
+ Lemenkova, P. \emph{Sentinel-2 for High Resolution Mapping of Slope-Based Vegetation Indices Using Machine Learning by SAGA GIS}. Transylvanian Review of Systematical and Ecological Research, \textbf{22}, \emph{3}, 17--34, 2020. https://doi.org/10.2478/trser-2020-0015
+ 
+ \bibitem{Hodgson1998}
+Hodgson, M. E., \emph{Comparison of angles from surface slope/aspect algorithms}, Cartography and Geographic Information Systems, \textbf{25}, \emph{3}, pp. 173--185, 1998. https://doi.org/10.1559/152304098782383106
+ 
+ \bibitem{HofierkaSuri}
+Hofierka, J., Súri, M., \emph{The solar radiation model for Open Source GIS: Implementation and applications}, Proc., Open Source Free Software GIS – GRASS users conference, \emph{Trento, Italy, Sept. 2002}, pp. 11--13, 2002.
+ 
+ \bibitem{Lemenkova2020f}
+ Lemenkova, P. \emph{NOAA Marine Geophysical Data and a GEBCO Grid for the Topographical Analysis of Japanese Archipelago by Means of GRASS GIS and GDAL Library}. Geomatics and Environmental Engineering, \textbf{14}, \emph{4}, 25--45, 2020. https://doi.org/10.7494/geom.2020.14.4.25 
+ 
+  \bibitem{Hofierka2009}
+Hofierka, J., Mitasova, H., Neteler, M., \emph{Geomorphometry in GRASS GIS}, In: Hengl, T., Reuter, H. I. (Eds), Geomorphometry: Concepts, Software, Applications. Developments in Soil Science, \textbf{33}, pp. 387--410, 2009. https://doi.org/10.1016/S0166-2481(08)00017-2 
+ 
+ \bibitem{Horn}
+Horn, B. K. P., \emph{Hill Shading and the Reflectance Map}, Proceedings of the IEEE, \textbf{69}, \emph{1}, pp. 14--47, 1981. https://doi.org/10.1109/PROC.1981.11918 
+ 
+ \bibitem{Issaka}
+ Issaka, Y., Kumi-Boateng, B., \emph{Artificial intelligence techniques for predicting tidal effects based on geographic locations in Ghana}, Geodesy and Cartography, \textbf{46}, \emph{1}, pp. 1--7, 2020. https://doi.org/10.3846/gac.2020.7696
+ 
+ \bibitem{Lemenkova2021b} Lemenkova, P. \emph{Using GMT for 2D and 3D Modeling of the Ryukyu Trench Topography, Pacific Ocean}, Miscellanea Geographica \textbf{25}, emph{4}, 213--225, 2021. \href{https://doi.org/10.2478/mgrsd-2020-0038}{doi: 10.2478/mgrsd-2020-0038}
+ 
+  \bibitem{Turton}
+ Turton, I., \emph{Geo Tools},  In: Hall G.B., Leahy M.G. (eds) Open Source Approaches in Spatial Data Handling. Advances in Geographic Information Science, \textbf{2}, \emph{Springer, Berlin, Heidelberg}, 2008. https://doi.org/10.1007/978-3-540-74831-1\_8 
+ 
+ \bibitem{Malinverno}
+ Malinverno, A., \emph{Fractals and ocean floor topography}, Fractals in the Earth Sciences, \emph{Plenum Press}, pp. 107--130, 1995. https://doi.org/10.1007/978-1-4899-1397-5\_6  
+ 
+ \bibitem{Mitas1999}
+Mitas, L., Mitasova, H., \emph{Spatial interpolation}, Geographical Information Systems: Principles, Techniques, Management and Applications, \emph{Longley, P., Goodchild, M., Maguire, D., Rhind, D. (eds.). New York: Wiley}, pp. 481--492, 1999.
+
+\bibitem{Lemenkova2022c} Lemenkova, P. \emph{Tanzania Craton, Serengeti Plain and Eastern Rift Valley: mapping of geospatial data by scripting techniques}, Estonian Journal of Earth Sciences, \textbf{71}(2), 61--79, 2022. \href{https://doi.org/10.3176/earth.2022.05}{doi: 10.3176/earth.2022.05}
+ 
+ \bibitem{Kiani}
+ Kiani, M., Chegini, N., Safari, A., Nazari, B., \emph{Spheroidal spline interpolation and its application in geodesy.}, Geodesy and Cartography, \textbf{46}, \emph{3}, pp. 123--135, 2020. https://doi.org/10.3846/gac.2020.11316
+ 
+ \bibitem{Teixeira}
+Teixeira, J., Chaminé, H. I., Carvalho, J. M., Pérez-Alberti, A., Rocha, F., \emph{Hydrogeomorphological mapping as a tool in groundwater exploration}, Journal of Maps, \textbf{9}, \emph{2}, pp. 263--273, 2013. https://doi.org/10.1080/17445647.2013.776506
+ 
+ \bibitem{Sofia}
+Sofia, G., \emph{Combining geomorphometry, feature extraction techniques and Earth-surface processes research: The way forward}, Geomorphology, \textbf{355}, \emph{107055}, 2020. https://doi.org/10.1016/j.geomorph.2020.107055 
+ 
+ \bibitem{Snyder}
+Snyder, J. P., \emph{Map projections – a working manua}, Journal Title, \emph{l. U.S. Geological Professional Paper}, \textbf{1395}, pp. 383, 1987.
+ 
+  \bibitem{Lemenkova2020b}
+ Lemenkova, P., \emph{Variations in the bathymetry and bottom morphology of the Izu-Bonin Trench modelled by GMT}, Bulletin of Geography. Physical Geography Series, \textbf{18}, \emph{1}, pp. 41--60, 2020. https://doi.org/10.2478/bgeo-2020-0004
+ 
+ \bibitem{Lemenkova2020c}
+ Lemenkova, P., \emph{GEBCO Gridded Bathymetric Datasets for Mapping Japan Trench Geomorphology by Means of GMT Scripting Toolset}, Geodesy and Cartography, \textbf{46}, \emph{(3)}, pp. 98--112, 2020. https://doi.org/10.3846/gac.2020.11524 
+ 
+ \bibitem{NetelerMitasova2008}
+Neteler, M., Mitasova, H., \emph{Open Source GIS. A GRASS GIS Approach}, ISBN-13: 978-0-387-35767-6, \emph{3rd Ed. NY: Springer}, 2008.
+ 
+ \bibitem{Savulescu}
+Sâvulescu, I. Mihai, B., \emph{Mapping forest landscape change in Iezer Mountains, Romanian Carpathians. A GIS approach based on cartographic heritage, forestry data and remote sensing imagery}, Journal of Maps, \textbf{7}, \emph{1}, pp. 429--446, 2011. https://doi.org/10.4113/jom.2011.1170
+ 
+ \bibitem{Neteleretal2008}
+Neteler M., Beaudette D., Cavallini P., Lami L., Cepicky J., \emph{GRASS GIS}, Open Source Approaches in Spatial Data Handling. Advances in Geographic Information Science, \textbf{2}, \emph{Springer, Berlin, Heidelberg}, 2008. https://doi.org/10.1007/978-3-540-74831-1\_9 
+ 
+  \bibitem{Neteler2000}
+ Neteler, M., \emph{GRASS-Handbuch}, Geosynthesis 11. Der praktische Leitfaden zum Geographischen Informationssystem GRASS, \emph{University of Hannover}, 2000.
+ 
+ \bibitem{Lemenkov}
+Lemenkov, V., Lemenkova, P. \emph{Using TeX Markup Language for 3D and 2D Geological Plotting}. Foundations of Computing and Decision Sciences, \textbf{46}, \emph{3}, 43--69, 2021. https://doi.org/10.2478/fcds-2021-0004
+ 
+ \bibitem{Zevenbegen}
+ Zevenbegen, L. W., Thorne, C. R., \emph{Quantitative analysis of land surface topography}, Earth Surface Processed and Landforms, \textbf{12}, pp. 47--56, 1987. https://doi.org/10.1002/esp.3290120107
+ 
+ \bibitem{Schmidt}
+ Schmidt, J., Evans, I. S., Brinkmann, J., \emph{Comparison of polynomial models for land surface curvature calculation}, International Journal of Geographical Information Science, \textbf{17}, pp. 797--814, 2003. https://doi.org/10.1080/13658810310001596058 
+ 
+ \bibitem{Rey}
+Rey, S. J., \emph{Code as Text: Open Source Lessons for Geospatial Research and Education}, GeoComputational Analysis and Modeling of Regional Systems. Advances in Geographic Information Science, \emph{Thill JC., Dragicevic S. (eds)}, Springer, Cham, 2018. https://doi.org/10.1007/978-3-319-59511-5\_2 
+ 
+  \bibitem{Mitasovaetal1996}
+ Mitasova, H., Hofierka, J., Zlocha, M., Iverson, L., \emph{Modeling topographic potential for erosion and deposition using GIS}, International Journal of Geographical Information Science, \textbf{10}, \emph{5}, pp. 629--641, 1996. https://doi.org/10.1080/02693799608902101
+ 
+   \bibitem{Lemenkova2019a}
+Lemenkova, P. \emph{Topographic surface modelling using raster grid datasets by GMT: example of the Kuril-Kamchatka Trench, Pacific Ocean}. Reports on Geodesy and Geoinformatics, \textbf{108}, \emph{9--22}. https://doi.org/10.2478/rgg-2019-0008 
+ 
+ \bibitem{Mitasovaetal1995}
+Mitasova, H., Mitas, L., Brown, W., Gerdes, D., Kosinovsky, I., Baker, T., \emph{Modeling spatially and temporally distributed phenomena: New methods and tools for GRASS GIS}, International Journal of Geographical Information Science, Special issue on Integrating GIS and Environmental modeling \textbf{9}, \emph{4}, pp. 433--446, 1995. https://doi.org/10.1080/02693799508902048 
+ 
+ \bibitem{Mitasova1985}
+ Mitasova, H., \emph{Cartographic aspects of computer surface modeling}, PhD thesis, \emph{Slovak Technical University, Bratislava}, 1985.
+ 
+  \bibitem{Lemenkova2019g}
+Lemenkova, P., \emph{Testing Linear Regressions by StatsModel Library of Python for Oceanological Data Interpretation}, Aquatic Sciences and Engineering, \textbf{34}, pp. 51--60, 2019. https://doi.org/10.26650/ASE2019547010
+ 
+ \bibitem{Klaucoetal2017}
+Klaučo, M., Gregorová, B., Koleda, P., Stankov, U., Marković, V., Lemenkova, P., \emph{Land planning as a support for sustainable development based on tourism: A case study of Slovak Rural Region}, Environmental Engineering and Management Journal, \textbf{2}, \emph{16}, pp. 449--458, 2017. https://doi.org/10.30638/eemj.2017.045
+ 
+ \bibitem{Wesseletal2019}
+Wessel, P., Luis, J. F., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. F., Tian, D., \emph{The Generic Mapping Tools version 6}, Geochemistry, Geophysics, Geosystems, \textbf{20}, pp. 5556--5564, 2019. https://doi.org/10.1029/2019GC008515
+ 
+ \bibitem{Lemenkova2020d}
+ Lemenkova, P., \emph{GMT Based Comparative Geomorphological Analysis of the Vityaz and Vanuatu Trenches, Fiji Basin}, Geodetski List, \textbf{74}, \emph{1}, pp. 19--39, 2020. https://doi.org/10.6084/m9.figshare.12249773 URL: https://hrcak.srce.hr/237683
+ 
+ \bibitem{Klaucoetal2013}
+Klaučo, M., Gregorová, B., Stankov, U., Marković, V., Lemenkova, P., \emph{Determination of ecological significance based on geostatistical assessment: a case study from the Slovak Natura 2000 protected area}, Open Geosciences, \textbf{5}, \emph{1}, pp. 28--42, 2013. https://doi.org/10.2478/s13533-012-0120-0 
+ 
+ \bibitem{Lemenkova2019f}
+Lemenkova, P., \emph{Statistical Analysis of the Mariana Trench Geomorphology Using R Programming Language}, Geodesy and Cartography, \textbf{45}, \emph{2}, pp. 57--84, 2019. https://doi.org/10.3846/gac.2019.3785 
+ 
+\bibitem{Lemenkova2020e}
+Lemenkova, P. \emph{Geodynamic setting of Scotia Sea and its effects on geomorphology of South Sandwich Trench, Southern Ocean}. Polish Polar Research, \textbf{42}, \emph{1}, 1--23, 2020. https://doi.org/10.24425/ppr.2021.136510
+
+  \bibitem{Kralidis}
+Kralidis A.T., \emph{Geospatial Open Source and Open Standards Convergences}, Open Source Approaches in Spatial Data Handling. Advances in Geographic Information Science, \textbf{2}, \emph{Springer, Berlin, Heidelberg}, 2008. https://doi.org/10.1007/978-3-540-74831-1\_1
+
+\end{thebibliography}
 %=====================================
 % References, variant A: external bibliography
 %=====================================
-\bibliography{Bibliography.bib}
+%\bibliography{Bibliography.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{adjustwidth}
