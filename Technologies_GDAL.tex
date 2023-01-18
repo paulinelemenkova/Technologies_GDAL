@@ -210,6 +210,28 @@ A competent analysis of geospatial data distribution is focused to demonstrate a
 \end{figure}
 \vspace{12pt}
 
+\subsection{Calculating morphometric parameters}
+
+At the next step, a slope, aspect, profile and tangential curvature maps were computed. All these geomorphic indices have been derived from the topographic grid, using the embedded formulae in the GRASS GIS. The slope shows the steepness or the degree of the topographic surface covering study area of Kamchatka region. The aspect (exposure) is the compass direction that a slope faces (East, West, South, North). Geographically, the aspect of a slope has significant impact on the local microclimate which affects physical and often botanical features of the mountain slope, i.e., a slope effect on the terrestrial areas. 
+
+This is owing to a strong correlation of the mountain slope with temperature, which in turn is affected by the angle of the sun. Hence, both parameters are derivative from the slope of the elevation with variations in the mathematical approach and angle direction of the gradient angle (direct and perpendicular). Theoretical foundations of the slope and angle modelling in geospatial research can further be found in existing works reporting, for example on cell size \cite{Hodgson1995}, gradient angles \cite{Hodgson1998}, numerical terrain analysis \cite{Zevenbegen}, quantifying land surface and slope curvatures \cite{Dikau,Dunn,Guth,Heerdegan}. 
+ 
+The curvature shows the rate of variations of the slope, which makes it the second function of an elevation variable related to the surface heights \cite{Schmidt}. This process is the same technically whether the purpose is profile curvature or tangential curvature, but different in mathematical algorithms approaches. So, the difference between the profile and tangential curvature consists in the method of calculation which for the last one is computed as perpendicular to the slope gradient while profile curvature measures curvature of the surface in the direction of gradient \cite{Gallant}. 
+
+Thus, the correlation between the profile and tangential curvature reflects the algorithm approaches concerned the mathematical approximation of the geomorphological profile of the slopes and inflation of terrain heights. The differences in calculus are well illustrated in equation \ref{pc} for the profile curvature $K_P$ \cite{Golden} and equation \ref{tc} for tangential curvature $K_T$ \cite{Golden}. Formulae are given for the profile curvature in Equation \ref{pc} and for the tangential curvature in Equation \ref{tc}, respectively. 
+
+\begin{equation}
+  \label{pc}
+ K_P=\frac{\left(\frac{\delta^2 z}{\delta x^2}\right) \left(\frac{\delta z}{\delta x}\right)^2 + 2\left(\frac{\delta^2 z}{\delta x \delta y}\frac{\delta z}{\delta x}\frac{\delta z}{\delta y} \right) + \frac{\delta^2 z}{\delta y^2} \left(\frac{\delta z}{\delta x}\right)^2}{pq^\frac{3}{2}}
+\end{equation}
+
+\begin{equation}
+  \label{tc}
+ K_T=\frac{\left(\frac{\delta^2 z}{\delta x^2}\right) \left(\frac{\delta z}{\delta y}\right)^2 - 2\left(\frac{\delta^2 z}{\delta x \delta y}\frac{\delta z}{\delta x}\frac{\delta z}{\delta y} \right) + \frac{\delta^2 z}{\delta y^2} \left(\frac{\delta z}{\delta x}\right)^2}{pq^\frac{1}{2}}
+\end{equation}
+
+where $p=\left(\frac{\delta z}{\delta x}\right)^2+\left(\frac{\delta z}{\delta y}\right)^2$ and $q=1+p$ for both cases.
+
 \subsection{Subsection}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
