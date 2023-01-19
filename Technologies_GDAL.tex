@@ -212,7 +212,7 @@ Upon re-projection of the file, it was imported to the GRASS GIS by the ‘r.in.
 \subsection{Transforming raster grid into cartographic projections by PROJ}
 
 We used PROJ, a generic coordinate transformation software library (https://proj.org/), to transform the raster grid files in Lat/Lon geospatial coordinates from one coordinate reference system (CRS) to another. This method includes the PROJ transformation which performs a variety of operations with cartographic data, starting from the simple and well-known projections such as cylindrical Mercator projection to the very complex transformations across many reference coordinate frames. The PROJ was used for testing various projections (conic, cylindtrical, azimuthal) selected from the variety of available projections in the library: Cassini-Soldner equirectangular; Equal Area Cylindrical; 2-point Equidistant Azimuthal; Oblique Mercator \cite{Snyder}. We installed the PROJ library via the Homebrew package manager using the following commands: ‘brew install proj’ and ‘brew upgrade proj’ for installing and updating the package, respectively. 
- %--------------------------CHECKED 18.01.2023.
+
  
 Originally made as a technical tool for cartographic projections, PROJ gradually transformed into being a functional generic coordinate transformation engine. The supported projections were checked up by the command ‘cs2cs -lp’ from the GRASS GIS console \cite{Evenden}. The PROJ was applied for the scale cartographic projections and coordinate transformation (Figure \ref{Fig:7}), thus presenting the geodetic transformations of varying complexity. In this study, the visualization of various cartographic projections in GRASS GIS (Figure \ref{Fig:7}) was performed by a combination and sequential use of the following modules of GRASS GIS: 'd.rast', 'r.contour', 'd.vect', 'd.grid' and 'd.text'. The script is based on the developed methodology of data processing by GRASS GIS \cite{Dassau}. It was also used for plotting the contour maps (Figure \ref{Fig:7}) with an example of Cassini-Soldner projection, as shown in Listing 4 of the Appendix.
  
@@ -225,24 +225,25 @@ Originally made as a technical tool for cartographic projections, PROJ gradually
 \vspace{12pt}
 
 \subsection{Analysis of elevation frequency}
-The next research step included the analysis of the distribution of the elevation over the study area. Using computational techniques of GRASS GIS, we calculated the frequency of the data in various range diapason and repeatability of corresponding depths. The most frequent depths or elevations over the study area were recorded and summarised for the analysis of spatially distributed data \cite{Antrop,Bailey,Burrough}. An increase in values of a specific depth reflects the frequency of the elevation recorded on a bathymetric grid in a subsequent region of the study area. This was performed by plotting the histograms as bars and pie charts using the GRASS GIS 'd.histogram' module for calculating depths distribution \cite{Mitasovaetal1995} and visualized in Figure \ref{Fig:8}. 
+The next research step included the analysis of the distribution of the elevation over the study area. Using computational techniques of GRASS GIS, we calculated the frequency of the data in various range diapason and repeatability of corresponding depths. The most frequent depths or elevations over the study area were recorded and summarised for the analysis of spatially distributed data \cite{Antrop,Bailey,Burrough}. The increase in values of a specific depth reflects the frequency of the elevation recorded on a bathymetric grid in a subsequent region of the study area. This was performed by plotting the histograms as bars and pie charts using the GRASS GIS 'd.histogram' module for calculating depths distribution \cite{Mitasovaetal1995}. 
 
-A competent analysis of geospatial data distribution is focused to demonstrate a range of variations in the data, including skewness, how values (or intervals) of the topography are varies, organisation of categorical data, select relevant peaks in interpretation and description of the dataset or other resources showing correlation of the geographic phenomena (e.g., aspect and slope) with another factor (e.g., relief). There are various types of the statistical analysis for review, critically evaluate the topographic datasets, and then present a graph, e.g., histograms or pie charts \cite{ Lemenkova2019f}. This research focused on cartographic workflow by the GRASS GIS rather than complex statistical analysis. Therefore, the two general types of statistical data analysis were selected: the pie charts and the histograms (Fig. \ref{Fig:8}). 
+The analysis of the spatial data distribution aimed to demonstrate a range of variations in data, including skewness, the variation of values within intervals of the topography, organisation of categorical data, selecting relevant peaks in the interpretation and description of the dataset or other resources showing the correlation among the geographic phenomena such as aspect and slope with relief. The distribution of topographic data has been evaluated using statistical tools embedded in GRASS GIS and presented in a histograms and a pie chart (Figure \ref{Fig:8}).
 
 \vspace{6pt}
 \begin{figure}[h]
  \centering
     \includegraphics[width=0.90\textwidth]{Fig_8.jpg}\\
-  \caption{Bar graph histogram for elevation map (left), pie graph of heights distribution, Kuril-Kamchatka region, based on raster grid ETOPO1. Source: authors.}\label{Fig:8}
+  \caption{Bar graph histogram for elevation map (left), pie graph of heights distribution based on the raster grid ETOPO1. Source: authors.}\label{Fig:8}
 \end{figure}
 \vspace{12pt}
 
 \subsection{Calculating morphometric parameters}
 
-At the next step, a slope, aspect, profile and tangential curvature maps were computed. All these geomorphic indices have been derived from the topographic grid, using the embedded formulae in the GRASS GIS. The slope shows the steepness or the degree of the topographic surface covering study area of Kamchatka region. The aspect (exposure) is the compass direction that a slope faces (East, West, South, North). Geographically, the aspect of a slope has significant impact on the local microclimate which affects physical and often botanical features of the mountain slope, i.e., a slope effect on the terrestrial areas. 
+The computed geomorphic indices included slope, aspect, profile and tangential curvature maps, derived from the topographic grid using the embedded algorithms in GRASS GIS. The slope shows a steepness or the degree in the topographic surface covering the study area. The aspect, or exposure, is a compass direction that a slope faces (East, West, South, North). Geographically, the aspect of a slope has a significant impact on the local microclimate which affects physical and often botanical features of a mountain slope, i.e., a slope effect on the terrestrial areas. 
 
-This is owing to a strong correlation of the mountain slope with temperature, which in turn is affected by the angle of the sun. Hence, both parameters are derivative from the slope of the elevation with variations in the mathematical approach and angle direction of the gradient angle (direct and perpendicular). Theoretical foundations of the slope and angle modelling in geospatial research can further be found in existing works reporting, for example on cell size \cite{Hodgson1995}, gradient angles \cite{Hodgson1998}, numerical terrain analysis \cite{Zevenbegen}, quantifying land surface and slope curvatures \cite{Dikau,Dunn,Guth,Heerdegan}. 
+Such effects are owing to the strong correlation between the mountain slope and the temperature, which is in turn affected by the angle of sun. Hence, both parameters are derivative from the slope of the elevation with certain variations in the mathematical approach and angle direction of the gradient degree (direct and perpendicular). The theoretical foundations of the slope and angle modelling in geospatial research can further be found in the existing works reporting, for instance, on the effects from the cell size \cite{Hodgson1995}, gradient angles \cite{Hodgson1998}, numerical terrain analysis \cite{Zevenbegen}, or quantifying land surface and slope curvatures \cite{Dikau,Dunn,Guth,Heerdegan}. 
  
+  %--------------------------CHECKED 19.01.2023.
 The curvature shows the rate of variations of the slope, which makes it the second function of an elevation variable related to the surface heights \cite{Schmidt}. This process is the same technically whether the purpose is profile curvature or tangential curvature, but different in mathematical algorithms approaches. So, the difference between the profile and tangential curvature consists in the method of calculation which for the last one is computed as perpendicular to the slope gradient while profile curvature measures curvature of the surface in the direction of gradient \cite{Gallant}. 
 
 Thus, the correlation between the profile and tangential curvature reflects the algorithm approaches concerned the mathematical approximation of the geomorphological profile of the slopes and inflation of terrain heights. The differences in calculus are well illustrated in equation \ref{pc} for the profile curvature $K_P$ \cite{Golden} and equation \ref{tc} for tangential curvature $K_T$ \cite{Golden}. Formulae are given for the profile curvature in Equation \ref{pc} and for the tangential curvature in Equation \ref{tc}, respectively. 
@@ -910,12 +911,6 @@ Mitasova, H., Mitas, L., Brown, W., Gerdes, D., Kosinovsky, I., Baker, T.,
 Mitasova, H., 
 \newblock Cartographic aspects of computer surface modeling
 \newblock {\em PhD thesis. Slovak Technical University, Bratislava} {\bf 1985}.
-
-\bibitem{Lemenkova2019f}
-Lemenkova, P.,
-\newblock Statistical Analysis of the Mariana Trench Geomorphology Using R Programming Language
-\newblock {\em Geodesy and Cartography} {\bf 2019}, {\em 45},~57--84. 
-\newblock {{https://doi.org/10.3846/gac.2019.3785}}.
 
 \bibitem{Lemenkova2020e}
 Lemenkova, P.,
