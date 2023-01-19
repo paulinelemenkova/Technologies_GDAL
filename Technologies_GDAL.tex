@@ -239,14 +239,9 @@ The analysis of the spatial data distribution aimed to demonstrate a range of va
 
 \subsection{Calculating morphometric parameters}
 
-The computed geomorphic indices included slope, aspect, profile and tangential curvature maps, derived from the topographic grid using the embedded algorithms in GRASS GIS. The slope shows a steepness or the degree in the topographic surface covering the study area. The aspect, or exposure, is a compass direction that a slope faces (East, West, South, North). Geographically, the aspect of a slope has a significant impact on the local microclimate which affects physical and often botanical features of a mountain slope, i.e., a slope effect on the terrestrial areas. 
+The computed geomorphic indices included slope, aspect, profile and tangential curvature maps, derived from the topographic grid using the embedded algorithms in GRASS GIS. The curvature shows the rate of variations of the slope, which makes it the second function of the elevation variable related to the surface heights \cite{Schmidt}. This process is technically both both cases: whether the purpose is profile curvature or tangential curvature. However, the difference is in the approaches of the mathematical algorithms that are embedded in the GRASS GIS. Hence, the difference between the profile and tangential curvature consists in the method of calculation. For the tangential curvature, it is computed as a perpendicular to the slope gradient, while for the profile curvature, it measures a curvature of the surface in the direction of the gradient \cite{Gallant}. 
 
-Such effects are owing to the strong correlation between the mountain slope and the temperature, which is in turn affected by the angle of sun. Hence, both parameters are derivative from the slope of the elevation with certain variations in the mathematical approach and angle direction of the gradient degree (direct and perpendicular). The theoretical foundations of the slope and angle modelling in geospatial research can further be found in the existing works reporting, for instance, on the effects from the cell size \cite{Hodgson1995}, gradient angles \cite{Hodgson1998}, numerical terrain analysis \cite{Zevenbegen}, or quantifying land surface and slope curvatures \cite{Dikau,Dunn,Guth,Heerdegan}. 
- 
-  %--------------------------CHECKED 19.01.2023.
-The curvature shows the rate of variations of the slope, which makes it the second function of an elevation variable related to the surface heights \cite{Schmidt}. This process is the same technically whether the purpose is profile curvature or tangential curvature, but different in mathematical algorithms approaches. So, the difference between the profile and tangential curvature consists in the method of calculation which for the last one is computed as perpendicular to the slope gradient while profile curvature measures curvature of the surface in the direction of gradient \cite{Gallant}. 
-
-Thus, the correlation between the profile and tangential curvature reflects the algorithm approaches concerned the mathematical approximation of the geomorphological profile of the slopes and inflation of terrain heights. The differences in calculus are well illustrated in equation \ref{pc} for the profile curvature $K_P$ \cite{Golden} and equation \ref{tc} for tangential curvature $K_T$ \cite{Golden}. Formulae are given for the profile curvature in Equation \ref{pc} and for the tangential curvature in Equation \ref{tc}, respectively. 
+Thus, the correlation between the profile and tangential curvature reflects the methodological approaches of the algorithm which concerns the mathematical approximation of the morphological profile of the slopes and the inflation of the terrain heights. The differences in calculus are well illustrated in the Equation \ref{pc} for the profile curvature $K_P$ \cite{Golden} and the Equation \ref{tc} for the tangential curvature $K_T$ \cite{Golden}. These formulae are given for the profile curvature in Equation \ref{pc} and for the tangential curvature in Equation \ref{tc}, respectively. 
 
 \begin{equation}
   \label{pc}
@@ -259,10 +254,10 @@ Thus, the correlation between the profile and tangential curvature reflects the 
 \end{equation}
 
 where $p=\left(\frac{\delta z}{\delta x}\right)^2+\left(\frac{\delta z}{\delta y}\right)^2$ and $q=1+p$ for both cases.
+  
+The input elevation data were derived from the ETOPO1 raster grid that contained the elevation values in digital format covering study area. The 'r.slope.aspect' module of GRASS GIS was used for plotting raster maps using the developed methodology \cite{Mitasova1985,Hofierka2009,Horn}. The resulting maps of slope, aspect (computed counterclockwise from the east), profile curvature and tangential curvature from the ETOPO1 raster grid are shown in Figure \ref{Fig:9}.
 
-The input data was taken as elevation raster map (ETOPO1 raster grid covering the Kuril-Kamchatka region) using the developed methodology \cite{Mitasova1985,Hofierka2009,Horn}. The r.slope.aspect used for plotting (Fig. \ref{Fig:9}) generates raster maps of slope, aspect (computed counterclockwise from the east), profile curvature and tangential curvature from initial raster map ETOPO1 raster grid that contained elevation values. 
-
-The input elevation raster map was specified aș ETOPO1\_KKT\_WGS84 the output raster map was named as ‘slope’. The computation was done by the following code: $‘r.slope.aspect elevation=ETOPO1\_KKT\_WGS84 \\slope=slope aspect=aspect pcurvature=pcurv tcurvature=tcurv’$. The results are shown on the facetted plot (Fig. \ref{Fig:9}) showing four subplots of geomorphic analysis of the slope, aspect, profile curvature and tangential curvature in the study area (Fig. \ref{Fig:9}).
+The plotting was done by the code: $‘r.slope.aspect elevation=ETOPO1\_KKT\_WGS84 \\slope=slope aspect=aspect pcurvature=pcurv tcurvature=tcurv’$, where the input elevation raster map is the ETOPO1\_KKT\_WGS84, and the output raster map is ‘slope’. The results include the morphometric elements of slope, aspect, profile curvature and tangential curvature, Figure \ref{Fig:9}.
 
 \vspace{6pt}
 \begin{figure}[H]
@@ -272,6 +267,9 @@ The input elevation raster map was specified aș ETOPO1\_KKT\_WGS84 the output r
 \end{figure}
 \vspace{12pt}
 
+The slope shows a steepness or the degree in the topographic surface covering the study area. The aspect, or exposure, is a compass direction that a slope faces (East, West, South, North). Geographically, the aspect of a slope has a significant impact on the local microclimate which affects physical and often botanical features of a mountain slope, i.e., a slope effect on the terrestrial areas. Such effects are owing to the strong correlation between the mountain slope and the temperature, which is in turn affected by the angle of sun. Hence, both parameters are derivative from the slope of the elevation with certain variations in the mathematical approach and angle direction of the gradient degree (direct and perpendicular). The theoretical foundations of the slope and angle modelling in geospatial research can further be found in the existing works reporting, for instance, on the effects from the cell size \cite{Hodgson1995}, gradient angles \cite{Hodgson1998}, numerical terrain analysis \cite{Zevenbegen}, or quantifying land surface and slope curvatures \cite{Dikau,Dunn,Guth,Heerdegan}. 
+  %--------------------------CHECKED 19.01.2023.
+  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results and Discussion}
 
