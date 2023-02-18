@@ -56,10 +56,10 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{GDAL and PROJ libraries integrated with GRASS GIS for terrain modelling and projecting the georeferenced raster image}
+\Title{GDAL and PROJ libraries integrated with GRASS GIS for terrain modelling \textcolor{blue}{of} the georeferenced raster image}
 
 % MDPI internal command: Title for citation in the left column
-\TitleCitation{GDAL and PROJ libraries integrated with GRASS GIS for terrain modelling and projecting the georeferenced raster image}
+\TitleCitation{GDAL and PROJ libraries integrated with GRASS GIS for terrain modelling \textcolor{blue}{of} the georeferenced raster image}
 
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
@@ -89,15 +89,13 @@ $^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École polytechn
 %\firstnote{Current address: Affiliation 3.} 
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-\abstract{Libraries with prewritten codes optimize the workflow in cartography and reduce labour intensive data processing by iteratively applying scripts to implementing mapping tasks. Most existing GIS approaches are based on traditional software with a graphical user's interface which significantly limits their performance. Although plugins are proposed to improve the functionality of many GIS, they are usually ad hoc in finding specific mapping solutions, e.g., cartographic projections and data conversion. We address this limitation by applying the principled approach of GDAL, PROJ and GRASS GIS for geospatial data processing and morphometric analysis. This research presents topographic analysis of the dataset using scripting methods which include several tools: 1) GDAL, a translator library for raster and vector geospatial data formats used for converting ETOPO1 GeoTIFF in XY Cartesian coordinates into WGS84 by the ‘gdalwarp’ utility; 2) PROJ projection transformation library used for converting ETOPO1 WGS84 grid to cartographic projections (Cassini-Soldner equirectangular; Equal Area Cylindrical; 2-point Equidistant Azimuthal; Oblique Mercator); 3) GRASS GIS by sequential use of the following modules: r.info, d.mon, d.rast, r.colors, d.rast.leg, d.legend, d.northarrow, d.grid, d.text, g.region, r.contour. The depth frequency was analysed by the module 'd.histogram'. The proposed approach provided a systematic way for morphometric measuring of topographic data and combining the advantages of the GDAL, PROJ and GRASS GIS tools that include the informativeness, effectiveness and representativeness in spatial data processing. The morphometric analysis included the computed slope, aspect, profile and tangential curvature of the study area. The data analysis revealed the distribution pattern in topographic data: 24\% of data with elevations below 400 m; 13\% of data with depths -5,000 to -6,000 m; 4\% of depths have values -3,000 to -4,000 m, the least frequent data (-6,000 to 7,000 m) <1\%, 2\% of depths have values -2,000 to 3,000 m in the basin, while other values are distributed proportionally. Further, by incorporating the generic coordinate transformation software library PROJ, we transformed raster grid into various cartographic projections to demonstrate distortions in shape and area. Scripting techniques of GRASS GIS are demonstrated for applications in topographic modelling and raster data processing. The GRASS GIS shows the effectiveness for mapping and visualization, compatibility with libraries (GDAL, PROJ), technical flexibility in combining GUI and command-line data processing. The research contributes to the technical cartographic development.}
+\abstract{Libraries with prewritten codes optimize the workflow in cartography and reduce labour intensive data processing by iteratively applying scripts to implementing mapping tasks. Most existing \textcolor{blue}{Geographic Information System (GIS)} approaches are based on traditional software with a graphical user's interface which significantly limits their performance. Although plugins are proposed to improve the functionality of many GIS \textcolor{blue}{programs}, they are usually ad hoc in finding specific mapping solutions, e.g., cartographic projections and data conversion. We address this limitation by applying the principled approach of \textcolor{blue}{Geospatial Data Abstraction Library (GDAL), library for conversions between cartographic projections PROJ} and \textcolor{blue}{Geographic Resources Analysis Support System (GRASS)} GIS for geospatial data processing and morphometric analysis. This research presents topographic analysis of the dataset using scripting methods which include several tools: 1) GDAL, a translator library for raster and vector geospatial data formats used for converting \textcolor{blue}{Earth Global Relief Model (ETOPO1)} GeoTIFF in XY Cartesian coordinates into \textcolor{blue}{World Geodetic System 1984 (WGS84)} by the ‘gdalwarp’ utility; 2) PROJ projection transformation library used for converting ETOPO1 WGS84 grid to cartographic projections (Cassini-Soldner equirectangular; Equal Area Cylindrical; 2-point Equidistant Azimuthal; Oblique Mercator)\textcolor{blue}{; and }3) GRASS GIS by sequential use of the following modules: r.info, d.mon, d.rast, r.colors, d.rast.leg, d.legend, d.northarrow, d.grid, d.text, g.region, \textcolor{blue}{and} r.contour. The depth frequency was analysed by the module 'd.histogram'. The proposed approach provided a systematic way for morphometric measuring of topographic data and \textcolor{blue}{combine} the advantages of the GDAL, PROJ and GRASS GIS tools that include the informativeness, effectiveness and representativeness in spatial data processing. The morphometric analysis included the computed slope, aspect, profile and tangential curvature of the study area. The data analysis revealed the distribution pattern in topographic data: 24\% of data with elevations below 400 m; 13\% of data with depths -5,000 to -6,000 m; 4\% of depths have values -3,000 to -4,000 m, the least frequent data (-6,000 to 7,000 m) <1\%, 2\% of depths have values -2,000 to 3,000 m in the basin, while other values are distributed proportionally. Further, by incorporating the generic coordinate transformation software library PROJ, \textcolor{blue}{the} raster grid \textcolor{blue}{was transformed} into various cartographic projections to demonstrate distortions in shape and area. Scripting techniques of GRASS GIS are demonstrated for applications in topographic modelling and raster data processing. The GRASS GIS shows the effectiveness for mapping and visualization, compatibility with libraries (GDAL, PROJ), technical flexibility in combining \textcolor{blue}{Graphical User Interface (GUI)} and command-line data processing. The research contributes to the technical cartographic development.}
 
-% Keywords
 \keyword{GDAL; PROJ; GRASS GIS; terrain; DEM; elevation; ETOPO1; geomorphometry; cartography; mapping} 
 
-% The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
-%\PACS{J0101}
-%\MSC{}
-%\JEL{}
+\PACS{\textcolor{blue}{91.10.Da; 92.70.Pq; 93.30.Db; 91.10.Fc}}
+\MSC{\textcolor{blue}{86A30; 86A04; 86A22; 53C22; 58E10; 97N60}}
+\JEL{\textcolor{blue}{Y91; Q00; Q01; Q5; Q50; Q55; Q56; P18; P48; N50; N57}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -105,13 +103,13 @@ $^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École polytechn
 \section{Introduction}
 
 \subsection{Background}
-A basis form of spatial analysis, topographic modelling consists of visualisation of land surface and plotting contours that reveal variations in elevation. While in Geographic Information System (GIS) spatial analysis  focuses on complex problems regarding the modelling of the Earth's shape, technical aspects of spatial data handling consists of various tasks such as data capture, formatting and processing, data processing using functionality of GIS software, computational analysis and modelling, visualization and mapping. Maps became a successful form of geospatial data processing  since they help exploiting the complex phenomena of diverse processes and geographic objects on the Earth's surface. Moreover, maps and spatial georeferenced images enable to learn and recognise regular patterns in visual spatio-temporal datasets for interpretation and analysis of the environmental dynamics and variability.
+A basis form of spatial analysis, topographic modelling consists of visualisation of land surface and plotting contours that reveal variations in elevation. While in Geographic Information System (GIS) spatial analysis  focuses on complex problems regarding the modelling of the Earth's shape, technical aspects of spatial data handling consists of various tasks such as data capture, formatting and processing, data processing using functionality of GIS software, computational analysis and modelling, visualization and mapping. Maps became a successful form of geospatial data processing  since they help exploiting the complex phenomena of diverse processes and geographic objects on the Earth's surface. Moreover, maps and\hl{ }georeferenced images enable to learn and recognise regular patterns in visual spatio-temporal datasets for interpretation and analysis of the environmental dynamics and variability.
 
 Therefore, a vital part of the spatial data interpretation is visualization and mapping performed through a cartographic workflow which is a constantly developing process with many existing applications in GIS  \cite{Boulton,Buterez,Duncan}. Due to the variety of the existing GIS (e.g., ArcGIS, QGIS, MapINFO, Environment for Visualizing Images (ENVI), Idrisi, System for Automated Geoscientific Analyses (SAGA) GIS, Erdas Imagine), the choice of the tools may face many questions regarding the functionality of the given GIS. Among the most essential factors of GIS are the open source availability and functionality providing a variety of tools and embedded computational algorithms \cite{Armstrong}. Since the commercial GIS such as Erdas Imagine and ArcGIS are a subject of access, open source tools present effective solutions for mapping and spatial data analysis. 
 
 In recent years, open source tools of computer vision and machine learning for data analysis became increasingly successful in analysing spatial data and cartographic tasks \cite{Brovelli}. Free availability of open source GIS cause its popularity and create an increased demand with reported cases in a geospatial analysis \cite{Christl,Turton}. Much progress has been made, for instance, by applications of programming scripts  that aim at automatisation of processing of a given data set. Examples are artificial intelligence and big data processing pointed out in selected studies on geoinformatics \cite{Barnes,Issaka}. The benefits of the open source GIS and scripting are widely discussed and mentioned easily data integration in a number of scenarios and geospatial research, handling 2D and 3D raster datasets \cite{land12010261}, spatial information exchange and processing \cite{Ajvazi,Guan,Kralidis}. 
 
-Open source data, scripting approaches and methods used in geographic research and Earth sciences  \cite{Rey,s23010056} tend to become progressively popular and perspective in view of the raising amounts of spatial data and the need to process these data accurately yet rapidly. Common sources of open geospatial data include topographic and bathymetric grids \cite{Basith,Habib} using General Bathymetric Chart of the Oceans (GEBCO), Shuttle Radar Topography Mission (SRTM) DEM, ETOPO1 or ETOPO5, geophysical datasets (Earth Gravitational Model of 1996 (EGM96), EGM2008) \cite{Lemenkova2020a}, geological data \cite{Lemenkova2021a}, local data from the online repositories, embedded datasets, OpenStreetMap of Google Earth imagery, remote sensing data such as Landsat TM or Sentinel-2A satellite images.
+Open source data, scripting approaches and methods used in geographic research and Earth sciences  \cite{Rey} tend to become progressively popular and perspective in view of the raising amounts of spatial data and the need to process these data accurately yet rapidly. Common sources of open geospatial data include topographic and bathymetric grids \cite{Basith,Habib} using General Bathymetric Chart of the Oceans (GEBCO), Shuttle Radar Topography Mission (SRTM) DEM, ETOPO1 or ETOPO5, geophysical datasets (Earth Gravitational Model of 1996 (EGM96), EGM2008)\hl{, }geological data\hl{, }local data from the online repositories, embedded datasets, OpenStreetMap of Google Earth imagery, remote sensing data such as Landsat TM or Sentinel-2A satellite images.
 
 For many types of spatial data, cartographic modelling approaches hereby have to address the problem of automation while handling these data. An ever-growing pool of spatial datasets encompass multi-format data formats that vary in resolution, source and scale. These data can be used for the diverse purposes in Earth science such as hydrology and geomorphology \cite{Teixeira}, soils and landscape changes \cite{Savulescu}, environmental coastal studies \cite{Hernandez}, climate changes, land cover studies, geology, and many more. Various GIS software can be applied to process open source geospatial data available online with aim at spatial analysis. Many of the topographic datasets are available in raster of vector digital formats, accessed  via online repositories, e.g., OpenStreetMaps or Google Earth. Increasingly, geospatial data sources are developing online repositories for their data storage such as the National Oceanic and Atmospheric Administration (NOAA), GloVis providing an access to remote sensing datasets. A regular access to such resources enables their use in spatial analysis and arises the question of effective methods for processing these data.
 
@@ -122,7 +120,7 @@ This study presents the use of Geographic Resources Analysis Support System (GRA
 
 The GRASS GIS modules were used for assessing the morphometrics in the land-surface parameters over the study area based on the ETOPO1-derived basin morphometry: profile and tangential curvature, slope and aspect maps, histograms of elevation distribution. Unlike the traditional GIS software, the architecture of the GRASS GIS presents a collection of modules that can be stored as a sequence in a shell script and used for mapping. In this research, we use the advantages of the GRASS GIS to demonstrate the effectiveness of scripts for mapping and visualization, as well as its compatibility with libraries, such as GDAL, PROJ and R \cite{Bivand2000,Bivand1999,app122412554,Grohmann}. The theoretical approaches in morphometric studies \cite{Chapman} have been implemented in practical applications of GRASS GIS and developed in GRASS module r.slope.aspect, as demonstrated in this study.  The topographic modelling and spatial analysis based on the continuous field of DEM assist in analysis of slope stability in geologic risk assessment and diverse applications in Earth sciences \cite{HofierkaSuri,Mitas1999,Mitasovaetal1996}. 
 
-Technical flexibility of GRASS GIS enables to switch between the GUI and command-line mode of data processing. Similar to GMT, GRASS GIS uses a programming approach which enables to speed up the repeated tasks through the executable scripts. Like scripts in a UNIX shell, R and Python environments \cite{jimaging8120317}, GRASS GIS and GMT scripts \cite{Lemenkova2021g} used to automate the workflow repeatedly performed for different maps using the same algorithm for various study areas \cite{Lemenkova2022b}. Other examples of automation of the cartographic workflow are diverse and include the cases of machine learning approaches of rapid vectorisation of the isolines \cite{Lemenkova2020e}, morphometric landscape analysis \cite{Clarke,Sofia}, geospatial analysis based scripting libraries \cite{su142315966}, topographic mapping using the GMT and Quantum GIS (QGIS) \cite{Lemenkova2022a,LemenkovaDebeir2022JAES,Lemenkova2020c}, fractal modelling quantifying the repetitive patters \cite{Malinverno}.
+Technical flexibility of GRASS GIS enables to switch between the GUI and command-line mode of data processing. Similar to GMT, GRASS GIS uses a programming approach which enables to speed up the repeated tasks through the executable scripts. Like scripts in a UNIX shell, R and Python environments \cite{jimaging8120317}, GRASS GIS and GMT scripts\hl{ }used to automate the workflow repeatedly performed for different maps using the same algorithm for various study areas. Other examples of automation of the cartographic workflow are diverse and include the cases of machine learning approaches of rapid vectorisation of the isolines \cite{Lemenkova2020e}, morphometric landscape analysis \cite{Clarke,Sofia}, geospatial analysis based scripting libraries \cite{su142315966}, topographic mapping using the GMT and Quantum GIS (QGIS) \cite{LemenkovaDebeir2022JAES}, fractal modelling quantifying the repetitive patters \cite{Malinverno}.
 
 \section{Case Study}
 
@@ -211,7 +209,7 @@ The ‘g.region -p’ command was used to retrieve the information on the data e
 
 \subsection{Data processing by GDAL}
 
-The initial operations with raster file were performed by the Geospatial Data Abstraction Library (GDAL), a translator library for raster and vector geospatial data formats (GDAL documentation: https://gdal.org/ . The input to the reference list \cite{GDAL/OGR} was run from the console of the GMT. In general, the GDAL was used to re-project raster files to the supported cartographic projection, as well as to perform image mosaicing and transformations (Fig. \ref{Fig:2}). In this study, we used three GDAL utilities using the commands of the following utilities:\\ 
+The initial operations with raster file were performed by the Geospatial Data Abstraction Library (GDAL), a translator library for raster and vector geospatial data formats (GDAL documentation: https://gdal.org/ . The input to the reference list \cite{GDAL} was run from the console of the GMT. In general, the GDAL was used to re-project raster files to the supported cartographic projection, as well as to perform image mosaicing and transformations (Fig. \ref{Fig:2}). In this study, we used three GDAL utilities using the commands of the following utilities:\\ 
 $‘gdalwarp’, ‘gdal\_translate’ and ‘gdalinfo’$ (Fig. \ref{Fig:2}). The ‘gdalwarp’ utility was used to re-projection and warping of the initial original file (ETOPO1\_Bed\_g\_geotiff.tif) from the XY Cartesian coordinates to the World Geodetic System 1984 (WGS84) \cite{Defense}. 
 
 The transformation uses the European Petroleum Survey Group (EPSG) number, which in this case is 4326 (corresponds to the WGS84). The warping was done by the command for Spatial Reference System (SRS) as follows: 
@@ -496,416 +494,10 @@ WESN & West East South North
 
 \reftitle{References}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{thebibliography}{3}
-
-\bibitem{Ajvazi}
- Ajvazi, B., Czimber, K., 
-\newblock A comparative analysis of different DEM interpolation methods in GIS: case study of Rahovec, Kosovo
-\newblock {\em Geodesy and Cartography} {\bf 2019}, {\em 45},~43--48. 
-\newblock {{https://doi.org/10.3846/gac.2019.7921}}.
-
-\bibitem{Antrop}
- Antrop, M., De Maeyer, P., Neutens, T., Van de Weghe, N.,
-\newblock Geografische informatiesystemen
-\newblock {\em Gent: Academia Press} {\bf 2013}. 
-
-\bibitem{Armstrong}
- Armstrong, M. P., 
-\newblock Geography and computational science
-\newblock {\em Annals of the American Association of Geographers} {\bf 2000}, {\em 90},~146--156. 
-\newblock {{https://doi.org/10.1111/0004-5608.00190}}.
-
-\bibitem{Bailey}
- Bailey, T., Gatrell, A., 
-\newblock Interactive spatial data analysis
-\newblock {\em Harlow Essex England New York NY: Longman Scientific \& Technical J Wiley} {\bf 1995}
-
-\bibitem{Barnes}
- Barnes, N., 
-\newblock Publish your computer code: it is good enough
-\newblock {\em Nature} {\bf 2010}, {\em 467},~753--753. 
-\newblock {{https://doi.org/10.1038/467753a}}.
-
-\bibitem{Basith}
-Basith, A., Prastyani, R.,
-\newblock Evaluating ACOMP, FLAASH and QUAC on Worldview-3 for satellite derived bathymetry (SDB) in shallow water
-\newblock {\em Geodesy and Cartography} {\bf 2020}, {\em 46},~151--158. 
-\newblock {{https://doi.org/10.3846/gac.2020.11426}}.
-
-\bibitem{app122412554}
-Lemenkova, P. and Debeir, O.,
-\newblock R Libraries for Remote Sensing Data Classification by K-Means Clustering and NDVI Computation in Congo River Basin, DRC
-\newblock {\em Applied Sciences} {\bf 2022}, {\em 12},~12554. 
-\newblock {{https://doi.org/10.3390/app122412554}}.
-
-\bibitem{jimaging8120317}
-Lemenkova, P. and Debeir, O.
-\newblock Satellite Image Processing by Python and R Using Landsat 9 OLI/TIRS and SRTM DEM Data on Côte d'Ivoire, West Africa
-\newblock {\em Journal of Imaging} {\bf 2022}, {\em 8},~317. 
-\newblock {{https://doi.org/10.3390/jimaging8120317}}.
-
-\bibitem{Wesseletal2019}
-Wessel, P., Luis, J. F., Uieda, L., Scharroo, R., Wobbe, F., Smith, W. H. F., Tian, D., 
-\newblock The Generic Mapping Tools version 6
-\newblock {\em Geochemistry, Geophysics, Geosystems} {\bf 2019}, {\em 20},~5556--5564. 
-\newblock {{https://doi.org/10.1029/2019GC008515}}.
-
-\bibitem{su142315966}
-Lemenkova, P. and Debeir, O.,
-\newblock Seismotectonics of Shallow-Focus Earthquakes in Venezuela with Links to Gravity Anomalies and Geologic Heterogeneity Mapped by a GMT Scripting Language
-\newblock {\em Sustainability} {\bf 2022}, {\em 14},~15966. 
-\newblock {{https://doi.org/10.3390/su142315966}}.
-
-\bibitem{LemenkovaDebeir2022JAES}
-Lemenkova, P. and Debeir, O. 
-\newblock Satellite Altimetry and Gravimetry Data for Mapping Marine Geodetic and Geophysical Setting of the Seychelles and the Somali Sea, Indian Ocean
-\newblock {\em Journal of Applied Engineering Sciences} {\bf 2022}, {\em 12},~191--202. 
-\newblock {{https://doi.org/10.2478/jaes-2022-0026}}.
-
-\bibitem{Lemenkova2021g}
-Lemenkova, P.,
-\newblock The visualization of geophysical and geomorphologic data from the area of Weddell Sea by the Generic Mapping Tools
-\newblock {\em Studia Quaternaria} {\bf 2021}, {\em 38},~19--32. 
-\newblock {{https://doi.org/10.24425/sq.2020.133759}}.
-
-\bibitem{Bivand2000}
-Bivand, R.,
-\newblock Using the R statistical data analysis language on GRASS 5.0 GIS database files
-\newblock {\em Computers \& Geosciences} {\bf 2000}, {\em 26},~1043--1052. 
-\newblock {{https://doi.org/10.1016/S0098-3004(00)00057-1}}.
-
-\bibitem{Bivand1999}
- Bivand, R. S., 
-\newblock Integrating GRASS 5.0 and R: GIS and modern statistics for data analysis
-\newblock {\em Proceedings 7th Scandinavian Research Conference on Geographical Information Science. Aalborg, Denmark} {\bf 1999}, {\em 7},~XX--XX. 
-
- \bibitem{Boulton}
-Boulton, S. J., Stokes, M., 
-\newblock Which DEM is best for analyzing fluvial landscape development in mountainous terrains?
-\newblock {\em Geomorphology} {\bf 2018}, {\em 310},~168--187. 
-\newblock {{https://doi.org/10.1016/J.GEOMORPH.2018.03.002}}.
- 
-\bibitem{Brovelli}
-Brovelli, M. A., Mitasova, H., Neteler, M., Raghavan, V., 
-\newblock Free and open source desktop and Web GIS solutions
-\newblock {\em Applied Geomatics} {\bf 2012}, {\em 4},~65--66. 
-\newblock {{https://doi.org/10.1007/s12518-012-0082-4}}.
-
-\bibitem{Brown}
-Brown, W., Astley, M., Baker, T., Mitasova, H., 
-\newblock GRASS as an integrated GIS and visualization environment for spatio-temporal modeling
-\newblock {\em Proceedings Auto-carto XII, ACSM/ASPRS. Charlotte, NC} {\bf 1995}, {\em 12},~89--99. 
-
- \bibitem{Burrough}
-Burrough, P. A., McDonnell, R. A.,
-\newblock Principles of geographical information systems
-\newblock {\em Oxford University Press, Oxford, UK} {\bf 1998}. 
- 
- \bibitem{Buterez}
-Buterez,  C., Olariu, B., Mihai, B., Rujoiu-Mare, M., Cruceru, I., 
-\newblock General topography of Prahova County, Romania
-\newblock {\em Journal of Maps} {\bf 2016}, {\em 12},~541--545. 
-\newblock {{https://doi.org/10.1080/17445647.2016.1197162}}.
-  
-  \bibitem{Chapman}
- Chapman, C. A., 
-\newblock A new quantitative method of topographic analysis
-\newblock {\em American Journal of Science} {\bf 1952}, {\em 250},~428--452. 
-\newblock {{https://doi.org/10.2475/ajs.250.6.428}}.
-
-\bibitem{Christl}
-Christl A.,  
-\newblock Free Software and Open Source Business Models
-\newblock {\em Hall G.B., Leahy M.G. (eds) Open Source Approaches in Spatial Data Handling. Advances in Geographic Information Science, 2. Springer, Berlin, Heidelberg} {\bf 2008}, {\em 2}. 
-\newblock {{https://doi.org/10.1007/978-3-540-74831-1\_2}}.
-
-\bibitem{Clarke}
-Clarke, K. C., 
-\newblock Computation of the fractal dimension of topographic surfaces using the triangular prism surface area method
-\newblock {\em Computers \& Geosciences} {\bf 1986}, {\em 12},~713--722. 
-\newblock {{https://doi.org/10.1016/0098-3004(86)90047-6}}.
-
-\bibitem{Dassau}
-Dassau, O., Holl, S., Neteler, M., Redslob, M.,
-\newblock An introduction to the practical use of the Free Geographical Information System GRASS 6.0. version 1.2
-\newblock {\em v} {\bf 2005}.
-
-\bibitem{Defense}
-Defense Mapping Agency
-\newblock Department of Defense World Geodetic System 1984: its definition and relationships with local geodetic systems: Technical Report
-\newblock {\em Journal} {\bf 1991}, {\em 8350}.
-
-\bibitem{Dikau}
-Dikau, R., 
-\newblock The application of a digital relief model to landform analysis in geomorphology
-\newblock {\em Raper, J. (ed.). Three dimensional applications in Geographic Information Systems. Taylor \& Francis, London, UK} {\bf 1989}~51--77. 
-\newblock {{https://doi.org/10.1002/esp.3290150515}}.
-
-\bibitem{Duncan}
-Duncan, D. T., Regan, S. D.,
-\newblock Mapping multi-day GPS data: a cartographic study in NYC
-\newblock {\em Journal of Maps} {\bf 2016}, {\em 12},~668--670. 
-\newblock {{https://doi.org/0.1080/17445647.2015.1060180}}.
-
-\bibitem{Dunn}
-Dunn, M., Hickey, R.,
-\newblock The Effect of Slope Algorithms on Slope estimates within a GIS
-\newblock {\em Cartography} {\bf 1998}, {\em 27},~9--15. 
-\newblock {{https://doi.org/10.1080/00690805.1998.9714086}}.
-
- \bibitem{Evenden}
-Evenden, G. I.,
-\newblock Cartographic projection procedures for the UNIX environment – a user's manual
-\newblock {\em USGS Open-File Report } {\bf 1990}, {\em 90-284},~60 p. 
-\newblock {{https://pubs.usgs.gov/of/1990/0284/report.pdf}}.
-
-\bibitem{Lemenkova2022b}
-Lemenkova, P. 
-\newblock Seismicity in the Afar Depression and Great Rift Valley, Ethiopia
-\newblock {\em Environmental Research, Engineering and Management} {\bf 2022}, {\em 78},~83--96. 
-\newblock {{https://doi.org/10.5755/j01.erem.78.1.29963}}.
-
-\bibitem{Gallant}
-Gallant, J. C., Moore, I. D., Hutchinson, M. F., Gessler, P.,
-\newblock Estimating fractal dimension of profiles: A comparison of methods
-\newblock {\em Mathematical Geology} {\bf 1994}, {\em 26},~455--481. 
-\newblock {{https://doi.org/10.1007/BF02083489}}.
-
- \bibitem{GDAL/OGR}
- GDAL/OGR contributors,
-\newblock GDAL/OGR Geospatial Data Abstraction software Library
-\newblock {\em Open Source Geospatial Foundation} {\bf 2020}. 
-\newblock {{https://gdal.org}}.
-
-\bibitem{Golden}
-Golden Software, Inc.,
-\newblock Full User’s Guide: Surfer 12. Powerful Contouring, Gridding, and Surface Mapping
-\newblock {\em Golden Software, Inc. 809 14th Street, Golden, Colorado 80401-1866, U.S.A.} {\bf 2014}.
-\newblock {{https://www.goldensoftware.com/}}.
-
-\bibitem{Grohmann}
-Grohmann, C. H.,
-\newblock Morphometric analysis in Geographic Information Systems: applications of free software GRASS and R
-\newblock {\em Computers \& Geosciences} {\bf 2004}, {\em 30},~1055--1067. 
-\newblock {{https://doi.org/10.1016/j.cageo.2004.08.002}}.
-
-\bibitem{Guan}
-Guan, Q., Hu, S., Liu, Y., Yun, S., 
-\newblock High-Performance GeoComputation with the Parallel Raster Processing Library
-\newblock {\em Thill JC., Dragicevic S. (eds) GeoComputational Analysis and Modeling of Regional Systems. Advances in Geographic Information Science. Springer, Cham} {\bf 2018}, {\em XX},~XX--XX. 
-\newblock {{https://doi.org/10.1007/978-3-319-59511-5\_5}}.
-
-\bibitem{Lemenkova2021a}
-Lemenkova, P. 
-\newblock Dataset compilation by GRASS GIS for thematic mapping of Antarctica: Topographic surface, ice thickness, subglacial bed elevation and sediment thickness
-\newblock {\em Czech Polar Rep.} {\bf 2021}, {\em 11},~67--85. 
-\newblock {{https://doi.org/10.5817/CPR2021-1-6}}.
-
-\bibitem{Lemenkova2020a}
-Lemenkova, P.
-\newblock GRASS GIS for topographic and geophysical mapping of the Peru-Chile Trench
-\newblock {\em Forum Geografic} {\bf 2020}, {\em 19},~143--157. 
-\newblock {{https://doi.org/10.5775/fg.2020.009.d}}.
-
-\bibitem{Lemenkova2022a}
-Lemenkova, P. 
-\newblock Console-Based Mapping of Mongolia Using GMT Cartographic Scripting Toolset for Processing TerraClimate Data
-\newblock {\em Geosciences} {\bf 2022}, {\em 12},~140. 
-\newblock {{https://doi.org/10.3390/geosciences12030140}}.
-
-\bibitem{Guth}
- Guth, P. L., 
-\newblock Slope and aspect calculations on gridded digital elevation models: Examples from a geomorphometric toolbox for personal computers
-\newblock {\em Zeitschrift fur Geomorphologie} {\bf 1995}, {\em 101},~31--52. 
-
-\bibitem{Habib}
-Habib, M., Alfugara, A., Pradhan, B., 
-\newblock A low-cost spatial tool for transforming feature positions of CAD-based topographic mapping
-\newblock {\em Geodesy and Cartography} {\bf 2019}, {\em 45},~161--168. 
-\newblock {{https://doi.org/10.3846/gac.2019.10322}}.
-
-\bibitem{Heerdegan}
-Heerdegan, R. G., Beran, M. A.,
-\newblock Quantifying source areas through land surface curvature and shape
-\newblock {\em Journal of Hydrology} {\bf 1982}, {\em 57},~359--373. 
-\newblock {{https://doi.org/10.1016/0022-1694(82)90155-X}}.
-
-\bibitem{Hernandez}
-Hernández-Santana, J. R., Méndez-Linares, A. P., López-Portillo, J. A., Preciado-López, J. C., 
-\newblock Coastal geomorphological cartography of Veracruz State, Mexico
-\newblock {\em Journal of Maps} {\bf 2016}, {\em 12},~316--323. 
-\newblock {{https://doi.org/10.1080/17445647.2015.1016128}}.
-
- \bibitem{Hodgson1995}
-Hodgson, M. E.,
-\newblock What cell size does the computed slope/aspect angle represent?
-\newblock {\em Photogrammetic Engineering \& Remote Sensing} {\bf 1995}, {\em 61},~513--517. 
-\newblock {{https://doi.org/}}.
-
-\bibitem{land12010261}
-Lemenkova, P. and Debeir, O.
-\newblock Quantitative Morphometric 3D Terrain Analysis of Japan Using Scripts of GMT and R
-\newblock {\em Land} {\bf 2023}, {\em 12},~261. 
-\newblock {{https://doi.org/10.3390/land12010261}}.
-
-\bibitem{Hodgson1998}
-Comparison of angles from surface slope/aspect algorithms
-\newblock Cartography and Geographic Information Systems
-\newblock {\em Journal} {\bf 1998}, {\em 25},~173--185. 
-\newblock {{https://doi.org/10.1559/152304098782383106}}.
-
-\bibitem{HofierkaSuri}
-Hofierka, J., Súri, M., 
-\newblock The solar radiation model for Open Source GIS: Implementation and applications
-\newblock {\em Proceedings of Open Source Free Software GIS – GRASS users conference. Trento, Italy, Sept. 2002} {\bf 2002}, {\em XX},~11--13. 
-
-\bibitem{Hofierka2009}
-Hofierka, J., Mitasova, H., Neteler, M., 
-\newblock Geomorphometry in GRASS GIS
-\newblock {\em Hengl, T., Reuter, H. I. (Eds), Geomorphometry: Concepts, Software, Applications. Developments in Soil Science,} {\bf 2009}, {\em 33},~387--410. 
-\newblock {{https://doi.org/10.1016/S0166-2481(08)00017-2}}.
-
-\bibitem{Horn}
-Horn, B. K. P., 
-\newblock Hill Shading and the Reflectance Map
-\newblock {\em Proceedings of the IEEE} {\bf 1981}, {\em 69},~14--47. 
-\newblock {{https://doi.org/10.1109/PROC.1981.11918}}.
-
-\bibitem{Issaka}
-Issaka, Y., Kumi-Boateng, B.,
-\newblock Artificial intelligence techniques for predicting tidal effects based on geographic locations in Ghana
-\newblock {\em Geodesy and Cartography} {\bf 2020}, {\em 46},~1--7. 
-\newblock {{https://doi.org/10.3846/gac.2020.7696}}.
-
-\bibitem{Turton}
- Turton, I.,
-\newblock Geo Tools
-\newblock {\em Hall G.B., Leahy M.G. (eds). Open Source Approaches in Spatial Data Handling. Advances in Geographic Information Science, Springer, Berlin, Heidelberg} {\bf 2008}, {\em 2}. 
-\newblock {{https://doi.org/10.1007/978-3-540-74831-1\_8}}. 
-
-\bibitem{Malinverno}
- Malinverno, A.,
-\newblock Fractals and ocean floor topography
-\newblock {\em Fractals in the Earth Sciences. Plenum Press} {\bf 1995},~107--130. 
-\newblock {{https://doi.org/10.1007/978-1-4899-1397-5\_6}}.
-
-\bibitem{Mitas1999}
-Mitas, L., Mitasova, H.,
-\newblock Spatial interpolation
-\newblock {\em In: Geographical Information Systems: Principles, Techniques, Management and Applications. Longley, P., Goodchild, M., Maguire, D., Rhind, D. (eds.). New York: Wiley } {\bf 1999},~481--492. 
-
-\bibitem{Kiani}
-Kiani, M., Chegini, N., Safari, A., Nazari, B., 
-\newblock Spheroidal spline interpolation and its application in geodesy
-\newblock {\em Geodesy and Cartography} {\bf 2020}, {\em 46},~123--135. 
-\newblock {{https://doi.org/10.3846/gac.2020.11316}}.
-
-\bibitem{Teixeira}
-Teixeira, J., Chaminé, H. I., Carvalho, J. M., Pérez-Alberti, A., Rocha, F.,
-\newblock Hydrogeomorphological mapping as a tool in groundwater exploration
-\newblock {\em Journal of Maps} {\bf 2013}, {\em 9},~263--273. 
-\newblock {{https://doi.org/10.1080/17445647.2013.776506}}.
-
-\bibitem{Sofia}
-Sofia, G.,
-\newblock Combining geomorphometry, feature extraction techniques and Earth-surface processes research: The way forward
-\newblock {\em Geomorphology} {\bf 2020}, {\em 355}. 
-\newblock {{https://doi.org/10.1016/j.geomorph.2020.107055}}.
-
-\bibitem{Snyder}
-Snyder, J. P., 
-\newblock Map projections -- a working manual
-\newblock {\em l. U.S. Geological Professional Paper} {\bf 1987}, {\em 1395},~383. 
-
-\bibitem{Lemenkova2020c}
-Lemenkova, P.,
-\newblock GEBCO Gridded Bathymetric Datasets for Mapping Japan Trench Geomorphology by Means of GMT Scripting Toolset
-\newblock {\em Geodesy and Cartography} {\bf 2020}, {\em 46},~98--112. 
-\newblock {{https://doi.org/10.3846/gac.2020.11524}}.
-
-\bibitem{NetelerMitasova2008}
-Neteler, M., Mitasova, H.,
-\newblock Open Source GIS. A GRASS GIS Approach
-\newblock {\em 3rd Ed. NY: Springer} {\bf 2008}, {\em XX},~XX--XX. 
-\newblock {{ISBN-13: 978-0-387-35767-6}}.
-
-\bibitem{Savulescu}
-Sâvulescu, I. Mihai, B., 
-\newblock Mapping forest landscape change in Iezer Mountains, Romanian Carpathians. A GIS approach based on cartographic heritage, forestry data and remote sensing imagery
-\newblock {\em Journal of Maps} {\bf 2011}, {\em 7},~429--446. 
-\newblock {{https://doi.org/10.4113/jom.2011.1170}}.
-
-\bibitem{Neteleretal2008}
-Neteler M., Beaudette D., Cavallini P., Lami L., Cepicky J., 
-\newblock GRASS GIS. Open Source Approaches in Spatial Data Handling.
-\newblock {\em Advances in Geographic Information Science} {\bf 2008}, {\em 2},~XX--XX. 
-\newblock {{https://doi.org/10.1007/978-3-540-74831-1\_9}}.
-
-\bibitem{Neteler2000}
- Neteler, M.,
-\newblock GRASS-Handbuch
-\newblock {\em Geosynthesis 11. Der praktische Leitfaden zum Geographischen Informationssystem GRASS. University of Hannover} {\bf 2000}.
-
-\bibitem{s23010056}
-Lemenkova, P. and De Plaen, R. and Lecocq, T. and Debeir, O.,
-\newblock Computer Vision Algorithms of DigitSeis for Building a Vectorised Dataset of Historical Seismograms from the Archive of Royal Observatory of Belgium
-\newblock {\em Sensors} {\bf 2023}, {\em 23},~56. 
-\newblock {{https://doi.org/10.3390/s23010056}}.
-
-\bibitem{Zevenbegen}
-Zevenbegen, L. W., Thorne, C. R.,
-\newblock Quantitative analysis of land surface topography
-\newblock {\em Earth Surface Processed and Landforms} {\bf 1987}, {\em 12},~47--56. 
-\newblock {{https://doi.org/10.1002/esp.3290120107}}.
-
-\bibitem{Schmidt}
-Schmidt, J., Evans, I. S., Brinkmann, J.,
-\newblock Comparison of polynomial models for land surface curvature calculation
-\newblock {\em International Journal of Geographical Information Science} {\bf 2003}, {\em 17},~797--814. 
-\newblock {{https://doi.org/10.1080/13658810310001596058}}.
-
-\bibitem{Rey}
-Rey, S. J.,
-\newblock Code as Text: Open Source Lessons for Geospatial Research and Education
-\newblock {\em GeoComputational Analysis and Modeling of Regional Systems. Advances in Geographic Information Science. Springer, Cham} {\bf 2018}~7--21. 
-\newblock {{https://doi.org/10.1007/978-3-319-59511-5\_2}}.
-
-\bibitem{Mitasovaetal1996}
-Mitasova, H., Hofierka, J., Zlocha, M., Iverson, L.,
-\newblock Modeling topographic potential for erosion and deposition using GIS
-\newblock {\em International Journal of Geographical Information Science} {\bf 1996}, {\em 10},~629--641. 
-\newblock {{https://doi.org/10.1080/02693799608902101}}.
-
-\bibitem{Mitasovaetal1995}
-Mitasova, H., Mitas, L., Brown, W., Gerdes, D., Kosinovsky, I., Baker, T.,
-\newblock Modeling spatially and temporally distributed phenomena: New methods and tools for GRASS GIS
-\newblock {\em International Journal of Geographical Information Science} {\bf 1995}, {\em 9},~433--446. 
-\newblock {{https://doi.org/10.1080/02693799508902048}}.
-
-\bibitem{Mitasova1985}
-Mitasova, H., 
-\newblock Cartographic aspects of computer surface modeling
-\newblock {\em PhD thesis. Slovak Technical University, Bratislava} {\bf 1985}.
-
-\bibitem{Lemenkova2020e}
-Lemenkova, P.,
-\newblock Geodynamic setting of Scotia Sea and its effects on geomorphology of South Sandwich Trench, Southern Ocean
-\newblock {\em Polish Polar Research} {\bf 2020}, {\em 42},~1--23. 
-\newblock {{https://doi.org/10.24425/ppr.2021.136510}}.
-
-\bibitem{Kralidis}
-Kralidis A.T., 
-\newblock Geospatial Open Source and Open Standards Convergences
-\newblock {\em Open Source Approaches in Spatial Data Handling. Advances in Geographic Information Science. Springer, Berlin, Heidelberg} {\bf 2008}, {\em 2},~1--20. 
-\newblock {{https://doi.org/10.1007/978-3-540-74831-1\_1}}.
-
- 
-\end{thebibliography}
 %=====================================
 % References, variant A: external bibliography
 %=====================================
-%\bibliography{Bibliography.bib}
+\bibliography{TechBib.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{adjustwidth}
