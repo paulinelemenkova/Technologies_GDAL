@@ -145,27 +145,11 @@ The geophysical settings in the study area have a zone of linear positive and ne
 
 The research was implemented in the GRASS GIS \cite{NetelerMitasova2008}, an open source\hl{ }software and image and graphics production system \cite{Neteleretal2008,Neteler2000}. The major advantage of the GRASS GIS\hl{, similar to the QGIS,} is that it combines the GUI with Command Line Interface (CLI) run from the console\hl{ and enables to operate with cartographic projections by GDAL}. This is convenient to switch between the two modes of data processing since it allows cartographic and analytic experimentation with or without a traditional menu. All maps made in the GRASS GIS were stored using a Universal Transverse Mercator (UTM) map coordinate system \hl{Zone 57} within the geographic extent of the study area. The full scripts used in this study for topographic mapping by the GRASS GIS are available in the GitHub repository of the authors with a provided open access: \href{https://github.com/paulinelemenkova/Mapping_KKT_GRASS_GIS_Scripts}{https://github.com/paulinelemenkova/Mapping\_KKT\_GRASS\_GIS\_Scripts}.
 
-\vspace{6pt}
-\begin{figure}[H]
- \centering
-    \includegraphics[width=0.95\textwidth]{Fig_2.jpg}\\
-  \caption{GDAL library: ‘gdalinfo’ to display raster metadata (left); ‘gdalwarp’ to reproject initial raster file in the XY Cartesian coordinate into WGS 84 (right). Source: authors.}\label{Fig:2}
-\end{figure}
-\vspace{6pt}
-
 The GRASS GIS uses a modular system organised by the name according to their functionality class (raster, vector) with the first letter indicating a function class, separated by dots and describing the specific task performed by this module. This feature is specific for GRASS GIS, yet differs from the GMT, a scripting cartographic toolset \cite{Wesseletal2019}. Such approach differs both tools from the traditional GIS which rely on the use of GUI. In contrast, the GRASS GIS enables to use both GUI with a standard menu and a scripting approach, which is one of its advantages demonstrating its flexibility between the fully console-based GMT and the conventional GIS. This enables to perform cartographic work in both ways, depending on the needs and preferences and profits from the combination of both approaches. 
-
-\vspace{6pt}
-\begin{figure}[H]
- \centering
-    \includegraphics[width=0.95\textwidth]{Fig_3.jpg}\\
-  \caption{GDAL library: ‘gdal\_translate’ utility to subset target region (left); GRASS GIS command line modules r.info, d.mon, d.rast and visualizing raster (right). Source: authors.}\label{Fig:3}
-\end{figure}
-\vspace{6pt}
 
 \subsection{Data capture and organisation}
 
-The data used in this project include the open source datasets available online. We used the georeferenced Tag Image File Format (TIFF) file of the ETOPO1 grid by NOAA (\href{https://www.ngdc.noaa.gov/mgg/global/}{NOAA}) as a base map (ETOPO1 Bedrock: Grid of Earth's surface depicting the bedrock underneath the ice sheets), Figure \ref{Fig:1}. The check of metadata for the raster maps was performed by the $‘g.list -f rast’$ GRASS GIS module. The information on the data grids was checked up by command ‘r.info’ module which returns the min/max coordinates of the study area, resolution, number of classes, cartographic projection, scale, geometry with the number of centroids, points, lines, boundaries and islands, and the type of data (3D or 2D). 
+The data used in this project include the open source datasets available online. We used the georeferenced Tag Image File Format (TIFF) file of the ETOPO1 grid by NOAA (\href{https://www.ngdc.noaa.gov/mgg/global/}{NOAA}) as a base map (ETOPO1 Bedrock: Grid of Earth's surface depicting the bedrock underneath the ice sheets), Figure \ref{Fig:1}. \hl{The 'gdalinfo' module of the GDAL library was used to display raster metadata and the 'gdalwarp' was applied to project the initial raster file in the XY Cartesian coordinate into the WGS84. Likewise, the GDAL library 'gdal\_translate' utility was used to subset target region from the global grid; the GRASS GIS command line modules r.info, d.mon, d.rast were used for visualising the output raster.}. The check of metadata for the raster maps was performed by the $‘g.list -f rast’$ GRASS GIS module. The information on the data grids was checked up by command ‘r.info’ module which returns the min/max coordinates of the study area, resolution, number of classes, cartographic projection, scale, geometry with the number of centroids, points, lines, boundaries and islands, and the type of data (3D or 2D). 
 
 \vspace{6pt}
 \begin{figure}[h]
