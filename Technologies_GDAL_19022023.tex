@@ -266,6 +266,8 @@ d.text text="2 Point Equidist. Azimuth." color='0:0:51' bgcolor='224:224:224' si
 
 The next step was continued in the GRASS GIS version 7.6 and included the coordinates transformation that was done by ‘proj’ with several tested projections and their visualization using GRASS GIS scripts presented in details in Listings \ref{lst04} for Cassini-Soldner projection, Listing \ref{lst05} for Oblique Mercator projection and Listing \ref{lst06} for and Equal-Area Cylindrical projection. The ‘proj’ is a cartographic projection filter of the PROJ software which allows converting between the geographic and projection coordinates within one datum WGS84. The maps projections were tested in PROJ via the ‘gdalwarp’ utility of GDAL before importing them into the GRASS GIS. The ‘gdalwarp’ is specially designed to reproject maps to the target projections, coordinate systems, ellipsoid, or geodetic datum. In this case, we selected the datum as a constant WGS84 and kept it constant for this project. 
 
+\hl{The ellipsoidal Cassini Soldner projection is well suited for topographic mapping of the areas with restricted extent along the meridian since the distortion of the areas along the central meridian is minimised. Thus, due to the more accurate computations in the ellipsoidal formulae, it provides a compromise between the conformal nor equal-area projections keeping the distortions minimal in the longitudinal direction. The definition of this projection is based on the meridian and parallel of the central point of the study area. The plotting has been performed using the script provided in Listing} \ref{lst04}.
+
 \begin{lstlisting}[language=bash,label={lst04},caption=GRASS GIS script for plotting map in Cassini-Soldner projection)]
 #!/bin/sh
 g.list rast
@@ -280,6 +282,8 @@ d.vect Bathymetry1000C color='blue' width=0
 d.grid -g size=2.5 color='255:0:0'
 d.text text="Cassini-Soldner prj" color='0:0:51' bgcolor='224:224:224' size=3
 \end{lstlisting}
+
+\hl{The geodetic transformations used to plot the map in oblique Mercator projection expressed as a series of operations which represent the parallels and meridians as complex curves. These include the defining of the key parameters such as longitude and latitude of the projection centre, azimuth of the oblique equator with a scale along it as representing the oblique aspect of the Mercator projection. The advantages of the oblique Mercator projection is that is provides a high accuracy in zones close to the longitude and latitude of the projection centre and a constant scale on the line of tangency, that is, central longitude and preserve local shapes in the regions of large lateral extent such as the Kuril-Kamchatka and Kuril islands. The map in the oblique Mercator projection was plotted using Listing} \ref{lst05}.
 
 \begin{lstlisting}[language=bash,label={lst05},caption=GRASS GIS script for plotting map in Oblique Mercator projection)]
 #!/bin/sh
