@@ -193,8 +193,8 @@ The ‘g.region -p’ command was used to retrieve the information on the data e
 
 \subsection{Data processing by GDAL}
 
-The initial operations with raster file were performed by the Geospatial Data Abstraction Library (GDAL), a translator library for raster and vector geospatial data formats \hl{with available }GDAL documentation \cite{GDAL}. The input to the reference list \cite{GDAL} was run from the console of the GMT. In general, the GDAL was used to re-project raster files to the supported cartographic projection, as well as to perform image mosaicing and transformations (Fig. \ref{Fig:2}). In this study, we used three GDAL utilities using the commands of the following utilities:\\ 
-$‘gdalwarp’, ‘gdal\_translate’ and ‘gdalinfo’$ (Fig. \ref{Fig:2}). The ‘gdalwarp’ utility was used to re-projection and warping of the initial original file (ETOPO1\_Bed\_g\_geotiff.tif) from the XY Cartesian coordinates to the World Geodetic System 1984 (WGS84) \cite{Defense}. 
+The initial operations with raster file were performed by the Geospatial Data Abstraction Library (GDAL), a translator library for raster and vector geospatial data formats \hl{with available }GDAL documentation \cite{GDAL}. The input to the reference list \cite{GDAL} was run from the console of the GMT. In general, the GDAL was used to re-project raster files to the supported cartographic projection, as well as to perform image mosaicing and transformations\hl{. }In this study, we used three GDAL utilities using the commands of the following utilities:\\ 
+$‘gdalwarp’, ‘gdal\_translate’ and ‘gdalinfo’$\hl{. }The ‘gdalwarp’ utility was used to re-projection and warping of the initial original file (ETOPO1\_Bed\_g\_geotiff.tif) from the XY Cartesian coordinates to the World Geodetic System 1984 (WGS84) \cite{Defense}. 
 
 The transformation uses the European Petroleum Survey Group (EPSG) number, which in this case is 4326 (corresponds to the WGS84). The warping was done by the command for Spatial Reference System (SRS) as follows: 
 
@@ -202,9 +202,9 @@ The transformation uses the European Petroleum Survey Group (EPSG) number, which
 gdalwarp -t_srs EPSG:4326 ETOPO1_Bed_g_geotiff.tif ETOPO1_WGS84.tif
 \end{spverbatim} 
 
-The next step contains running the utility ‘gdal\_translate’  (Fig. \ref{Fig:3}) with the argument $‘-projwin\_srs <srs\_def>’$, which specifies the projwin SRS GDAL, in which it interprets the coordinates (here, given coordinates in the EPSG system). 
+The next step contains running the utility ‘gdal\_translate’\hl{ }with the argument $‘-projwin\_srs <srs\_def>’$, which specifies the projwin SRS GDAL, in which it interprets the coordinates (here, given coordinates in the EPSG system). 
 
-Using the gdal\_translate (Figure \ref{Fig:3}), the file was subset, or clipped, to the target square area from the global extent with clockwise going coordinates in degrees as follows: W=140 N=60 E=170 S=40. The re-projection was done by the ‘grdalwarp’ utility. The subsetting of the target area was done by the following command: 
+Using the gdal\_translate\hl{, }the file was subset, or clipped, to the target square area from the global extent with clockwise going coordinates in degrees as follows: W=140 N=60 E=170 S=40. The re-projection was done by the \hl{'gdalwarp'} utility \hl{and illustrated in Figure} \ref{Fig:5}. The subsetting of the target area was done by the following command: 
 
 \begin{spverbatim}
 gdal_translate -projwin 140.0000 60.0000 170.0000 40.0000 ETOPO1_WGS84.tif 
