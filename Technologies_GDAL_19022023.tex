@@ -149,13 +149,13 @@ The GRASS GIS uses a modular system organised by the name according to their fun
 
 \subsection{Data capture and organisation}
 
-The data used in this project include the open source datasets available online. \hl{The }georeferenced Tag Image File Format (TIFF) file of the ETOPO1 grid by NOAA (\href{https://www.ngdc.noaa.gov/mgg/global/}{https://www.ngdc.noaa.gov/mgg/global/}) \hl{was used} as a base map \hl{from the }ETOPO1 Bedrock: Grid of Earth's surface depicting the bedrock underneath the ice sheets\hl{ (Figure} \ref{Fig:1}). \hl{The 'gdalinfo' module of the GDAL library was used to display raster metadata and the 'gdalwarp' was applied to project the initial raster file in the XY Cartesian coordinate into the WGS84. Likewise, the GDAL library 'gdal\_translate' utility was used to subset target region from the global grid; the GRASS GIS command line modules r.info, d.mon, d.rast were used for visualising the output raster.}. The check of metadata for the raster maps was performed by the $‘g.list -f rast’$ GRASS GIS module \hl{(Figure} \ref{Fig:4}). The information on the data grids was checked up by command ‘r.info’ module which returns the min/max coordinates of the study area, resolution, number of classes, cartographic projection, scale, geometry with the number of centroids, points, lines, boundaries and islands, and the type of data (3D or 2D). 
+The data used in this project include the open source datasets available online. \hl{The }georeferenced Tag Image File Format (TIFF) file of the ETOPO1 grid by NOAA (\href{https://www.ngdc.noaa.gov/mgg/global/}{https://www.ngdc.noaa.gov/mgg/global/}) \hl{was used} as a base map \hl{from the }ETOPO1 Bedrock: Grid of Earth's surface depicting the bedrock underneath the ice sheets\hl{ (Figure} \ref{Fig:1}). \hl{The 'gdalinfo' module of the GDAL library was used to display raster metadata and the 'gdalwarp' was applied to project the initial raster file in the XY Cartesian coordinate into the WGS84. Likewise, the GDAL library 'gdal\_translate' utility was used to subset target region from the global grid; the GRASS GIS command line modules r.info, d.mon, d.rast were used for visualising the output raster.}. The check of metadata for the raster maps was performed by the $‘g.list -f rast’$ GRASS GIS module \hl{(Figure} \ref{Fig:2}). The information on the data grids was checked up by command ‘r.info’ module which returns the min/max coordinates of the study area, resolution, number of classes, cartographic projection, scale, geometry with the number of centroids, points, lines, boundaries and islands, and the type of data (3D or 2D). 
 
 \vspace{6pt}
 \begin{figure}[h]
  \centering
-    \includegraphics[width=0.95\textwidth]{Fig_4.jpg}\\
-  \caption{Subset of the study area (Kuril-Kamchatka region), in the Cartesian XY coordinates (metadata: left) visualized on a display (GRASS GIS GUI: right). Source: authors.}\label{Fig:4}
+    \includegraphics[width=0.95\textwidth]{Fig_2.jpg}\\
+  \caption{Subset of the study area (Kuril-Kamchatka region), in the Cartesian XY coordinates (metadata: left) visualized on a display (GRASS GIS GUI: right). Source: authors.}\label{Fig:2}
 \end{figure}
 \vspace{12pt}
 
@@ -204,7 +204,7 @@ gdalwarp -t_srs EPSG:4326 ETOPO1_Bed_g_geotiff.tif ETOPO1_WGS84.tif
 
 The next step contains running the utility ‘gdal\_translate’\hl{ }with the argument $‘-projwin\_srs <srs\_def>’$, which specifies the projwin SRS GDAL, in which it interprets the coordinates (here, given coordinates in the EPSG system). 
 
-Using the gdal\_translate\hl{, }the file was subset, or clipped, to the target square area from the global extent with clockwise going coordinates in degrees as follows: W=140 N=60 E=170 S=40. The re-projection was done by the \hl{'gdalwarp'} utility \hl{and illustrated in Figure} \ref{Fig:5}. The subsetting of the target area was done by the following command: 
+Using the gdal\_translate\hl{, }the file was subset, or clipped, to the target square area from the global extent with clockwise going coordinates in degrees as follows: W=140 N=60 E=170 S=40. The re-projection was done by the \hl{'gdalwarp'} utility \hl{and illustrated in Figure} \ref{Fig:3}. The subsetting of the target area was done by the following command: 
 
 \begin{spverbatim}
 gdal_translate -projwin 140.0000 60.0000 170.0000 40.0000 ETOPO1_WGS84.tif 
@@ -214,8 +214,8 @@ ETOPO1_KKT_WGS84.tif
 \vspace{6pt}
 \begin{figure}[h]
  \centering
-    \includegraphics[width=0.95\textwidth]{Fig_5.jpg}
-  \caption{Raster projected from XY to WGS84 Lat/Lon coordinates with cartographic elements. Source: authors.}\label{Fig:5}
+    \includegraphics[width=0.95\textwidth]{Fig_3.jpg}
+  \caption{Raster projected from XY to WGS84 Lat/Lon coordinates with cartographic elements. Source: authors.}\label{Fig:3}
 \end{figure}
 \vspace{12pt}
 
@@ -305,7 +305,7 @@ d.text text="Equal Area Cylindrical prj" color='0:0:51' bgcolor='224:224:224' si
 
 \subsection{Displaying raster grids in GRASS GIS}
 
-Upon re-projection of the file, it was imported to the GRASS GIS by the ‘r.in.gdal’ utility. Displaying the dataset was done using the sequence of the GRASS modules shown in Listing 1, based on the GRASS GIS modular techniques \cite{Brown} and visualized in Figure \ref{Fig:4}. The visualized cartographic elements include grid ticks, legend and the title, which were placed on the map in Figure \ref{Fig:5} using the code in Listing 2. Generating the continuous fields of the bathymetric contours (isolines) were derived from the raster ETOPO1\_KKT\_WGS84 file using the GRASS GIS module 'r.contour' by script. In this example the step parameter was set to 750 m and visualized in Figure \ref{Fig:6}. The script of the GRASS GIS used for plotting the topographic isolines is shown in Listing \ref{lst07}:
+Upon re-projection of the file, it was imported to the GRASS GIS by the ‘r.in.gdal’ utility. Displaying the dataset was done using the sequence of the GRASS modules shown in Listing 1, based on the GRASS GIS modular techniques \cite{Brown} and visualized in Figure \ref{Fig:2}. The visualized cartographic elements include grid ticks, legend and the title, which were placed on the map in Figure \ref{Fig:3} using the code in Listing 2. Generating the continuous fields of the bathymetric contours (isolines) were derived from the raster ETOPO1\_KKT\_WGS84 file using the GRASS GIS module 'r.contour' by script. In this example the step parameter was set to 750 m and visualized in Figure \ref{Fig:4}. The script of the GRASS GIS used for plotting the topographic isolines is shown in Listing \ref{lst07}:
 
 \begin{lstlisting}[language=bash,label={lst07},caption=GRASS GIS script for visualising raster grid and adding contour isolines]
 #!/bin/sh
@@ -322,8 +322,8 @@ d.vect Bathymetry750 color='102:37:4' width=0
 \vspace{6pt}
 \begin{figure}[h]
  \centering
-    \includegraphics[width=0.95\textwidth]{Fig_6.jpg}\\
-  \caption{Plotting isolines by the 'r.contour' module and visualising raster in ‘elevation’ color table. Source: authors.}\label{Fig:6}
+    \includegraphics[width=0.95\textwidth]{Fig_4.jpg}\\
+  \caption{Plotting isolines by the 'r.contour' module and visualising raster in ‘elevation’ color table. Source: authors.}\label{Fig:4}
 \end{figure}
 \vspace{12pt}
 
@@ -365,47 +365,47 @@ We implemented the GRASS GIS algorithms for cartographic data visualization and 
  \vspace{6pt}
 \begin{figure}[h]
  \centering
-    \includegraphics[width=0.90\textwidth]{Fig_7.jpg}
-  \caption{Comparison of the four maps visualized in GRASS GIS in four different cartographic projections transformed by the ‘gdalwarp’ GDAL utility and PROJ parameters. The projections from left to right, top to bottom are as follows: Cassini-Soldner equirectangular; Equal Area Cylindrical; Two Point Equidistant Azimuthal; Oblique Mercator. Source: authors.}\label{Fig:7}
+    \includegraphics[width=0.90\textwidth]{Fig_5.jpg}
+  \caption{Comparison of the four maps visualized in GRASS GIS in four different cartographic projections transformed by the ‘gdalwarp’ GDAL utility and PROJ parameters. The projections from left to right, top to bottom are as follows: Cassini-Soldner equirectangular; Equal Area Cylindrical; Two Point Equidistant Azimuthal; Oblique Mercator. Source: authors.}\label{Fig:5}
 \end{figure}
 \vspace{12pt}
 
-Originally made as a technical tool for cartographic projections, PROJ gradually transformed into being a functional generic coordinate transformation engine. The supported projections were checked up by the command ‘cs2cs -lp’ from the GRASS GIS console \cite{Evenden}. The PROJ was applied for the scale cartographic projections and coordinate transformation (Figure \ref{Fig:7}), thus presenting the geodetic transformations of varying complexity. In this study, the visualization of various cartographic projections in GRASS GIS (Figure \ref{Fig:7}) was performed by a combination and sequential use of the following modules of GRASS GIS: 'd.rast', 'r.contour', 'd.vect', 'd.grid' and 'd.text'. The script is based on the developed methodology of data processing by GRASS GIS \cite{Dassau}. It was also used for plotting the contour maps with an example of Cassini-Soldner projection. Mapping study area in various cartographic projections was recorded in separate plots in the GRASS GIS and  presented in Figure \ref{Fig:7} for comparison: Cassini-Soldner equirectangular; Equal Area Cylindrical; Two Point Equidistant Azimuthal; Oblique Mercator. 
+Originally made as a technical tool for cartographic projections, PROJ gradually transformed into being a functional generic coordinate transformation engine. The supported projections were checked up by the command ‘cs2cs -lp’ from the GRASS GIS console \cite{Evenden}. The PROJ was applied for the scale cartographic projections and coordinate transformation (Figure \ref{Fig:5}), thus presenting the geodetic transformations of varying complexity. In this study, the visualization of various cartographic projections in GRASS GIS (Figure \ref{Fig:5}) was performed by a combination and sequential use of the following modules of GRASS GIS: 'd.rast', 'r.contour', 'd.vect', 'd.grid' and 'd.text'. The script is based on the developed methodology of data processing by GRASS GIS \cite{Dassau}. It was also used for plotting the contour maps with an example of Cassini-Soldner projection. Mapping study area in various cartographic projections was recorded in separate plots in the GRASS GIS and  presented in Figure \ref{Fig:5} for comparison: Cassini-Soldner equirectangular; Equal Area Cylindrical; Two Point Equidistant Azimuthal; Oblique Mercator. 
 
 \subsection{\textcolor{blue}{Morphometric parameters}}
  
-The input elevation data were derived from the ETOPO1 raster grid that contained the elevation values in digital format covering study area. The 'r.slope.aspect' module of GRASS GIS was used for plotting raster maps using the developed methodology \cite{Mitasova1985,Hofierka2009,Horn}. The resulting maps of slope, aspect (computed counterclockwise from the east), profile curvature and tangential curvature from the ETOPO1 raster grid are shown in Figure \ref{Fig:9}.\hl{ }The results include the morphometric elements of slope, aspect, profile curvature and tangential curvature, Figure \ref{Fig:9}.
+The input elevation data were derived from the ETOPO1 raster grid that contained the elevation values in digital format covering study area. The 'r.slope.aspect' module of GRASS GIS was used for plotting raster maps using the developed methodology \cite{Mitasova1985,Hofierka2009,Horn}. The resulting maps of slope, aspect (computed counterclockwise from the east), profile curvature and tangential curvature from the ETOPO1 raster grid are shown in Figure \ref{Fig:6}.\hl{ }The results include the morphometric elements of slope, aspect, profile curvature and tangential curvature, Figure \ref{Fig:6}.
 
 \vspace{6pt}
 \begin{figure}[H]
  \centering
-    \includegraphics[width=0.90\textwidth]{Fig_9.jpg}
-  \caption{Slope, aspect, profile and tangential curvature maps, Kuril-Kamchatka region, based on raster grid ETOPO1. Source: authors.}\label{Fig:9}
+    \includegraphics[width=0.90\textwidth]{Fig_6.jpg}
+  \caption{Slope, aspect, profile and tangential curvature maps, Kuril-Kamchatka region, based on raster grid ETOPO1. Source: authors.}\label{Fig:6}
 \end{figure}
 \vspace{12pt}
 
-The results of the morphometric modelling show that the terrain slope in the Kuril-Kamchatka region is ranging from 0° to 39°, as shown on the slope map calculated from the ETOPO1\_KKT\_WGS84 grid. The slope in the study area is shown in gradually increasing degrees starting from 0° (flat horizontal) to the 39° (maximal vertical). The profile curvature shows modelled terrain surface in the gradient direction which reflects the variations in the slope steepness angle within the range of -87*10-5 to 68*10-5. The most part of the area\hl{ }coloured light green on the lower left map \hl{(Figure }\ref{Fig:9}) has values of -10*10-5 to 0. Practically, it indicates that the velocity of mass falling downwards along the slope curve. The tangential curvature reflects the change in the aspect angle and influences the divergence, or the convergence, of the water flow, respectively.
+The results of the morphometric modelling show that the terrain slope in the Kuril-Kamchatka region is ranging from 0° to 39°, as shown on the slope map calculated from the ETOPO1\_KKT\_WGS84 grid. The slope in the study area is shown in gradually increasing degrees starting from 0° (flat horizontal) to the 39° (maximal vertical). The profile curvature shows modelled terrain surface in the gradient direction which reflects the variations in the slope steepness angle within the range of -87*10-5 to 68*10-5. The most part of the area\hl{ }coloured light green on the lower left map \hl{(Figure }\ref{Fig:6}) has values of -10*10-5 to 0. Practically, it indicates that the velocity of mass falling downwards along the slope curve. The tangential curvature reflects the change in the aspect angle and influences the divergence, or the convergence, of the water flow, respectively.
 
-\hl{The }tangential curvature shows values of -67*10-5 to 63*10-5. The terrestrial areas of the Kamchatka Peninsula and Greater Kuril Chain, respectively, show higher positive values\hl{, }depicted by the dark grey colours, in the lower right map \hl{(Figure }\ref{Fig:9}) comparing to the water areas of the Sea of Okhotsk (white and light grey colours) which shows variations in the land surface steepness over the terrain compared to water areas. Numerically, the aspect map shows the orientation in degrees varying from 0° to 360° (upper right map in Figure \ref{Fig:9}). It shows a clear correlation between the aspect and the topographic area of the Kuril-Kamchatka Trench (130°-150°, emerald green colour on the map) and the Greater Kuril Chain which extends in parallel to the trench both in south-eastern orientation (beige colour from the selected ‘aspectcolr’ colour palette, 300°-330°). A clear delineation of the Sakhalin Island can be noted as the north-western orientation (yellow-green colours, 0°-30°) and the Kamchatka Peninsula (NW, greens, 60°-120°), respectively.
+\hl{The }tangential curvature shows values of -67*10-5 to 63*10-5. The terrestrial areas of the Kamchatka Peninsula and Greater Kuril Chain, respectively, show higher positive values\hl{, }depicted by the dark grey colours, in the lower right map \hl{(Figure }\ref{Fig:6}) comparing to the water areas of the Sea of Okhotsk (white and light grey colours) which shows variations in the land surface steepness over the terrain compared to water areas. Numerically, the aspect map shows the orientation in degrees varying from 0° to 360° (upper right map in Figure \ref{Fig:6}). It shows a clear correlation between the aspect and the topographic area of the Kuril-Kamchatka Trench (130°-150°, emerald green colour on the map) and the Greater Kuril Chain which extends in parallel to the trench both in south-eastern orientation (beige colour from the selected ‘aspectcolr’ colour palette, 300°-330°). A clear delineation of the Sakhalin Island can be noted as the north-western orientation (yellow-green colours, 0°-30°) and the Kamchatka Peninsula (NW, greens, 60°-120°), respectively.
 
 \hl{The produced }maps show morphometric variables over the target area performed by the GRASS GIS techniques which included data conversion, warping, transforming projections and adding cartographic elements (ticks, legend, isolines) on the final layout. Each map sources a range of new visualization of the data relevant to the morphology of the study region. Similar to the GMT techniques, the scripting methods  of the GRASS GIS have a command-line approach of data processing. This is convenient for controlling the cartographic design and enables to create the print-quality maps. Further, we demonstrated the effectiveness of the GRASS GIS methods in visualising raster grids and performing raster data analysis in a geologically complex regions such as the north-western sector of the Pacific Ocean.\hl{ }The computed geomorphic indices included slope, aspect, profile and tangential curvature maps, derived from the topographic grid using the embedded algorithms in GRASS GIS. 
 
 \subsection{Analysis of \textcolor{blue}{the} elevation frequency}
 The next research step included the analysis of the distribution of the elevation over the study area. Using computational techniques of GRASS GIS, we calculated the frequency of the data in various range diapason and repeatability of corresponding depths. The most frequent depths or elevations over the study area were recorded and summarised for the analysis of spatially distributed data \cite{Antrop,Bailey,Burrough}. The increase in values of a specific depth reflects the frequency of the elevation recorded on a bathymetric grid in a subsequent region of the study area. 
 
-The analysis of the spatial data distribution aimed to demonstrate a range of variations in data, including skewness, the variation of values within intervals of the topography, organisation of categorical data, selecting relevant peaks in the interpretation and description of the dataset or other resources showing the correlation among the geographic phenomena such as aspect and slope with relief. The distribution of topographic data has been evaluated using statistical tools embedded in GRASS GIS and presented in a histograms and a pie chart (Figure \ref{Fig:8}).
+The analysis of the spatial data distribution aimed to demonstrate a range of variations in data, including skewness, the variation of values within intervals of the topography, organisation of categorical data, selecting relevant peaks in the interpretation and description of the dataset or other resources showing the correlation among the geographic phenomena such as aspect and slope with relief. The distribution of topographic data has been evaluated using statistical tools embedded in GRASS GIS and presented in a histograms and a pie chart (Figure \ref{Fig:7}).
 
 \vspace{6pt}
 \begin{figure}[h]
  \centering
-    \includegraphics[width=0.90\textwidth]{Fig_8.jpg}\\
-  \caption{Bar graph histogram for elevation map (left), pie graph of heights distribution based on the raster grid ETOPO1. Source: authors.}\label{Fig:8}
+    \includegraphics[width=0.90\textwidth]{Fig_7.jpg}\\
+  \caption{Bar graph histogram for elevation map (left), pie graph of heights distribution based on the raster grid ETOPO1. Source: authors.}\label{Fig:7}
 \end{figure}
 \vspace{12pt}
 
 Critical synthesis and analysis of a geomorphological setting of the study area is largely based on the experiential techniques of cartographic data visualization using GRASS GIS. A range of its modules utilised in scripts for cartographic transformations were used to visualise various projection and colour map palettes. The topographic data analysis demonstrated variations in data distribution and morphometry in the study area, as follows. The percentage of the topographic data distribution over the study area is as follows. The depths in the interval below 400 m to -2,000 m covered 24\% of the total points; the depths in the interval from -2,000 to -3,000 m sum up to 2 \%; the depth  from -3,000 to -4,000 m take up 4\% of the total points; the depths in the range between -5,000 to -6,000 m are 13\%, and the depth in the diapason from -6,000 to 7,000 are less than 1\%. the rest of the elevation points is covered by the data with diverse heights and topographic values.
   
-The extent of the data range is summarised and visualized in the histogram and a pie chart \hl{(Figure }\ref{Fig:8}). The bar plot and the pie chart show the frequencies of the elevation levels in a raster representing morphometric unevenness of the terrain. For each topographic range, the number of pixels in the raster image is counted and drawn on the diagram in the two views of representation. The number of pixels corresponding to the each value of depth/height is contributing to the height of this particular bar on the chart (or a radius of the segment in a pie). The x-axis of the bar chart diagram represents the topographic/bathymetric values (heights and depths), while vertical y-axis shows the number of pixels counted at a given step.
+The extent of the data range is summarised and visualized in the histogram and a pie chart \hl{(Figure }\ref{Fig:7}). The bar plot and the pie chart show the frequencies of the elevation levels in a raster representing morphometric unevenness of the terrain. For each topographic range, the number of pixels in the raster image is counted and drawn on the diagram in the two views of representation. The number of pixels corresponding to the each value of depth/height is contributing to the height of this particular bar on the chart (or a radius of the segment in a pie). The x-axis of the bar chart diagram represents the topographic/bathymetric values (heights and depths), while vertical y-axis shows the number of pixels counted at a given step.
 
 The morphometry is an essential approach of the quantitative GIS-based terrain analysis. It is increasingly used in diverse applied geological tasks for relief visualization. Based on elevation \hl{derived from} DEM, the landforms can be visualised in the target area for morphological modelling and mapping at regional scale. The morphometric terrain analysis may further include extended approaches such as analysis and interpretation of the land forms or seafloor surface as a continuous field, upscaling the morphological shapes for a closer analysis of the terrain structure. The slope gradient indicates the terrain roughness and represents a basic for the land surface discreteness. A slope gradient can be used for indication of the terrain roughness, while the aspect can be applied for mapping slope distribution, depending on the compass orientation of the terrain. 
 
