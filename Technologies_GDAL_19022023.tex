@@ -18,7 +18,7 @@
 \copyrightyear{2023}
 %\externaleditor{Academic Editor: Firstname Lastname}
 \datereceived{30 January 2023} 
-%\daterevised{} % Only for the journal Acoustics
+\daterevised{19 February 2023} 
 \dateaccepted{} 
 \datepublished{} 
 \hreflink{https://doi.org/} % If needed use \linebreak
@@ -247,9 +247,11 @@ gdalwarp -t_srs '+proj=tpeqd +lat_1=45 +lat_2=55 +lon_1=100 +lon_2=120'
 ETOPO1_KKT_WGS84.tif ETOPO1_KKT_2p.tif -overwrite
 \end{spverbatim}
 
-Now the file was reprojected to the WGS84 and subset (cut off) from the initial raster grid with global extent. A gdalinfo utility was used to check up the correctness of the performed operations and the output data as follows: $gdalinfo ETOPO1\_KKT\_WGS84.tif.$ Next, we present the code in details in Listing \ref{lst03}:
+Now the file was reprojected to the WGS84 and subset (cut off) from the initial raster grid with global extent. A gdalinfo utility was used to check up the correctness of the performed operations and the output data as follows: $gdalinfo ETOPO1\_KKT\_WGS84.tif.$ \hl{The standard paralles for the study area are }45°N and 55°\hl{N. }Next, we present the code in details in Listing \ref{lst03}:
 
 \begin{lstlisting}[language=bash,label={lst03},caption=GRASS GIS script for plotting 2 Point Equidistant Azimuthal projection]
+# stored in GeoTIFF in WGS84 warped to a Two Point Equidistant Azimuthal projection:
+gdalwarp -t_srs '+proj=tpeqd +lat_1=45 +lat_2=55 +lon_1=100 +lon_2=120' ETOPO1_KKT_WGS84.tif ETOPO1_KKT_2p.tif -overwrite
 #!/bin/sh
 g.list rast
 r.info ETOPO1_KKT_2p
@@ -266,9 +268,11 @@ d.text text="2 Point Equidist. Azimuth." color='0:0:51' bgcolor='224:224:224' si
 
 The next step was continued in the GRASS GIS version 7.6 and included the coordinates transformation that was done by ‘proj’ with several tested projections and their visualization using GRASS GIS scripts presented in details in Listings \ref{lst04} for Cassini-Soldner projection, Listing \ref{lst05} for Oblique Mercator projection and Listing \ref{lst06} for and Equal-Area Cylindrical projection. The ‘proj’ is a cartographic projection filter of the PROJ software which allows converting between the geographic and projection coordinates within one datum WGS84. The maps projections were tested in PROJ via the ‘gdalwarp’ utility of GDAL before importing them into the GRASS GIS. The ‘gdalwarp’ is specially designed to reproject maps to the target projections, coordinate systems, ellipsoid, or geodetic datum. In this case, we selected the datum as a constant WGS84 and kept it constant for this project. 
 
-\hl{The ellipsoidal Cassini Soldner projection is well suited for topographic mapping of the areas with restricted extent along the meridian since the distortion of the areas along the central meridian is minimised. Thus, due to the more accurate computations in the ellipsoidal formulae, it provides a compromise between the conformal nor equal-area projections keeping the distortions minimal in the longitudinal direction. The definition of this projection is based on the meridian and parallel of the central point of the study area. The plotting has been performed using the script provided in Listing} \ref{lst04}.
+\hl{The ellipsoidal Cassini Soldner projection is well suited for topographic mapping of the areas with restricted extent along the meridian since the distortion of the areas along the central meridian is minimised (in this case, the meridian is} 155°E \hl{and the latitude is} 50° \hl{N). Thus, due to the more accurate computations in the ellipsoidal formulae, it provides a compromise between the conformal nor equal-area projections keeping the distortions minimal in the longitudinal direction. The definition of this projection is based on the meridian and parallel of the central point of the study area. The plotting has been performed using the script provided in Listing} \ref{lst04}.
 
 \begin{lstlisting}[language=bash,label={lst04},caption=GRASS GIS script for plotting map in Cassini-Soldner projection)]
+# stored in GeoTIFF in WGS84 warped to an Cassini (Cassini-Soldner) equirectangular projection:
+gdalwarp -t_srs '+proj=cass lat_0=50 lon_0=155' ETOPO1_KKT_WGS84.tif ETOPO1_KKT_C.tif
 #!/bin/sh
 g.list rast
 r.info ETOPO1_KKT_C
@@ -283,9 +287,11 @@ d.grid -g size=2.5 color='255:0:0'
 d.text text="Cassini-Soldner prj" color='0:0:51' bgcolor='224:224:224' size=3
 \end{lstlisting}
 
-\hl{The geodetic transformations used to plot the map in oblique Mercator projection expressed as a series of operations which represent the parallels and meridians as complex curves. These include the defining of the key parameters such as longitude and latitude of the projection centre, azimuth of the oblique equator with a scale along it as representing the oblique aspect of the Mercator projection. The advantages of the oblique Mercator projection is that is provides a high accuracy in zones close to the longitude and latitude of the projection centre and a constant scale on the line of tangency, that is, central longitude and preserve local shapes in the regions of large lateral extent such as the Kuril-Kamchatka and Kuril islands. The map in the oblique Mercator projection was plotted using Listing} \ref{lst05}.
+\hl{The geodetic transformations used to plot the map in conformal oblique Mercator projection expressed as a series of operations which represent the parallels and meridians as complex curves. These include the defining of the key parameters such as longitude and latitude of the projection centre, azimuth of the oblique equator with a scale along it as representing the oblique aspect of the Mercator projection. The advantages of the oblique Mercator projection is that is provides a high accuracy in zones close to the longitude and latitude of the projection centre and a constant scale on the line of tangency, that is, central longitude and preserve local shapes in the regions of large lateral extent such as the Kuril-Kamchatka and Kuril islands. The map in the oblique Mercator projection was plotted using Listing} \ref{lst05}.
 
 \begin{lstlisting}[language=bash,label={lst05},caption=GRASS GIS script for plotting map in Oblique Mercator projection)]
+# stored in GeoTIFF in WGS84 warped to a Oblique Mercator projection:
+gdalwarp -t_srs '+proj=omerc +lat_1=45 +lat_2=55 lon_1=177 lon_2=210 +ellps=GRS80' ETOPO1_KKT_WGS84.tif ETOPO1_KKT_OM.tif -overwrite
 #!/bin/sh
 g.list rast
 r.info ETOPO1_KKT_OM
@@ -299,7 +305,11 @@ d.grid -g size=2.5 color='255:0:0'
 d.text text="Oblique Mercator prj" color='0:0:51' bgcolor='224:224:224' size=3
 \end{lstlisting}
 
+\hl{The key parameters for defining the Equal-Area Cylindrical projection include the latitude (the meridian) of the true scale or standard parallels (in this case, }50°N and 155°E). \hl{The distortions along the central meridian and parallels are minimised since they provide a center point of the extent of the study area. The projection has been defined by the 'gdalwarp' and then plotted using the scripting in Listing} \ref{lst06}:
+
 \begin{lstlisting}[language=bash,label={lst06},caption=GRASS GIS script for plotting map in Equal-Area Cylindrical projection)]
+# stored in GeoTIFF in WGS84 warped to an Equal Area Cylindrical projection:
+gdalwarp -t_srs '+proj=cea lat_ts=50 lon_0=155' ETOPO1_KKT_WGS84.tif ETOPO1_KKT_EAC.tif
 #!/bin/sh
 g.list rast
 r.info ETOPO1_KKT_EAC
@@ -367,19 +377,17 @@ Such effects are owing to the strong correlation between the mountain slope and 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results and Discussion}
-We implemented the GRASS GIS algorithms for cartographic data visualization and compiled maps in various projections. The topographic data visualization and a morphometric analysis were based using the modules of the GRASS GIS. The input cartographic data included the ETOPO1 raster grid including the derived variables: slope, aspect, curvature and a hillshade. The data analysis included a plotted histogram and a pie chart showing data distribution. Several projections were tested and visualized using PROJ library. The data transformation was performed using GDAL integrated with the GRASS GIS. 
+\hl{The} GRASS GIS algorithms \hl{were implemented}for cartographic data visualization and map\hl{ compilation} in various projections \hl{(Figure} \ref{Fig:5}). The topographic data visualization and a morphometric analysis were based \hl{on} the \hl{GRASS GIS} modules. The input cartographic data \hl{based on} the ETOPO1 raster grid \hl{comprised} the derived variables: slope, aspect, curvature and a hillshade. The data analysis included a plotted histogram and a pie chart showing data distribution. Several projections were tested and visualized using PROJ library. The data transformation was performed using GDAL integrated with the GRASS GIS. 
 
-\subsection{\textcolor{blue}{Cartographic} projections by PROJ}
-
-\hl{The} PROJ, a generic coordinate transformation software library \cite{EversKnudsen}, \hl{was used }to transform the raster grid files in Lat/Lon geospatial coordinates from one coordinate reference system (CRS) to another. This method includes the PROJ transformation which performs a variety of operations with cartographic data, starting from the simple and well-known projections such as cylindrical Mercator projection to the very complex transformations across many reference coordinate frames. The PROJ was used for testing various projections (conic, cylindtrical, azimuthal) selected from the variety of available projections in the library: Cassini-Soldner equirectangular; Equal Area Cylindrical; 2-point Equidistant Azimuthal; Oblique Mercator \cite{Snyder}. 
- 
- \vspace{6pt}
-\begin{figure}[h]
+\begin{figure}[H]
  \centering
     \includegraphics[width=1.00\textwidth]{Fig_5.jpg}
   \caption{Comparison of the four maps visualized in GRASS GIS in four different cartographic projections transformed by the ‘gdalwarp’ GDAL utility and PROJ parameters. The projections from left to right, top to bottom are as follows: \textbf{a)} Cassini-Soldner equirectangular; \textbf{b)} Equal Area Cylindrical; \textbf{c)} Two Point Equidistant Azimuthal; \textbf{d)} Oblique Mercator. Source: authors.}\label{Fig:5}
 \end{figure}
-\vspace{12pt}
+
+\subsection{\textcolor{blue}{Cartographic} projections by PROJ}
+
+\hl{The} PROJ, a generic coordinate transformation software library \cite{EversKnudsen}, \hl{was used }to transform the raster grid files in Lat/Lon geospatial coordinates from one coordinate reference system (CRS) to another. This method includes the PROJ transformation which performs a variety of operations with cartographic data, starting from the simple and well-known projections such as cylindrical Mercator projection to the very complex transformations across many reference coordinate frames. The PROJ was used for testing various projections (conic, cylindtrical, azimuthal) selected from the variety of available projections in the library: Cassini-Soldner equirectangular; Equal Area Cylindrical; 2-point Equidistant Azimuthal; Oblique Mercator \cite{Snyder}. 
 
 Originally made as a technical tool for cartographic projections, PROJ gradually transformed into being a functional generic coordinate transformation engine. The supported projections were checked up by the command ‘cs2cs -lp’ from the GRASS GIS console \cite{Evenden}. The PROJ was applied for the scale cartographic projections and coordinate transformation (Figure \ref{Fig:5}), thus presenting the geodetic transformations of varying complexity. In this study, the visualization of various cartographic projections in GRASS GIS (Figure \ref{Fig:5}) was performed by a combination and sequential use of the following modules of GRASS GIS: 'd.rast', 'r.contour', 'd.vect', 'd.grid' and 'd.text'. The script is based on the developed methodology of data processing by GRASS GIS \cite{Dassau}. It was also used for plotting the contour maps with an example of Cassini-Soldner projection. Mapping study area in various cartographic projections was recorded in separate plots in the GRASS GIS and  presented in Figure \ref{Fig:5} for comparison: Cassini-Soldner equirectangular; Equal Area Cylindrical; Two Point Equidistant Azimuthal; Oblique Mercator. 
 
@@ -402,19 +410,15 @@ The results of the morphometric modelling show that the terrain slope in the Kur
 \hl{The produced }maps show morphometric variables over the target area performed by the GRASS GIS techniques which included data conversion, warping, transforming projections and adding cartographic elements (ticks, legend, isolines) on the final layout. Each map sources a range of new visualization of the data relevant to the morphology of the study region. Similar to the GMT techniques, the scripting methods  of the GRASS GIS have a command-line approach of data processing. This is convenient for controlling the cartographic design and enables to create the print-quality maps. Further, we demonstrated the effectiveness of the GRASS GIS methods in visualising raster grids and performing raster data analysis in a geologically complex regions such as the north-western sector of the Pacific Ocean.\hl{ }The computed geomorphic indices included slope, aspect, profile and tangential curvature maps, derived from the topographic grid using the embedded algorithms in GRASS GIS. 
 
 \subsection{Analysis of \textcolor{blue}{the} elevation frequency}
-The next research step included the analysis of the distribution of the elevation over the study area. Using computational techniques of GRASS GIS, we calculated the frequency of the data in various range diapason and repeatability of corresponding depths. The most frequent depths or elevations over the study area were recorded and summarised for the analysis of spatially distributed data \cite{Antrop,Bailey,Burrough}. The increase in values of a specific depth reflects the frequency of the elevation recorded on a bathymetric grid in a subsequent region of the study area. 
+The next research step included the analysis of the distribution of the elevation over the study area. Using computational techniques of GRASS GIS, we calculated the frequency of the data in various range diapason and repeatability of corresponding depths. The most frequent depths or elevations over the study area were recorded and summarised for the analysis of spatially distributed data \cite{Antrop,Bailey,Burrough}. The increase in values of a specific depth reflects the frequency of the elevation recorded on a bathymetric \hl{and topographic }grid in a subsequent region of the study area.\hl{ }The analysis of the spatial data distribution aimed to demonstrate a range of variations in data, including skewness, the variation of values within intervals of the topography, organisation of categorical data, selecting relevant peaks in the interpretation and description of the dataset or other resources showing the correlation among the \hl{morphometric parameters, }such as \hl{the }aspect and \hl{the }slope with relief. The distribution of topographic data has been evaluated using statistical tools embedded in GRASS GIS and presented in a histograms and a pie chart (Figure \ref{Fig:7}).
 
-The analysis of the spatial data distribution aimed to demonstrate a range of variations in data, including skewness, the variation of values within intervals of the topography, organisation of categorical data, selecting relevant peaks in the interpretation and description of the dataset or other resources showing the correlation among the geographic phenomena such as aspect and slope with relief. The distribution of topographic data has been evaluated using statistical tools embedded in GRASS GIS and presented in a histograms and a pie chart (Figure \ref{Fig:7}).
+Critical synthesis and analysis of a geomorphological setting of the study area is largely based on the experiential techniques of cartographic data visualization using GRASS GIS. A range of its modules utilised in scripts for cartographic transformations were used to visualise various projection and colour map palettes. The topographic data analysis demonstrated variations in \hl{the percentage of }data distribution and morphometry in the study area, as follows.\hl{ }The depths in the interval below 400 m to -2,000 m covered 24\% of the total points; the depths in the interval from -2,000 to -3,000 m sum up to 2 \%; the depth  from -3,000 to -4,000 m take up 4\% of the total points; the depths in the range between -5,000 to -6,000 m are 13\%, and the depth in the diapason from -6,000 to 7,000 are less than 1\%. \hl{The} rest of the elevation points is covered by the data with \hl{the} diverse heights and topographic values.
 
-\vspace{6pt}
-\begin{figure}[h]
+\begin{figure}[H]
  \centering
     \includegraphics[width=0.90\textwidth]{Fig_7.jpg}\\
   \caption{Bar graph histogram for elevation map (left), pie graph of heights distribution based on the raster grid ETOPO1. Source: authors.}\label{Fig:7}
 \end{figure}
-\vspace{12pt}
-
-Critical synthesis and analysis of a geomorphological setting of the study area is largely based on the experiential techniques of cartographic data visualization using GRASS GIS. A range of its modules utilised in scripts for cartographic transformations were used to visualise various projection and colour map palettes. The topographic data analysis demonstrated variations in data distribution and morphometry in the study area, as follows. The percentage of the topographic data distribution over the study area is as follows. The depths in the interval below 400 m to -2,000 m covered 24\% of the total points; the depths in the interval from -2,000 to -3,000 m sum up to 2 \%; the depth  from -3,000 to -4,000 m take up 4\% of the total points; the depths in the range between -5,000 to -6,000 m are 13\%, and the depth in the diapason from -6,000 to 7,000 are less than 1\%. the rest of the elevation points is covered by the data with diverse heights and topographic values.
   
 The extent of the data range is summarised and visualized in the histogram and a pie chart \hl{(Figure }\ref{Fig:7}). The bar plot and the pie chart show the frequencies of the elevation levels in a raster representing morphometric unevenness of the terrain. For each topographic range, the number of pixels in the raster image is counted and drawn on the diagram in the two views of representation. The number of pixels corresponding to the each value of depth/height is contributing to the height of this particular bar on the chart (or a radius of the segment in a pie). The x-axis of the bar chart diagram represents the topographic/bathymetric values (heights and depths), while vertical y-axis shows the number of pixels counted at a given step.
 
