@@ -180,7 +180,7 @@ The project management in GRASS GIS has a certain similarity to the ArcGIS in te
 
 \begin{listing}[H]
 \caption{GRASS GIS %MDPI: This listing was formatted according to our rules, please confim the format. <-- Authors: yes, we agree and confirm.
- script-1 (Mapping ETOPO1 raster file).}\label{lst01}
+ script for mapping ETOPO1 raster file.}\label{lst01}
 \rule{\columnwidth}{1pt}
 \raggedright
 1~~\texttt{\emph{\#!/bin/sh\\}}
@@ -236,16 +236,15 @@ ETOPO1_KKT_WGS84.tif
 \begin{figure}[H]
  
     \includegraphics[width=1.00\textwidth]{Fig_3.jpg}
-  \caption{\hl{Raster projected} %MDPI: Please change the hyphen (-) into a minus sign ($-$, "U+2212"). e.g., "-1" should be "$-$1".
+  \caption{Raster projected %MDPI: Please change the hyphen (-) into a minus sign ($-$, "U+2212"). e.g., "-1" should be "$-$1". <-- Authors: corrected. The map in Figure 3 is updated with changed hyphen (-) into a minus sign.
  from XY to WGS84 Lat/Lon coordinates with cartographic elements. Source: authors.}\label{Fig:3}
 \end{figure}
-
 
 Now that all the components of the code have been explained, we provide a summary in Listing \ref{lst02}.
 
 \begin{listing}[H]
 \caption{GRASS %MDPI: This listing was formatted according to our rules, please confim the format. <-- Authors: yes, we agree and confirm.
- GIS script-2 (adding cartographic elements).}\label{lst02}
+ GIS script for adding cartographic elements.}\label{lst02}
 \rule{\columnwidth}{1pt}
 \raggedright
 1~~\texttt{\emph{\#!/bin/sh\\}}
@@ -271,7 +270,7 @@ ETOPO1_KKT_WGS84.tif ETOPO1_KKT_2p.tif -overwrite
 Now the file was reprojected to the WGS84 and subset (cut off) from the initial raster grid with global extent. A~gdalinfo utility was used to check up the correctness of the performed operations and the output data as follows: $gdalinfo ETOPO1\_KKT\_WGS84.tif.$ {The standard parallels for the study area are }45$^{\circ}$ N and 55$^{\circ}${ N. }Next, we present the code in details in Listing \ref{lst03}:
 
 \begin{listing}[H]
-\caption{\hl{GRASS GIS} %MDPI: This listing was formatted according to our rules, please confim the format.
+\caption{GRASS GIS %MDPI: This listing was formatted according to our rules, please confim the format. <-- Authors: yes, we agree and confirm.
  script for plotting 2-Point Equidistant Azimuthal projection.}\label{lst03}
 \rule{\columnwidth}{1pt}
 \raggedright
@@ -297,8 +296,8 @@ The next step was continued in the GRASS GIS version 7.6 and included the coordi
 {The ellipsoidal Cassini--Soldner projection is well suited for topographic mapping of the areas with restricted extent along the meridian since the distortion of the areas along the central meridian is minimised (in this case, the~meridian is} 155$^{\circ}$ E {and the latitude is} 50$^{\circ}$ {N). Thus, due to the more accurate computations in the ellipsoidal formulae, it provides a compromise between the conformal nor equal-area projections keeping the distortions minimal in the longitudinal direction. The~definition of this projection is based on the meridian and parallel of the central point of the study area. The~plotting has been performed using the script provided in Listing} \ref{lst04}.
 
 \begin{listing}[H]
-\caption{\hl{GRASS GIS}%MDPI: This listing was formatted according to our rules, please confim the format.
- script for plotting map in Cassini--Soldner projection).}\label{lst04}
+\caption{GRASS GIS %MDPI: This listing was formatted according to our rules, please confim the format. <-- Authors: yes, we agree and confirm.
+ script for plotting map in Cassini--Soldner projection.}\label{lst04}
  \rule{\columnwidth}{1pt}
  \raggedright
 1~~\texttt{\emph{\# stored in GeoTIFF in WGS84 warped to an Cassini (Cassini--Soldner) equirectangular projection:\\}}
@@ -321,8 +320,8 @@ The next step was continued in the GRASS GIS version 7.6 and included the coordi
 {The geodetic transformations used to plot the map in conformal oblique Mercator projection expressed as a series of operations which represent the parallels and meridians as complex curves. These include the defining of the key parameters such as longitude and latitude of the projection centre, azimuth of the oblique equator with a scale along it as representing the oblique aspect of the Mercator projection. The~advantages of the oblique Mercator projection is that is provides a high accuracy in zones close to the longitude and latitude of the projection centre and a constant scale on the line of tangency, that is, central longitude and preserve local shapes in the regions of large lateral extent such as the Kuril--Kamchatka and Kuril islands. The~map in the oblique Mercator projection was plotted using Listing} \ref{lst05}.
 
 \begin{listing}[H]
-\caption{\hl{GRASS GIS} %MDPI: This listing was formatted according to our rules, please confim the format.
- script for plotting map in Oblique Mercator projection).}\label{lst05}
+\caption{GRASS GIS %MDPI: This listing was formatted according to our rules, please confim the format. <-- Authors: yes, we agree and confirm.
+ script for plotting map in Oblique Mercator projection.}\label{lst05}
 \rule{\columnwidth}{1pt}
 \raggedright
 1~~\texttt{\emph{\# stored in GeoTIFF in WGS84 warped to a Oblique Mercator projection:\\}}
@@ -344,8 +343,8 @@ The next step was continued in the GRASS GIS version 7.6 and included the coordi
 {The key parameters for defining the Equal-Area Cylindrical projection include the latitude (the meridian) of the true scale or standard parallels (in this case, }50$^{\circ}$ N and 155$^{\circ}$ E). {The distortions along the central meridian and parallels are minimised since they provide a centre point of the extent of the study area. The~projection has been defined by the 'gdalwarp' and then plotted using the scripting in Listing} \ref{lst06}:
 
 \begin{listing}[H]
-\caption{\hl{GRASS GIS} %MDPI: This listing was formatted according to our rules, please confim the format.
- script for plotting map in Equal-Area Cylindrical projection).}\label{lst06}
+\caption{GRASS GIS %MDPI: This listing was formatted according to our rules, please confim the format. <-- Authors: yes, we agree and confirm.
+ script for plotting map in Equal-Area Cylindrical projection.}\label{lst06}
 \rule{\columnwidth}{1pt}
 \raggedright
 1~~\texttt{\emph{\# stored in GeoTIFF in WGS84 warped to an Equal Area Cylindrical projection:\\}}
@@ -370,7 +369,7 @@ The next step was continued in the GRASS GIS version 7.6 and included the coordi
 Upon re-projection of the file, it was imported to the GRASS GIS by the ‘r.in.gdal’ utility. Displaying the dataset was performed using the sequence of the GRASS modules shown in Listing \ref{lst01}, based on the GRASS GIS modular techniques~\cite{Brown} and visualized in Figure~\ref{Fig:2}. The~visualized cartographic elements include grid ticks, legend and the title, which were placed on the map in Figure~\ref{Fig:3} using the code in Listing \ref{lst02}. Generating the continuous fields of the bathymetric contours (isolines) were derived from the raster ETOPO1\_KKT\_WGS84 file using the GRASS GIS module 'r.contour' by script. In~this example the step parameter was set to 750 m and visualized in Figure~\ref{Fig:4}. The~script of the GRASS GIS used for plotting the topographic isolines is shown in Listing \ref{lst07}:
 
 \begin{listing}[H]
-\caption{\hl{GRASS GIS} %MDPI: This listing was formatted according to our rules, please confim the format.
+\caption{GRASS GIS %MDPI: This listing was formatted according to our rules, please confim the format. <-- Authors: yes, we agree and confirm.
  script for visualising raster grid and adding contour isolines.}\label{lst07}
 \rule{\columnwidth}{1pt}
 \raggedright
@@ -390,7 +389,7 @@ Upon re-projection of the file, it was imported to the GRASS GIS by the ‘r.in.
 \begin{figure}[H]
  
     \includegraphics[width=1.00\textwidth]{Fig_4.jpg}\\
-  \caption{\hl{Plotting isolines} %MDPI: Please change the hyphen (-) into a minus sign ($-$, "U+2212"). e.g., "-1" should be "$-$1".
+  \caption{Plotting isolines %MDPI: Please change the hyphen (-) into a minus sign ($-$, "U+2212"). e.g., "-1" should be "$-$1". <-- Authors: corrected. The map in Figure 4 is updated with changed hyphen (-) into a minus sign.
  by the 'r.contour' module and visualising raster in ‘elevation’ colour table. Source: authors.}\label{Fig:4}
 \end{figure}
 
