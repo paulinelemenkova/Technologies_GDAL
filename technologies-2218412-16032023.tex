@@ -146,7 +146,7 @@ The basement surface of the Mesozoic structures near the northern coast of the S
 \begin{figure}[H]
  \hspace{-5pt}
     \includegraphics[width=1.01\textwidth]{Fig_1.jpg}\\
-  \caption{\hl{Study area} %MDPI: Please change the hyphen (-) into a minus sign ($-$, "U+2212"). e.g., "-1" should be "$-$1".
+  \caption{Study area %MDPI: Please change the hyphen (-) into a minus sign ($-$, "U+2212"). e.g., "-1" should be "$-$1". <-- Authors: corrected. The map in Figure 1 is updated with changed hyphen (-) into a minus sign .
  on the ETOPO1World Global Relief Model GeoTIFF by NOAA. Mapping: GRASS GIS{.}}\label{Fig:1}
 \end{figure}
 
@@ -157,14 +157,14 @@ The geophysical settings in the study area have a zone of linear positive and ne
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Materials and~Methods}
 
-\textls[-15]{The research was implemented in the GRASS GIS~\cite{NetelerMitasova2008}, an~open source{ }software and image and graphics production system~\cite{Neteleretal2008,Neteler2000}. The~major advantage of the GRASS GIS{, similar to the QGIS,} is that it combines the GUI with Command Line Interface (CLI) run from the console{ and enables to operate with cartographic projections by GDAL}. This {makes it} convenient to switch between the two modes of {the} data processing since it allows {both }cartographic and analytic experimentation with or without a traditional {GUI }menu. All {the} maps made in the GRASS GIS were stored using {the}\mbox{ Universal Transverse Mercator (UTM)} map coordinate system {Zone 57} within the geographic extent of the study area. The~full scripts used in this study for topographic mapping by the GRASS GIS are available in the GitHub repository of the authors with a provided open access {using the following link}: \href{https://github.com/paulinelemenkova/Mapping_KKT_GRASS_GIS_Scripts}{https://github.com/paulinelemenkova/Mapping\_KKT\_GRASS\_GIS\_Scripts} \hl{ (accessed on).} %MDPI: Please add the access date (format: Date Month Year), e.g., accessed on 1 January 2020. The following highlights are the same. 
+\textls[-15]{The research was implemented in the GRASS GIS~\cite{NetelerMitasova2008}, an~open source{ }software and image and graphics production system~\cite{Neteleretal2008,Neteler2000}. The~major advantage of the GRASS GIS{, similar to the QGIS,} is that it combines the GUI with Command Line Interface (CLI) run from the console{ and enables to operate with cartographic projections by GDAL}. This {makes it} convenient to switch between the two modes of {the} data processing since it allows {both }cartographic and analytic experimentation with or without a traditional {GUI }menu. All {the} maps made in the GRASS GIS were stored using {the}\mbox{ Universal Transverse Mercator (UTM)} map coordinate system {Zone 57} within the geographic extent of the study area. The~full scripts used in this study for topographic mapping by the GRASS GIS are available in the GitHub repository of the authors with a provided open access {using the following link}: \href{https://github.com/paulinelemenkova/Mapping_KKT_GRASS_GIS_Scripts}{https://github.com/paulinelemenkova/Mapping\_KKT\_GRASS\_GIS\_Scripts} (accessed on 18 February 2022). %MDPI: Please add the access date (format: Date Month Year), e.g., accessed on 1 January 2020. The following highlights are the same. <-- Authors: access date added (accessed on 18 February 2022)
 }
 
 The GRASS GIS uses a modular system organised by the name according to their functionality class (raster or vector) with the first letter indicating a function class, separated by dots and describing the specific task performed by this module. This feature is specific for GRASS GIS, yet differs from the GMT, a~scripting cartographic toolset~\cite{Wesseletal2019}. {The console-based }approach {distinct the scripting toolsets} from the GIS which {mostly use the} GUI {as a main workflow environment}. In~contrast, the~GRASS GIS enables to use both GUI with a standard menu and a scripting approach, which is one of its advantages demonstrating its flexibility between the fully console-based GMT and the conventional GIS. This enables to perform cartographic work in both ways, depending on the needs and preferences and profits from the combination of both~approaches. 
 
 \subsection{Data Capture and~Organisation}
 
-The data used in this project include the open source datasets available online. {The }georeferenced Tag Image File Format (TIFF) file of the ETOPO1 grid by NOAA (\href{https://www.ngdc.noaa.gov/mgg/global/}{https://www.ngdc.noaa.gov/mgg/global/}  \hl{(accessed on)}) {was used} as a base map {from the }ETOPO1 Bedrock: Grid of Earth's surface depicting the bedrock underneath the ice sheets{ (Figure} \ref{Fig:1}). {The 'gdalinfo' module of the GDAL library was used to display raster metadata and the 'gdalwarp' was applied to project the initial raster file in the XY Cartesian coordinate into the WGS84. Likewise, the~GDAL library 'gdal\_translate' utility was used to subset target region from the global grid; the GRASS GIS command line modules r.info, d.mon, and d.rast were used for visualising the output raster.} The check of metadata for the raster maps was performed by the \hl{`$g.list$-$f rast$' } %MDPI: Please confirm if the italics is unnecessary and can be removed. The following highlights are the same.
+The data used in this project include the open source datasets available online. {The }georeferenced Tag Image File Format (TIFF) file of the ETOPO1 grid by NOAA (\href{https://www.ngdc.noaa.gov/mgg/global/}{https://www.ngdc.noaa.gov/mgg/global/} (accessed on 18 February 2022)) {was used} as a base map {from the }ETOPO1 Bedrock: Grid of Earth's surface depicting the bedrock underneath the ice sheets{ (Figure} \ref{Fig:1}). {The 'gdalinfo' module of the GDAL library was used to display raster metadata and the 'gdalwarp' was applied to project the initial raster file in the XY Cartesian coordinate into the WGS84. Likewise, the~GDAL library 'gdal\_translate' utility was used to subset target region from the global grid; the GRASS GIS command line modules r.info, d.mon, and d.rast were used for visualising the output raster.} The check of metadata for the raster maps was performed by the 'g.list rast' %MDPI: Please confirm if the italics is unnecessary and can be removed. The following highlights are the same. <-- Authors: italics is not necessary, removed.
 GRASS GIS module {(Figure} \ref{Fig:2}). The~information on the data grids was checked up by command ‘r.info’ module which returns the min/max coordinates of the study area, resolution, number of classes, cartographic projection, scale, geometry with the number of centroids, points, lines, boundaries and islands, and~the type of data (3D or 2D). 
 
 
@@ -176,10 +176,10 @@ GRASS GIS module {(Figure} \ref{Fig:2}). The~information on the data grids was c
 
 
 The command ‘d.mon’ displays a raster map in a selected monitor. The~monitors are used in the GRASS GIS system for visualization of various grids by the commands \mbox{‘d.mon wx0’} and\mbox{ ‘d.mon wx1’}. 
-The project management in GRASS GIS has a certain similarity to the ArcGIS in terms of data storage. Thus, each raster or vector map consists of several auxiliary files which include various data types, categories, header, and other specific information. The~information on the projection of the current mapset was checked up by the commands: ‘g.proj-p’ (general description), \hl{`$g.proj$-$w$'} (here: the Area of Interest (AOI) extension and mathematical approximation are as follows: standard parallels, latitude of origin, central meridian, and false easting and northing). A~summary of the algorithm used for plotting is presented in Listing \ref{lst01}:
+The project management in GRASS GIS has a certain similarity to the ArcGIS in terms of data storage. Thus, each raster or vector map consists of several auxiliary files which include various data types, categories, header, and other specific information. The~information on the projection of the current mapset was checked up by the commands: 'g.proj-p' (general description), 'g.proj-w' (here: the Area of Interest (AOI) extension and mathematical approximation are as follows: standard parallels, latitude of origin, central meridian, and false easting and northing). A~summary of the algorithm used for plotting is presented in Listing \ref{lst01}:
 
 \begin{listing}[H]
-\caption{\hl{GRASS GIS} %MDPI: This listing was formatted according to our rules, please confim the format.
+\caption{GRASS GIS %MDPI: This listing was formatted according to our rules, please confim the format. <-- Authors: yes, we agree and confirm.
  script-1 (Mapping ETOPO1 raster file).}\label{lst01}
 \rule{\columnwidth}{1pt}
 \raggedright
@@ -244,7 +244,7 @@ ETOPO1_KKT_WGS84.tif
 Now that all the components of the code have been explained, we provide a summary in Listing \ref{lst02}.
 
 \begin{listing}[H]
-\caption{\hl{GRASS} %MDPI: This listing was formatted according to our rules, please confim the format.
+\caption{GRASS %MDPI: This listing was formatted according to our rules, please confim the format. <-- Authors: yes, we agree and confirm.
  GIS script-2 (adding cartographic elements).}\label{lst02}
 \rule{\columnwidth}{1pt}
 \raggedright
