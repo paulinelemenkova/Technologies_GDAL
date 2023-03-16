@@ -1,0 +1,1193 @@
+%  LaTeX support: latex@mdpi.com 
+%  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
+
+%=================================================================
+\documentclass[technologies,article,accept,pdftex,moreauthors]{Definitions/mdpi} 
+%\usepackage{showframe}
+%=================================================================
+
+% MDPI internal commands
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2023}
+\copyrightyear{2023}
+\externaleditor{\hl{Academic Editor: Firstname Lastname} %MDPI:  Please add Academic Editor if available. 
+}
+\datereceived{30 January 2023} 
+\daterevised{19 February 2023} 
+\dateaccepted{28 February 2023} 
+\datepublished{} 
+\hreflink{https://doi.org/} % If needed use \linebreak
+%\doinum{}
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, inputenc, calc, indentfirst, fancyhdr, graphicx, epstopdf, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, tabto, xcolor, soul, multirow, microtype, tikz, totcount, changepage, attrib, upgreek, cleveref, amsthm, hyphenat, natbib, hyperref, footmisc, url, geometry, newfloat, caption
+
+\graphicspath{{figures/}} % path to folder with figures
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{gensymb} % for \textdegree
+\usepackage{tabularx}
+\usepackage{spverbatim}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{RGB}{204, 0, 153}
+%    
+\lstdefinestyle{mystyle}{ 
+    numberstyle=\tiny\color{codegray},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=t,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+%=================================================================
+% Full title of the paper (Capitalized)
+\Title{\highlighting{GDAL}%MDPI: Article title is different from the submitting system. Please confirm which one is correct.
+ and PROJ Libraries Integrated with GRASS GIS for Terrain Modelling {of} the Georeferenced Raster Image}
+
+% MDPI internal command: Title for citation in the left column
+\TitleCitation{GDAL and PROJ Libraries Integrated with GRASS GIS for Terrain Modelling {of} the Georeferenced Raster Image}
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
+\newcommand{\orcidauthorB}{0000-0002-6461-1551} % Olivier Add \orcidB{} behind the author's name
+
+% Authors, for the paper (add full first names)
+\Author{\hl{Polina Lemenkova} %MDPI: Please carefully check the accuracy of names and affiliations.
+ *\orcidA{} and Olivier Debeir\orcidB{}}
+
+%\longauthorlist{yes}
+
+% MDPI internal command: Authors, for metadata in PDF
+\AuthorNames{Polina Lemenkova and Olivier Debeir}
+
+% MDPI internal command: Authors, for citation in the left column
+\AuthorCitation{Lemenkova, P.; Debeir, O.}
+% If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address[1]{%
+\hl{Building L}%MDPI: Order of institutions was corrected from subordinate to superior, please confirm this change.
+, Laboratory of Image Synthesis and Analysis (LISA), \hl{\'Ecole Polytechnique de Bruxelles}%MDPI: English writing is recommended, please try to provide. Same for the Univesity and Campus name.
+\hl{,} %MDPI: We revised the brackets into commas to separate two different institutions, please confirm the format.
+\linebreak Brussels Faculty of Engineering, \hl{Campus du Solbosch}, \hl{Universit \'e Libre de Bruxelles (ULB)},\linebreak \hl{ULB---LISA CP165/57}%MDPI: Is this necessary? Can this be deleted? Please revise.
+, Avenue Franklin Roosevelt 50, 1000 Brussels, Belgium; \hl{olivier.debeir@ulb.be} %MDPI: We added the email addresses here according to those submitted online at susy.mdpi.com. Please confirm.
+
+}
+
+% Contact information of the corresponding author
+\corres{Correspondence: polina.lemenkova@ulb.be; Tel.: +32 471 86 04 59}
+
+% Current address and/or shared authorship
+%\firstnote{Current address: Affiliation 3.} 
+
+% Abstract (Do not insert blank lines, i.e., \\) 
+\abstract{\textls[-15]{Libraries with prewritten codes optimize the workflow in cartography and reduce labour intensive data processing by iteratively applying scripts to implementing mapping tasks. Most existing {Geographic Information System (GIS)} approaches are based on traditional software with a graphical user's interface which significantly limits their performance. Although plugins are proposed to improve the functionality of many GIS {programs}, they are usually ad hoc in finding specific mapping solutions, e.g., cartographic projections and data conversion. We address this limitation by applying the principled approach of {Geospatial Data Abstraction Library (GDAL), library for conversions between cartographic projections PROJ} and {Geographic Resources Analysis Support System (GRASS)} GIS for geospatial data processing and morphometric analysis. This research presents topographic analysis of the dataset using scripting methods which include several tools: (1) GDAL, a translator library for raster and vector geospatial data formats used for converting {Earth Global Relief Model (ETOPO1)} GeoTIFF in XY Cartesian coordinates into {World Geodetic System 1984 (WGS84)} by the ‘gdalwarp’ utility; (2) PROJ projection transformation library used for converting ETOPO1 WGS84 grid to cartographic projections (Cassini--Soldner equirectangular, Equal Area Cylindrical, Two-Point Equidistant Azimuthal, and Oblique Mercator){; and }(3) GRASS GIS by sequential use of the following modules: r.info, d.mon, d.rast, r.colors, d.rast.leg, d.legend, d.northarrow, d.grid, d.text, g.region, {and} r.contour. The depth frequency was analysed by the module 'd.histogram'. The proposed approach provided a systematic way for morphometric measuring of topographic data and {combine} the advantages of the GDAL, PROJ, and GRASS GIS tools that include the informativeness, effectiveness, and representativeness in spatial data processing. The morphometric analysis included the computed slope, aspect, profile, and tangential curvature of the study area. The data analysis revealed the distribution pattern in topographic data: 24\% of data with elevations below 400 m, 13\% of data with depths $-$5000 to $-$6000 m, 4\% of depths have values $-$3000 to $-$4000 m, the least frequent data ($-$6000 to 7000 m) <1\%, 2\% of depths have values $-$2000 to 3000 m in the basin, while other values are distributed proportionally. Further, by incorporating the generic coordinate transformation software library PROJ, {the} raster grid {was transformed} into various cartographic projections to demonstrate distortions in shape and area. Scripting techniques of GRASS GIS are demonstrated for applications in topographic modelling and raster data processing. The GRASS GIS shows the effectiveness for mapping and visualization, compatibility with libraries (GDAL, PROJ), technical flexibility in combining {Graphical User Interface (GUI)}, and command-line data processing. The research contributes to the technical cartographic development.}}
+
+\keyword{GDAL; PROJ; GRASS GIS; terrain; DEM; elevation; ETOPO1; geomorphometry;\\ cartography; mapping} 
+
+\PACS{{91.10.Da; 92.70.Pq; 93.30.Db; 91.10.Fc}}
+\MSC{{86A30; 86A04; 86A22; 53C22; 58E10; 97N60}}
+\JEL{{Y91; Q00; Q01; Q5; Q50; Q55; Q56; P18; P48; N50; N57}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\section{Introduction}
+
+
+\subsection{Background}
+{Topographic modelling is a central problem in cartography, land surface modelling, geodesy, and mapping. }A basis form of spatial analysis, topographic modelling consists of visualisation of {the }land surface and plotting contours that reveal variations in elevation {and enables landform delineation} \cite{MINAR2020103414,MAXWELL2022103944}. {Tasks such as geomorphic gradients, hydrologic modelling, or stream profiling all require topographic analysis. }While in Geographic Information System (GIS) spatial analysis focuses on complex problems regarding the modelling of the Earth's shape~\cite{ZHOU2021281,RUZICKOVA2021101109}, technical aspects of spatial data handling consists of various tasks such as data capture~\cite{395647,4736372,8647473}, {multi-source data }formatting and \mbox{processing{ }\cite{7004495,7325718,6946974}}, computational analysis and modelling~\cite{4659762,5172778,5497752,5653068}, and visualization and mapping~\cite{938657,6349625,6234685}. 
+
+Maps became a successful form of geospatial data processing since they help exploiting the complex phenomena of diverse processes and geographic objects on the Earth's surface~\cite{PAZOUKI2023108046}. {For instance, features such as elevation points with heights, contour isolines, and gradients of curvature are extracted from the topographic maps and Digital Elevation Model (DEM) and matched against features of another map with thematic content \mbox{(e.g., hydrological drainage network)}. }Moreover, maps and{ }georeferenced images enable one to learn and recognise regular patterns in visual spatio-temporal datasets for interpretation and analysis of the environmental dynamics and variability~\cite{ ,MOREIRA2014208,CHOWDHURY2023102062}.
+
+Therefore, a~vital part of the spatial data interpretation is {topographic }visualization and mapping performed through a cartographic workflow{ Topographic data modelling comprises two subtasks: (1) retrieval the information regarding the surface of the Earth from DEM, and~(2) visualization and analysis of the key parameters of the elevation and objects depicted on the maps. Each of these subtasks can be solved using the GIS. Many} existing applications in GIS {propose solutions to the topographic modelling using their diverse functionality} \cite{Boulton,Buterez,Duncan}. Due to the variety of the existing GIS (e.g., ArcGIS, QGIS, MapINFO, Environment for Visualizing Images (ENVI), Idrisi, System for Automated Geoscientific Analyses (SAGA) GIS, Erdas Imagine), the~choice of the tools may face{ }questions regarding the {technical} functionality of the {diverse} GIS. {The difficulty arises when attempting to select the GIS software and find optimal solutions to mapping. }Among the most essential factors of GIS are the open source availability and functionality providing a variety of tools and embedded computational algorithms~\cite{agronomy11050952,Armstrong,ijgi5110209}. Since the {proprietary} GIS such as Erdas Imagine and ArcGIS are a subject of access, open source tools present {more }effective solutions for mapping{, geoinformation processing}, and spatial data~analysis. 
+
+In recent years, open source tools of computer vision and machine learning for data analysis became increasingly successful in {the analysis of} spatial data and {diverse }cartographic tasks~\cite{Brovelli}. Free availability of {the }open source GIS {causes their } popularity and {creates} an increased demand with reported cases in{ }geospatial analysis~\cite{Christl,Turton}. Much progress has been made, for~instance, by~applications of {the }programming scripts that aim at {automation of the geoinformation }processing using a given dataset. Examples are artificial intelligence and big data processing pointed out in selected studies on geoinformatics~\cite{Barnes,Issaka}. The~benefits of the open source GIS and scripting are widely discussed and mentioned easily data integration in a number of scenarios and geospatial research, handling 2D and 3D raster datasets~\cite{land12010261}, spatial {data} exchange, and processing~\cite{Ajvazi,Guan,Kralidis}. 
+
+{Open source data are ubiquitous in the Earth sciences with numerous application across the field of topographic and geographic studies}. Common sources of open geospatial data include topographic and bathymetric grids~\cite{Basith,Habib} using General Bathymetric Chart of the Oceans (GEBCO), Shuttle Radar Topography Mission (SRTM) DEM, ETOPO1 or ETOPO5, geophysical datasets (Earth Gravitational Model of 1996 (EGM96), EGM2008){, }geological data{, }local data from the online repositories, embedded datasets, OpenStreetMap of Google Earth imagery, remote sensing data such as Landsat TM~\cite{YIN2021102457}, or Sentinel-2A~\cite{app13042525} satellite images. {Further,} many of the topographic datasets are available in raster of vector digital formats, accessed via {the }online repositories, e.g.,~OpenStreetMaps or Google Earth. Increasingly, {the }geospatial data sources are developing {as }online repositories for their data storage such as the National Oceanic and Atmospheric Administration (NOAA), GloVis providing an access to remote sensing datasets, {and many more}. A~regular access to such resources enables their use in spatial analysis and arises the question of effective methods for processing these~data.
+
+
+{With ever larger geospatial datasets generating thousands of grids and thematic layers, two particular problems have become critical: (i) how to process these data with algorithms that use automation by scripts, and~(ii) which GIS software to use for processing and visualising all the original data by an optimised workflow. Recently, there has been a rapid development of }scripting approaches{ }used in geographic research and Earth sciences {aimed at addressing problem (i)} \cite{Rey}. {The use of programming methods }tend to become a progressively popular  perspective in view of the rising amounts of spatial data and the need to process these data accurately {and} rapidly. For~many types of spatial data, cartographic modelling approaches hereby have to address the problem of automation while handling these data. An~ever-growing pool of spatial datasets encompass the multi-format data formats that vary in resolution, source, and scale {which raise challenges in handling such big geospatial data} \cite{ZHANG2019101374,KIM2023100368}. These data can be used for the diverse purposes in Earth science such as hydrology and geomorphology~\cite{Teixeira}, soils and landscape changes~\cite{Savulescu}, environmental coastal studies~\cite{Hernandez}, climate changes, land cover studies, geology~\cite{app7090956}, and~many more. Various GIS software {(e.g., ArcGIS, QGIS, and SAGA GIS)} can be applied to process open source geospatial data available online with aim at spatial~analysis. 
+
+Programming applications address this problem by replicating scripts for treatment of different images and selected scenes of the study area in the topographic map. Other approaches go one step further to automate {the }individual cartographic steps and explicitly model spatial data using {a modular structure }as in {the }Generic Mapping Tools {(}GMT){. Others} use {the }extensions with {the }prewritten scripts in {the }American Standard Code for Information Interchange (ASCII) format as UNIX shell scripts as in {Geographic Resources Analysis Support System (GRASS) GIS}. Such approaches allow for mapping of {the spatial }datasets by scripts that are independent of their spatial position. {Such performance is based on} replicating the{ }scripts for other extents of data using snippets of code {and} modified spatial parameters {such as }coordinates, data extent, and projections{. }However, the~question of how to better process spatial data and which {GIS }program to select remains a challenging question in cartography due to many advantages and drawbacks in various {existing }tools {and proposed solutions}. 
+
+\subsection{Objectives and~Motivation}
+This study presents the {the application} of {the }GRASS{ }GIS, an~open source powerful software for topographic {modelling}, visualization, statistical{ }analysis, and mapping with a case study of{ }morphometric data analysis. Besides~open source availability, GRASS GIS includes a variety of functional tools for processing both raster and vector data, using both Graphical User Interface (GUI) and scripts for mapping. Leaving apart the GUI approach as more trivial{ }approach of geospatial data processing, this paper {presents} the {implementation} of {the }scripting methods {using the }GRASS GIS. We presented a case of topographic modelling and data handling using an integration of GRASS GIS with such libraries as Geospatial Data Abstraction Library (GDAL) and PROJ as the key tools for transformation of geospatial data formats and cartographic projections. The~combination of these technical tools introduces major computational challenges for cartographic data processing and {selection of the best} projection to avoid distortions~\cite{Kiani}.
+
+{The objective of this study is to provide an effective geoprocessing using architecture of the GRASS GIS which enables storage of the data in one location of the 'mapset'. The~'mapset' in the GRASS GIS can be used for the same coordinate reference system and projection by interactive design of maps. }The GRASS GIS modules were used for assessing the morphometrics in the land-surface parameters over the study area based on the ETOPO1-derived basin morphometry: profile and tangential curvature, slope and aspect maps, and histograms of elevation~distribution. 
+
+{Current methods for geospatial data processing all focus on storing the data in one project with aim at projecting the data on the run. Thus, to~enable data modelling, the~QGIS and ArcGIS have a special modelling tool that allows one to create new tools with the use of sequential algorithms; while this can be a flexible solution for thematic maps, for~topographic modelling this approach is unfeasible as placing different projections into separate folder locations is more optimised when dealing with several projections because it is making it possible to discriminate between the grids and process maps in distinct map sets. In~contrast to such} traditional GIS software, the~architecture of the GRASS GIS presents a collection of modules that can be stored as a sequence in a shell script and used for mapping {using a console}. 
+
+We {instead focus on using the} advantages of the GRASS GIS to demonstrate the effectiveness of scripts {and data processing }for mapping and visualization, as~well as its compatibility with libraries{ }GDAL, PROJ, and R~\cite{Bivand2000,Bivand1999,app122412554,Grohmann}. The~theoretical approaches in {the }morphometric studies~\cite{Chapman} have been implemented in practical applications of GRASS GIS and developed in {the }GRASS {GIS} module r.slope.aspect~\cite{Hofierka2009}, as~demonstrated in this study. The~topographic modelling and spatial analysis based on the continuous field of DEM assist in {the }analysis of slope stability in geologic risk assessment and diverse applications in Earth sciences~\cite{HofierkaSuri,Mitas1999,Mitasovaetal1996}. {Selected features in the GRASS GIS function comparable to the principle of other GIS. For~instance, similar to the QGIS, the~}technical flexibility of {the }GRASS GIS enables to switch between the GUI and command-line mode of data processing. Similar to GMT, GRASS GIS uses a programming approach which enables to speed up the repeated tasks through the executable~scripts. 
+
+{Resembling the} scripts in a UNIX shell, R and Python environments~\cite{jimaging8120317}, GRASS GIS and GMT scripts{ }are used to automate the workflow repeatedly performed for different maps using the same algorithm for various study areas. Other examples of automation of the cartographic workflow are diverse and include the cases of machine learning approaches of rapid vectorisation of the isolines~\cite{Lemenkova2020e}, morphometric landscape analysis~\cite{Clarke,Sofia}, geospatial analysis based scripting libraries~\cite{su142315966}, topographic mapping using the GMT and {QGIS} \cite{LemenkovaDebeir2022JAES}, and fractal modelling quantifying the repetitive patters~\cite{Malinverno}.
+
+\section{Case~Study}
+
+\textls[-9]{The study is focused on the Kuril--Kamchatka Trench and Kuril island arc that extend in the northwest Pacific Ocean, from~the Kamchatka Peninsula to Hokkaido Island of the Japanese Archipelago{ (Figure }\ref{Fig:1}). This region is characterised by{ }complex geological settings and high seismicity{ caused by the deep slab dynamics and morphology with high discontinuity of the subduction zone as recently revealed in the seismic cross-sections} \cite{CUI2023117967}. {Thus, }almost all of {the }islands from the Greater Kuril Chain are located along the submarine ridge of the Kuril island arc with depths mostly 100--300 m above them. {Further, }the morphological structure{ includes} the submerged Vityaz ridge which extends from the oceanward side of the Sea of Okhotsk. The~Kuril--Kamchatka Trench generally has a flat seabed consisting of a chain of {the }relatively wide and narrow {segments representing short }sections with depths of over $-$7000 m. However, it differs in the southern and northern parts with the maximum depth ($-$9717 m) {recorded }in its southwestern~segment. }
+
+The basement surface of the Mesozoic structures near the northern coast of the Sea of Okhotsk forms a sub-latitudinal depression with depths reaching up to 3 km. Local minor trenches with depths up to $-$\hl{2.000} %MDPI: Please check if this number represents a decimal number, if not please remove the decimal dot.
+ m extend from this depression in a sub-meridional direction, covering structural uplift in the centre of {this} sea. The~southern part of the Sea of Okhotsk has a {notable }depression with depths exceeding $-$5000 m. The~steep basement structures of the nearby shelf and the Kuril island arc descend towards the bottom \mbox{of this~depression}. 
+
+
+\begin{figure}[H]
+ \hspace{-5pt}
+    \includegraphics[width=1.01\textwidth]{Fig_1.jpg}\\
+  \caption{\hl{Study area} %MDPI: Please change the hyphen (-) into a minus sign ($-$, "U+2212"). e.g., "-1" should be "$-$1".
+ on the ETOPO1World Global Relief Model GeoTIFF by NOAA. Mapping: GRASS GIS{.}}\label{Fig:1}
+\end{figure}
+
+The surface morphology of the seafloor basement in the Kuril--Kamchatka Trench correlates well with its modern relief. However, the~depths in the seabed of the trench are about $-$1000 to $-$2000 m deeper. According to the age of the constituent rocks, the~Kuril--Kamchatka island arc was formed during the Oligocene period with some of the most ancient seamounts, mostly located on the slopes of the trench, formed on the Mesozoic crust. Following the subduction of the tectonic plates under the island arcs, these seamounts were displaced from the basement surface and imprinted in the structures of the island arcs and coastal structures of {the }active continental margins. Such volcanic mountains are found{, for~instance, }in the {modern }structures of the submarine slopes of the Kamchatka~Peninsula. 
+
+The geophysical settings in the study area have a zone of linear positive and negative magnetic anomalies with isometric magnetic field in the Kuril basin, which extends along the Kuril island arc and continues further within the Kamchatka Peninsula. The~upper edges of the anomaly-forming bodies, associated with {the }volcanic rocks of the Pliocene-Quaternary age, {are deposited} closer to the surface. {The} geological complexity of the region of the Kuril--Kamchatka Trench and Kuril island arc{, as~briefly described above, illustrates} the existing connectivity and correlation {between} the submarine and terrestrial morphology {of the study area}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Materials and~Methods}
+
+\textls[-15]{The research was implemented in the GRASS GIS~\cite{NetelerMitasova2008}, an~open source{ }software and image and graphics production system~\cite{Neteleretal2008,Neteler2000}. The~major advantage of the GRASS GIS{, similar to the QGIS,} is that it combines the GUI with Command Line Interface (CLI) run from the console{ and enables to operate with cartographic projections by GDAL}. This {makes it} convenient to switch between the two modes of {the} data processing since it allows {both }cartographic and analytic experimentation with or without a traditional {GUI }menu. All {the} maps made in the GRASS GIS were stored using {the}\mbox{ Universal Transverse Mercator (UTM)} map coordinate system {Zone 57} within the geographic extent of the study area. The~full scripts used in this study for topographic mapping by the GRASS GIS are available in the GitHub repository of the authors with a provided open access {using the following link}: \href{https://github.com/paulinelemenkova/Mapping_KKT_GRASS_GIS_Scripts}{https://github.com/paulinelemenkova/Mapping\_KKT\_GRASS\_GIS\_Scripts} \hl{ (accessed on).} %MDPI: Please add the access date (format: Date Month Year), e.g., accessed on 1 January 2020. The following highlights are the same. 
+}
+
+The GRASS GIS uses a modular system organised by the name according to their functionality class (raster or vector) with the first letter indicating a function class, separated by dots and describing the specific task performed by this module. This feature is specific for GRASS GIS, yet differs from the GMT, a~scripting cartographic toolset~\cite{Wesseletal2019}. {The console-based }approach {distinct the scripting toolsets} from the GIS which {mostly use the} GUI {as a main workflow environment}. In~contrast, the~GRASS GIS enables to use both GUI with a standard menu and a scripting approach, which is one of its advantages demonstrating its flexibility between the fully console-based GMT and the conventional GIS. This enables to perform cartographic work in both ways, depending on the needs and preferences and profits from the combination of both~approaches. 
+
+\subsection{Data Capture and~Organisation}
+
+The data used in this project include the open source datasets available online. {The }georeferenced Tag Image File Format (TIFF) file of the ETOPO1 grid by NOAA (\href{https://www.ngdc.noaa.gov/mgg/global/}{https://www.ngdc.noaa.gov/mgg/global/}  \hl{(accessed on)}) {was used} as a base map {from the }ETOPO1 Bedrock: Grid of Earth's surface depicting the bedrock underneath the ice sheets{ (Figure} \ref{Fig:1}). {The 'gdalinfo' module of the GDAL library was used to display raster metadata and the 'gdalwarp' was applied to project the initial raster file in the XY Cartesian coordinate into the WGS84. Likewise, the~GDAL library 'gdal\_translate' utility was used to subset target region from the global grid; the GRASS GIS command line modules r.info, d.mon, and d.rast were used for visualising the output raster.} The check of metadata for the raster maps was performed by the \hl{`$g.list$-$f rast$' } %MDPI: Please confirm if the italics is unnecessary and can be removed. The following highlights are the same.
+GRASS GIS module {(Figure} \ref{Fig:2}). The~information on the data grids was checked up by command ‘r.info’ module which returns the min/max coordinates of the study area, resolution, number of classes, cartographic projection, scale, geometry with the number of centroids, points, lines, boundaries and islands, and~the type of data (3D or 2D). 
+
+
+\begin{figure}[H]
+ 
+    \includegraphics[width=1.00\textwidth]{Fig_2.jpg}\\
+  \caption{Subset of the study area (Kuril--Kamchatka region), in~the Cartesian XY coordinates (metadata: left) visualized on a display (GRASS GIS GUI: right). Source: authors.}\label{Fig:2}
+\end{figure}
+
+
+The command ‘d.mon’ displays a raster map in a selected monitor. The~monitors are used in the GRASS GIS system for visualization of various grids by the commands \mbox{‘d.mon wx0’} and\mbox{ ‘d.mon wx1’}. 
+The project management in GRASS GIS has a certain similarity to the ArcGIS in terms of data storage. Thus, each raster or vector map consists of several auxiliary files which include various data types, categories, header, and other specific information. The~information on the projection of the current mapset was checked up by the commands: ‘g.proj-p’ (general description), \hl{`$g.proj$-$w$'} (here: the Area of Interest (AOI) extension and mathematical approximation are as follows: standard parallels, latitude of origin, central meridian, and false easting and northing). A~summary of the algorithm used for plotting is presented in Listing \ref{lst01}:
+
+\begin{listing}[H]
+\caption{\hl{GRASS GIS} %MDPI: This listing was formatted according to our rules, please confim the format.
+ script-1 (Mapping ETOPO1 raster file).}\label{lst01}
+\rule{\columnwidth}{1pt}
+\raggedright
+1~~\texttt{\emph{\#!/bin/sh\\}}
+2~~\texttt{\emph{\# raster file imported to the Location folder 'Kamchatka'\\}}
+3~~\texttt{r.in.gdal -o input = /Users/pauline/ETOPO1\_KKT\_WGS84.tif output = ETOPO1\_KKT\_WGS84.tif}\\ 
+4~~\texttt{\emph{\# checked up the list of the raster files in the working directory\\}}
+5~~\texttt{g.list rast} \\
+6~~\texttt{\emph{\#starting graphical display (or 'monitor') in which the maps were displayed\\}}
+7~~\texttt{d.mon wx0}\\
+8~~\texttt{\emph{\# visualizing raster by d.rast utility which displays grid cell maps in the current graphics region\\}}
+9~~\texttt{d.rast ETOPO1\_Bed\_g\_geotiff \\}
+10~~\texttt{\emph{\#  changing color palette, from~default viridis to srtm\_plus\\}}
+11~~\texttt{r.colors ETOPO1\_KKT\_WGS84 col = srtm\_plus\\}
+12~~\texttt{\emph{\# check of the range of the elevation values (depths/heights) of the map\\}}
+13~~\texttt{r.info ETOPO1\_KKT\_WGS84\\}
+14~~\texttt{\emph{\# display a legend on a map\\}}
+15~~\texttt{d.rast.leg map =  ETOPO1\_KKT\_WGS84 \\}
+16~~\texttt{\emph{\# providing numerical output of category numbers or range of values in a raster\\}}
+17~~\texttt{r.describe ETOPO1\_KKT\_WGS84 \\}
+18~~\texttt{\emph{\#  print a list of category numbers and associated labels\\}}
+19~~\texttt{r.cats\\}\
+20~~\texttt{\emph{\# check up and print the current region extent (in this case: NS: 20.000000; EW: 45.000000).\\}}
+21~~\texttt{g.region -e \\}
+22~~\texttt{\emph{\# Removing auxiliary files\\}}
+23~~\texttt{g.remove type = raster name = ETOPO1\_KKT\_WGS84.tiff -f\\}
+\rule{\columnwidth}{1pt}
+\end{listing}
+
+The trial directories were removed from the Unix utility ‘rm’ from a console by commands in two steps: (1) \emph{cd /Users/{<...>}/grassdata} (changing to the current folder); \mbox{(2) \emph{rm -r testKKT}} (here: removing testing folder for the Kuril--Kamchatka Trench with all files).
+The ‘g.region-p’ command was used to retrieve the information on the data extension and selected region (West, East, South, or North (WESN); number of rows; columns and cells; as well as additional cartographic data: ellipsoid, datum, and zone). 
+
+\subsection{Data Processing by~GDAL}
+
+The initial operations with raster file were performed by the Geospatial Data Abstraction Library (GDAL), a~translator library for raster and vector geospatial data formats {with available }GDAL documentation~\cite{GDAL}. The~input to the reference list~\cite{GDAL} was run from the console of the GMT. In~general, the~GDAL was used to re-project raster files to the supported cartographic projection, as~well as to perform image mosaicking and transformations{. }In this study, we used three GDAL utilities using the commands of the following utilities:\\ 
+$‘gdalwarp’, ‘gdal\_translate’$, and $‘gdalinfo’${. }The ‘gdalwarp’ utility was used to re-projection and warping of the initial original file (ETOPO1\_Bed\_g\_geotiff.tif) from the XY Cartesian coordinates to the World Geodetic System 1984 (WGS84) \cite{Defense}. 
+
+{The PROJ library, used for transforming the projections, was installed via the Homebrew package manager using the following commands: 'brew install proj' and 'brew upgrade proj' for installing and updating the package, respectively. }The transformation uses the European Petroleum Survey Group (EPSG) number, which in this case is 4326 (corresponds to the WGS84). The~warping was performed by the command for Spatial Reference System (SRS) as follows: 
+
+\begin{spverbatim}
+gdalwarp -t_srs EPSG:4326 ETOPO1_Bed_g_geotiff.tif ETOPO1_WGS84.tif
+\end{spverbatim} 
+
+\textls[-30]{The next step contains running the utility ‘gdal\_translate’ with the argument ‘-$projwin\_srs <srs\_def>$’, which specifies the projwin SRS GDAL, in~which it interprets the coordinates (here, given coordinates in the EPSG system). }
+
+Using the gdal\_translate{, }the file was subset, or~clipped, to~the target square area from the global extent with clockwise going coordinates in degrees as follows: W = 140 \mbox{N = 60} E = 170 S = 40. The~re-projection was performed by the {'gdalwarp'} utility and illustrated \mbox{in Figure \ref{Fig:3}}. The~subsetting of the target area was performed by the following command: 
+
+\begin{spverbatim}
+gdal_translate -projwin 140.0000 60.0000 170.0000 40.0000 ETOPO1_WGS84.tif 
+ETOPO1_KKT_WGS84.tif
+\end{spverbatim}
+
+
+\begin{figure}[H]
+ 
+    \includegraphics[width=1.00\textwidth]{Fig_3.jpg}
+  \caption{\hl{Raster projected} %MDPI: Please change the hyphen (-) into a minus sign ($-$, "U+2212"). e.g., "-1" should be "$-$1".
+ from XY to WGS84 Lat/Lon coordinates with cartographic elements. Source: authors.}\label{Fig:3}
+\end{figure}
+
+
+Now that all the components of the code have been explained, we provide a summary in Listing \ref{lst02}.
+
+\begin{listing}[H]
+\caption{\hl{GRASS} %MDPI: This listing was formatted according to our rules, please confim the format.
+ GIS script-2 (adding cartographic elements).}\label{lst02}
+\rule{\columnwidth}{1pt}
+\raggedright
+1~~\texttt{\emph{\#!/bin/sh\\}}
+2~~\texttt{g.region rast = ETOPO1\_KKT\_WGS84.tif -p\\}
+3~~\texttt{d.mon wx0}
+4~~\texttt{d.rast ETOPO1\_KKT\_WGS84\\}
+5~~\texttt{r.colors ETOPO1\_KKT\_WGS84 col = srtm\_plus\\}
+6~~\texttt{d.legend raster = ETOPO1\_KKT\_WGS84 title = Elevation, \mbox{m title\_fontsize = 12} \\}
+7~~\texttt{font = Helvetica fontsize = 8 -t -b bgcolor = white label\_step = 2000 \mbox{border\_color = gray -f thin = 10}\\}
+8~~\texttt{d.northarrow style = fancy\_compass rotation = 0 label = N -w \mbox{color = black fill\_color = gray fontsize = 10}\\}
+9~~\texttt{d.grid size = 02:00:00 -a -d color = red width = 0.1 fontsize = 8 text\_color = white\\}
+10~~\texttt{d.text text = "Region of Kuril--Kamchatka Trench" color = yellow bgcolor = gray size = 8\\}
+\rule{\columnwidth}{1pt}
+\end{listing}
+
+The method presentation is shown by the projection transformation by GDAL utility ‘gralwarp’ using the PROJ library. It demonstrates the transformation of the TIFF file in the WGS84 geoid datum warped to a Two-Point Equidistant Azimuthal projection using the PROJ arguments: 
+
+\begin{spverbatim}
+gdalwarp -t_srs '+proj=tpeqd +lat_1=45 +lat_2=55 +lon_1=100 +lon_2=120' 
+ETOPO1_KKT_WGS84.tif ETOPO1_KKT_2p.tif -overwrite
+\end{spverbatim}
+
+Now the file was reprojected to the WGS84 and subset (cut off) from the initial raster grid with global extent. A~gdalinfo utility was used to check up the correctness of the performed operations and the output data as follows: $gdalinfo ETOPO1\_KKT\_WGS84.tif.$ {The standard parallels for the study area are }45$^{\circ}$ N and 55$^{\circ}${ N. }Next, we present the code in details in Listing \ref{lst03}:
+
+\begin{listing}[H]
+\caption{\hl{GRASS GIS} %MDPI: This listing was formatted according to our rules, please confim the format.
+ script for plotting 2-Point Equidistant Azimuthal projection.}\label{lst03}
+\rule{\columnwidth}{1pt}
+\raggedright
+1~~\texttt{\emph{\# stored in GeoTIFF in WGS84 warped to a Two-Point Equidistant Azimuthal projection:\\}}
+2~~\texttt{gdalwarp -t\_srs '+proj = tpeqd +lat\_1 = 45 +lat\_2 = 55 +lon\_1 = 100 +lon\_2 = 120' ETOPO1\_KKT\_WGS84.tif ETOPO1\_KKT\_2p.tif -overwrite\\}
+3~~\texttt{\emph{\#!/bin/sh\\}}
+4~~\texttt{g.list rast\\}
+5~~\texttt{r.info ETOPO1\_KKT\_2p\\}
+6~~\texttt{d.mon wx0\\}
+7~~\texttt{g.region raster = ETOPO1\_KKT\_2p -p\\}
+8~~\texttt{r.colors ETOPO1\_KKT\_2p col = grey.eq\\}
+9~~\texttt{d.rast ETOPO1\_KKT\_2p\\}
+10~~\texttt{d.redraw\\}
+11~~\texttt{r.contour ETOPO1\_KKT\_2p out = Bathymetry1000 step = 1000\\}
+12~~\texttt{d.vect Bathymetry1000 color = 'blue' width = 0\\}
+13~~\texttt{d.grid -g size = 2.5 color = '255:0:0'\\}
+14~~\texttt{d.text text = "2 Point Equidist. Azimuth." color = '0:0:51' bgcolor = '224:224:224' size = 3\\}
+\rule{\columnwidth}{1pt}
+\end{listing}
+
+The next step was continued in the GRASS GIS version 7.6 and included the coordinates transformation that was performed by ‘proj’ with several tested projections and their visualization using GRASS GIS scripts presented in details in Listings \ref{lst04} for Cassini--Soldner projection, Listing \ref{lst05} for Oblique Mercator projection, and Listing \ref{lst06} for an Equal-Area Cylindrical projection. The~‘proj’ is a cartographic projection filter of the PROJ software which allows for converting between the geographic and projection coordinates within one datum WGS84. The~maps projections were tested in PROJ via the ‘gdalwarp’ utility of GDAL before importing them into the GRASS GIS. The~‘gdalwarp’ is specially designed to reproject maps to the target projections, coordinate systems, ellipsoid, or~geodetic datum. In~this case, we selected the datum as a constant WGS84 and kept it constant for this~project. 
+
+{The ellipsoidal Cassini--Soldner projection is well suited for topographic mapping of the areas with restricted extent along the meridian since the distortion of the areas along the central meridian is minimised (in this case, the~meridian is} 155$^{\circ}$ E {and the latitude is} 50$^{\circ}$ {N). Thus, due to the more accurate computations in the ellipsoidal formulae, it provides a compromise between the conformal nor equal-area projections keeping the distortions minimal in the longitudinal direction. The~definition of this projection is based on the meridian and parallel of the central point of the study area. The~plotting has been performed using the script provided in Listing} \ref{lst04}.
+
+\begin{listing}[H]
+\caption{\hl{GRASS GIS}%MDPI: This listing was formatted according to our rules, please confim the format.
+ script for plotting map in Cassini--Soldner projection).}\label{lst04}
+ \rule{\columnwidth}{1pt}
+ \raggedright
+1~~\texttt{\emph{\# stored in GeoTIFF in WGS84 warped to an Cassini (Cassini--Soldner) equirectangular projection:\\}}
+2~~\texttt{gdalwarp -t\_srs '+proj = cass lat\_0 = 50 lon\_0 = 155' ETOPO1\_KKT\_WGS84.tif ETOPO1\_KKT\_C.tif\\}
+3~~\texttt{\emph{\#!/bin/sh\\}}
+4~~\texttt{g.list rast\\}
+5~~\texttt{r.info ETOPO1\_KKT\_C\\}
+6~~\texttt{d.mon wx0}
+7~~\texttt{g.region raster = ETOPO1\_KKT\_C -p\\}
+8~~\texttt{r.colors ETOPO1\_KKT\_C col = grey.eq\\}
+9~~\texttt{d.rast ETOPO1\_KKT\_C\\}
+10~~\texttt{d.redraw\\}
+11~~\texttt{r.contour ETOPO1\_KKT\_C out = Bathymetry1000C step = 1000\\}
+12~~\texttt{d.vect Bathymetry1000C color = 'blue' width = 0\\}
+13~~\texttt{d.grid -g size = 2.5 color = '255:0:0'\\}
+14~~\texttt{d.text text = "Cassini--Soldner prj" color = '0:0:51' bgcolor = '224:224:224' size = 3\\}
+\rule{\columnwidth}{1pt}
+\end{listing}
+
+{The geodetic transformations used to plot the map in conformal oblique Mercator projection expressed as a series of operations which represent the parallels and meridians as complex curves. These include the defining of the key parameters such as longitude and latitude of the projection centre, azimuth of the oblique equator with a scale along it as representing the oblique aspect of the Mercator projection. The~advantages of the oblique Mercator projection is that is provides a high accuracy in zones close to the longitude and latitude of the projection centre and a constant scale on the line of tangency, that is, central longitude and preserve local shapes in the regions of large lateral extent such as the Kuril--Kamchatka and Kuril islands. The~map in the oblique Mercator projection was plotted using Listing} \ref{lst05}.
+
+\begin{listing}[H]
+\caption{\hl{GRASS GIS} %MDPI: This listing was formatted according to our rules, please confim the format.
+ script for plotting map in Oblique Mercator projection).}\label{lst05}
+\rule{\columnwidth}{1pt}
+\raggedright
+1~~\texttt{\emph{\# stored in GeoTIFF in WGS84 warped to a Oblique Mercator projection:\\}}
+2~~\texttt{gdalwarp -t\_srs '+proj = omerc +lat\_1 = 45 +lat\_2 = 55 lon\_1 = 177 lon\_2 = 210 +ellps = GRS80' ETOPO1\_KKT\_WGS84.tif ETOPO1\_KKT\_OM.tif -overwrite\\}
+3~~\texttt{\emph{\#!/bin/sh\\}}
+4~~\texttt{g.list rast\\}
+5~~\texttt{r.info ETOPO1\_KKT\_OM\\}
+6~~\texttt{d.mon wx0\\}
+7~~\texttt{g.region raster = ETOPO1\_KKT\_OM -p\\}
+8~~\texttt{r.colors ETOPO1\_KKT\_OM col = grey.eq\\}
+9~~\texttt{d.rast ETOPO1\_KKT\_OM\\}
+10~~\texttt{r.contour ETOPO1\_KKT\_OM out = Bathymetry1000OM step = 1000\\}
+11~~\texttt{d.vect Bathymetry1000OM color = 'blue' width = 0\\}
+12~~\texttt{d.grid -g size = 2.5 color = '255:0:0'\\}
+13~~\texttt{d.text text = "Oblique Mercator prj" color = '0:0:51' bgcolor = '224:224:224' size = 3\\}
+\rule{\columnwidth}{1pt}
+\end{listing}
+
+{The key parameters for defining the Equal-Area Cylindrical projection include the latitude (the meridian) of the true scale or standard parallels (in this case, }50$^{\circ}$ N and 155$^{\circ}$ E). {The distortions along the central meridian and parallels are minimised since they provide a centre point of the extent of the study area. The~projection has been defined by the 'gdalwarp' and then plotted using the scripting in Listing} \ref{lst06}:
+
+\begin{listing}[H]
+\caption{\hl{GRASS GIS} %MDPI: This listing was formatted according to our rules, please confim the format.
+ script for plotting map in Equal-Area Cylindrical projection).}\label{lst06}
+\rule{\columnwidth}{1pt}
+\raggedright
+1~~\texttt{\emph{\# stored in GeoTIFF in WGS84 warped to an Equal Area Cylindrical projection:\\}}
+2~~\texttt{gdalwarp -t\_srs '+proj = cea lat\_ts = 50 lon\_0 = 155' ETOPO1\_KKT\_WGS84.tif ETOPO1\_KKT\_EAC.tif\\}
+3~~\texttt{\emph{\#!/bin/sh\\}}
+4~~\texttt{g.list rast\\}
+5~~\texttt{r.info ETOPO1\_KKT\_EAC\\}
+6~~\texttt{d.mon wx0\\}
+7~~\texttt{g.region raster = ETOPO1\_KKT\_EAC -p\\}
+8~~\texttt{r.colors ETOPO1\_KKT\_EAC col = grey.eq\\}
+9~~\texttt{d.rast ETOPO1\_KKT\_EAC\\}
+10~~\texttt{d.redraw\\}
+11~~\texttt{r.contour ETOPO1\_KKT\_EAC out = Bathymetry1000 step = 1000\\}
+12~~\texttt{d.vect Bathymetry1000 color = 'blue' width = 0\\}
+13~~\texttt{d.grid -g size = 2.5 color = '255:0:0'\\}
+14~~\texttt{d.text text = "Equal Area Cylindrical prj" color = '0:0:51' bgcolor = '224:224:224' size = 3\\}
+\rule{\columnwidth}{1pt}
+\end{listing}
+
+\subsection{Displaying Raster Grids in GRASS~GIS}
+
+Upon re-projection of the file, it was imported to the GRASS GIS by the ‘r.in.gdal’ utility. Displaying the dataset was performed using the sequence of the GRASS modules shown in Listing \ref{lst01}, based on the GRASS GIS modular techniques~\cite{Brown} and visualized in Figure~\ref{Fig:2}. The~visualized cartographic elements include grid ticks, legend and the title, which were placed on the map in Figure~\ref{Fig:3} using the code in Listing \ref{lst02}. Generating the continuous fields of the bathymetric contours (isolines) were derived from the raster ETOPO1\_KKT\_WGS84 file using the GRASS GIS module 'r.contour' by script. In~this example the step parameter was set to 750 m and visualized in Figure~\ref{Fig:4}. The~script of the GRASS GIS used for plotting the topographic isolines is shown in Listing \ref{lst07}:
+
+\begin{listing}[H]
+\caption{\hl{GRASS GIS} %MDPI: This listing was formatted according to our rules, please confim the format.
+ script for visualising raster grid and adding contour isolines.}\label{lst07}
+\rule{\columnwidth}{1pt}
+\raggedright
+1~~\texttt{\emph{\#!/bin/sh}\\}
+2~~\texttt{d.mon wx0\\}
+3~~\texttt{r.info ETOPO1\_KKT\_WGS84\\}
+4~~\texttt{g.region raster = ETOPO1\_KKT\_WGS84 -p\\}
+5~~\texttt{d.rast ETOPO1\_KKT\_WGS84\\}
+6~~\texttt{d.grid size = 03:00:00 -a -d color = red width = 0.1 fontsize = 8 text\_color = white\\}
+7~~\texttt{d.text text = "Kuril--Kamchatka Area" color = '255:255:255' size = 5\\}
+8~~\texttt{r.contour ETOPO1\_KKT\_WGS84 out = Bathymetry750 step = 750 --overwrite\\}
+9~~\texttt{d.vect Bathymetry750 color = '102:37:4' width = 0\\}
+\rule{\columnwidth}{1pt}
+\end{listing}
+
+
+\begin{figure}[H]
+ 
+    \includegraphics[width=1.00\textwidth]{Fig_4.jpg}\\
+  \caption{\hl{Plotting isolines} %MDPI: Please change the hyphen (-) into a minus sign ($-$, "U+2212"). e.g., "-1" should be "$-$1".
+ by the 'r.contour' module and visualising raster in ‘elevation’ colour table. Source: authors.}\label{Fig:4}
+\end{figure}
+
+
+\subsection{Calculating Morphometric~Parameters}
+
+The correlation between the profile and tangential curvature reflects the methodological approaches of the algorithm which concerns the mathematical approximation of the morphological profile of the slopes and the inflation of the terrain heights. The~differences in calculus are well illustrated in Equation (\ref{pc}) for the profile curvature $K_P$ \cite{Golden} and \mbox{Equation (\ref{tc})} for the tangential curvature $K_T$ \cite{Golden}. These formulae are given for the profile curvature in Equation~(\ref{pc}) and for the tangential curvature in Equation~(\ref{tc}), respectively.
+\begin{equation}
+  \label{pc}
+ K_P=\frac{\left(\frac{\delta^2 z}{\delta x^2}\right) \left(\frac{\delta z}{\delta x}\right)^2 + 2\left(\frac{\delta^2 z}{\delta x \delta y}\frac{\delta z}{\delta x}\frac{\delta z}{\delta y} \right) + \frac{\delta^2 z}{\delta y^2} \left(\frac{\delta z}{\delta x}\right)^2}{pq^\frac{3}{2}}
+\end{equation}
+\begin{equation}
+  \label{tc}
+ K_T=\frac{\left(\frac{\delta^2 z}{\delta x^2}\right) \left(\frac{\delta z}{\delta y}\right)^2 - 2\left(\frac{\delta^2 z}{\delta x \delta y}\frac{\delta z}{\delta x}\frac{\delta z}{\delta y} \right) + \frac{\delta^2 z}{\delta y^2} \left(\frac{\delta z}{\delta x}\right)^2}{pq^\frac{1}{2}}
+\end{equation}
+where $p=\left(\frac{\delta z}{\delta x}\right)^2+\left(\frac{\delta z}{\delta y}\right)^2$ and $q=1+p$ for both~cases.
+
+The plotting {of the morphometric parameters }was performed using the code: 
+
+\begin{spverbatim}
+‘r.slope.aspect elevation=ETOPO1_KKT_WGS84 slope=slope aspect=aspect 
+pcurvature=pcurv tcurvature=tcurv’
+\end{spverbatim}
+\vspace{6pt}
+\noindent where the input elevation raster map is the ETOPO1\_KKT\_WGS84, and~the output raster map is ‘slope’. {The curvature} shows the rate of variations of the slope, which makes it the second function of the elevation variable related to the surface heights~\cite{Schmidt}. This process{ }technically {includes} both cases: whether the purpose is profile curvature or tangential curvature. However, the~difference is in the approaches of the mathematical algorithms that are embedded in the GRASS GIS. Hence, the~difference between the profile and tangential curvature consists of the method of calculation. For~the tangential curvature, it is computed as a perpendicular to the slope gradient, while for the profile curvature, it measures a curvature of the surface in the direction of the gradient~\cite{Gallant}. {The slope} shows a steepness or the degree in the topographic surface covering the study area. The~aspect, or~exposure, is a compass direction that a slope faces (East, West, South, or North). Geographically, the~aspect of a slope has a significant impact on the local microclimate which affects physical and often botanical features of a mountain slope, i.e.,~a slope effect on the terrestrial~areas. 
+
+Such effects are owing to the strong correlation between the mountain slope and the temperature, which is in turn affected by the angle of sun. Hence, both parameters are derivative from the slope of the elevation with certain variations in the mathematical approach and angle direction of the gradient degree (direct and perpendicular). The~theoretical foundations of the slope and angle modelling in geospatial research can further be found in the existing works reporting, for~instance, on~the effects from the cell size~\cite{Hodgson1995}, gradient angles~\cite{Hodgson1998}, numerical terrain analysis~\cite{Zevenbegen}, or~quantifying land surface and slope curvatures~\cite{Dikau,Dunn,Guth,Heerdegan}. {The increase in values of a specific depth} was {analysed} by plotting the histograms as bars and pie charts using the GRASS GIS 'd.histogram' module for calculating depths distribution~\cite{Mitasovaetal1995}. {The visualized }images are displayed using various colour map palettes (r.colors) specifically intended for the cartographic visualization of the terrain raster~grids. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results and~Discussion}
+{The} GRASS GIS algorithms {were implemented}for cartographic data visualization and map{ compilation} in various projections {(Figure} \ref{Fig:5}). The~topographic data visualization and a morphometric analysis were based {on} the {GRASS GIS} modules. The~input cartographic data {based on} the ETOPO1 raster grid {comprised} the derived variables: slope, aspect, curvature, and a hillshade. The~data analysis included a plotted histogram and a pie chart showing data distribution. Several projections were tested and visualized using PROJ library. The~data transformation was performed using GDAL integrated \mbox{with the GRASS~GIS}. 
+
+\begin{figure}[H]
+     \includegraphics[width=1.00\textwidth]{Fig_5.jpg}
+  \caption{\hl{Comparison of} %MDPI: Please add the left bracket in the image, e.g., "a)" should be "(a)". 				   
+ the four maps visualized in GRASS GIS in four different cartographic projections transformed by the ‘gdalwarp’ GDAL utility, and PROJ parameters. The~projections from left to right, top to bottom are as follows: {(\textbf{a})} Cassini--Soldner equirectangular; {(\textbf{b})} Equal Area Cylindrical; {(\textbf{c})} Two-Point Equidistant Azimuthal; {(\textbf{d})} Oblique Mercator. Source: authors.}\label{Fig:5}
+\end{figure}
+
+
+\subsection{{Cartographic} Projections by~PROJ}
+
+{The} PROJ, a~generic coordinate transformation software library~\cite{EversKnudsen}, {was used }to transform the raster grid files in Lat/Lon geospatial coordinates from one coordinate reference system (CRS) to another. This method includes the PROJ transformation which performs a variety of operations with cartographic data, starting from the simple and well-known projections such as cylindrical Mercator projection to the very complex transformations across many reference coordinate frames. The~PROJ was used for testing various projections (conic, cylindtrical, and azimuthal) selected from the variety of available projections in the library: Cassini--Soldner equirectangular; Equal Area Cylindrical; Two-point Equidistant Azimuthal; and Oblique Mercator~\cite{Snyder}. 
+
+Originally made as a technical tool for cartographic projections, PROJ gradually transformed into being a functional generic coordinate transformation engine. The~supported projections were checked up by the command ‘cs2cs -lp’ from the GRASS GIS console~\cite{Evenden}. The~PROJ was applied for the scale cartographic projections and coordinate \mbox{transformation (Figure \ref{Fig:5})}, thus presenting the geodetic transformations of varying complexity. In~this study, the~visualization of various cartographic projections in GRASS \mbox{GIS (Figure \ref{Fig:5})} was performed by a combination and sequential use of the following modules of GRASS GIS: 'd.rast', 'r.contour', 'd.vect', 'd.grid', and 'd.text'. The~script is based on the developed methodology of data processing by GRASS GIS~\cite{Dassau}. It was also used for plotting the contour maps with an example of Cassini--Soldner projection. Mapping study area in various cartographic projections was recorded in separate plots in the GRASS GIS and  presented in Figure~\ref{Fig:5} for comparison: Cassini--Soldner equirectangular; Equal Area Cylindrical; Two-Point Equidistant Azimuthal; and Oblique~Mercator. 
+
+\subsection{{Morphometric~Parameters}}
+ 
+The input elevation data were derived from the ETOPO1 raster grid that contained the elevation values in a digital format covering the study area. The~'r.slope.aspect' module of GRASS GIS was used for plotting raster maps using the developed methodology~\cite{Mitasova1985,Hofierka2009,Horn}. The~resulting maps of slope, aspect (computed counterclockwise from the east), profile curvature, and tangential curvature from the ETOPO1 raster grid are shown in Figure~\ref{Fig:6}.{ }The results include the morphometric elements of slope, aspect, profile curvature, and tangential curvature (Figure~\ref{Fig:6)}.
+
+
+\begin{figure}[H]
+     \includegraphics[width=1\textwidth]{Fig_6.jpg}
+  \caption{Slope, aspect, profile, and tangential curvature maps, Kuril--Kamchatka region, based on raster grid ETOPO1. Source: authors.}\label{Fig:6}
+\end{figure}
+
+
+The results of the morphometric modelling show that the terrain slope in the Kuril--Kamchatka region is ranging from 0$^{\circ}$ to 39$^{\circ}$, as~shown on the slope map calculated from the ETOPO1\_KKT\_WGS84 grid. The~slope in the study area is shown in gradually increasing degrees starting from 0$^{\circ}$ (flat horizontal) to the 39$^{\circ}$ (maximal vertical). The~profile curvature shows modelled terrain surface in the gradient direction which reflects the variations in the slope steepness angle within the range of \hl{$-$87 $\times$ 10$^{-5}$} %MDPI: We revised this according to our rules. Please confirm if this format is correct. The following highlights are the same. 
+ to \hl{68 $\times$ 10$^{-5}$}. The~most part of the area{ }coloured light green on the lower left map {(Figure }\ref{Fig:6}) has values of \hl{$-$10 $\times$ 10$^{-5}$} to 0. Practically, it indicates that the velocity of mass falling downwards along the slope curve. The~tangential curvature reflects the change in the aspect angle and influences the divergence, or~the convergence, of~the water flow, respectively.
+
+{The }tangential curvature shows values of \hl{$-$67 $\times$ 10$^{-5}$} to \hl{63 $\times$ 10$^{-5}$}. The~terrestrial areas of the Kamchatka Peninsula and Greater Kuril Chain~show higher positive values{, }depicted by the dark grey colours, in~the lower right map {(Figure }\ref{Fig:6}) comparing to the water areas of the Sea of Okhotsk (white and light grey colours) which shows variations in the land surface steepness over the terrain compared to water areas. Numerically, the~aspect map shows the orientation in degrees varying from 0$^{\circ}$ to 360$^{\circ}$ (upper right map in Figure~\ref{Fig:6}). It shows a clear correlation between the aspect and the topographic area of the Kuril--Kamchatka Trench (130$^{\circ}$--150$^{\circ}$, emerald green colour on the map) and the Greater Kuril Chain which extends in parallel to the trench both in southeastern orientation (beige colour from the selected ‘aspectcolr’ colour palette, 300$^{\circ}$--330$^{\circ}$, ). A~clear delineation of the Sakhalin Island can be noted as the north-western orientation (yellow-green colours, 0$^{\circ}$--30$^{\circ}$, ) and the Kamchatka Peninsula (NW, greens, 60$^{\circ}$--120$^{\circ}$), respectively.
+
+{The produced }maps show morphometric variables over the target area performed by the GRASS GIS techniques which included data conversion, warping, transforming projections, and adding cartographic elements (ticks, legend, and isolines) on the final layout. Each map sources a range of new visualization of the data relevant to the morphology of the study region. Similar to the GMT techniques, the~scripting methods  of the GRASS GIS have a command-line approach of data processing. This is convenient for controlling the cartographic design and enables to create the print-quality maps. Further, we demonstrated the effectiveness of the GRASS GIS methods in visualising raster grids and performing raster data analysis in a geologically complex regions such as the northwestern sector of the Pacific Ocean.{ }The computed geomorphic indices included slope, aspect, profile, and tangential curvature maps, derived from the topographic grid using the embedded algorithms in GRASS~GIS. 
+
+\subsection{Analysis of {the} Elevation~Frequency}
+The next research step included the analysis of the distribution of the elevation over the study area. Using computational techniques of GRASS GIS, we calculated the frequency of the data in various range diapason and repeatability of corresponding depths. The~most frequent depths or elevations over the study area were recorded and summarised for the analysis of spatially distributed data~\cite{Antrop,Bailey,Burrough}. The~increase in values of a specific depth reflects the frequency of the elevation recorded on a bathymetric {and topographic }grid in a subsequent region of the study area.{ }The analysis of the spatial data distribution aimed to demonstrate a range of variations in data, including skewness, the~variation of values within intervals of the topography, organisation of categorical data, selecting relevant peaks in the interpretation and description of the dataset, or other resources showing the correlation among the {morphometric parameters, }such as {the }aspect and {the }slope with relief. The~distribution of topographic data has been evaluated using statistical tools embedded in GRASS GIS and presented in a histograms and a pie chart (Figure \ref{Fig:7}).
+
+Critical synthesis and analysis of a geomorphological setting of the study area is largely based on the experiential techniques of cartographic data visualization using GRASS GIS. A~range of its modules utilised in scripts for cartographic transformations were used to visualise various projection and colour map palettes. The~topographic data analysis demonstrated variations in {the percentage of }data distribution and morphometry in the study area, as~follows.{ }The depths in the interval below 400 m to $-$2000 m covered 24\% of the total points; the depths in the interval from $-$2000 to $-$3000 m sum up to 2\%; the depth  from $-$3000 to $-$4000 m take up 4\% of the total points; the depths in the range \mbox{between $-$5000} to $-$6000 m are 13\%; and~the depth in the diapason from $-$6000 to 7000 are less than 1\%. {The} rest of the elevation points is covered by the data with {the} diverse heights and topographic~values.
+
+\begin{figure}[H]
+ 
+    \includegraphics[width=1\textwidth]{Fig_7.jpg}\\
+  \caption{Bar graph histogram for elevation map (left); pie graph of heights distribution based on the raster grid ETOPO1 (right). Source: authors.}\label{Fig:7}
+\end{figure}
+  
+The extent of the data range is summarised and visualized in the histogram and a pie chart {(Figure }\ref{Fig:7}). The~bar plot and the pie chart show the frequencies of the elevation levels in a raster representing morphometric unevenness of the terrain. For~each topographic range, the~number of pixels in the raster image is counted and drawn on the diagram in the two views of representation. The~number of pixels corresponding to the each value of depth/height is contributing to the height of this particular bar on the chart (or a radius of the segment in a pie). The~x-axis of the bar chart diagram represents the topographic/bathymetric values (heights and depths), while vertical y-axis shows the number of pixels counted at a given~step.
+
+The morphometry is an essential approach of the quantitative GIS-based terrain analysis. It is increasingly used in diverse applied geological tasks for relief visualization. Based on elevation {derived from} DEM, the~landforms can be visualised in the target area for morphological modelling and mapping at regional scale. The~morphometric terrain analysis may further include extended approaches such as analysis and interpretation of the land forms or seafloor surface as a continuous field, upscaling the morphological shapes for a closer analysis of the terrain structure. The~slope gradient indicates the terrain roughness and represents a basic for the land surface discreteness. A~slope gradient can be used for indication of the terrain roughness, while the aspect can be applied for mapping slope distribution, depending on the compass orientation of the~terrain. 
+
+The findings revealed that the topography of the Kuril--Kamchatka Trench varied significantly reflecting its regional geologic evolution and tectonic setting which largely affects the structure of the relief. Our study presented a case for displaying topographic data for analysis of height differences using the cartographic and statistical data processing. We shown the example of bathymetric data processing specifically for the north Pacific Ocean area performed using scripting approach by GRASS GIS syntax which has its specific language operated from the command line. The~scripts of the GRASS GIS were used to rapidly plot the topographic data as a series of morphometric variables. The~results can be extended to similar datasets using scripts presented for repeatability of data processing in GRASS GIS: visualization of the slope, aspect, curvature, and statistical data distribution \mbox{of elevation~data}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+
+{Topographic mapping and morphometric modelling rely on spatial data processing and representation. However, real-world spatial data are generated from DEM involving may factors. These include the geologic drivers and tectonic processes in the past that affect modern relief of  the Earth. The~complexity of the relief result in the availability of diverse datasets with various resolution and details of the land surface. Processing such data and visualising the topography of the Earth with variability of the morphometric patterns requires the advanced tools of cartographic representation and automated approaches of data handling. As~a result, recent efforts have been made to integrate the programming tools into the GRASS GIS for geospatial studies.} 
+
+{In this paper, we propose the use of the GRASS GIS modules for morphometric modelling and cartographic reprojecting the raster grids on selected area of the northwest Pacific Ocean. We demonstrate that the GRASS GIS advances in terms of cartographic efficiency and accuracy of spatial data processing. In~addition, we provide a series of scripts used for plotting and data visualization as a reference in similar studies}. The~application of the GRASS GIS algorithms {aimed at }topographic mapping and morphometric modelling that uses a script-based approach for cartographic data visualization, transformation, and analysis. The~selected region of the tested area includes the northwestern segment{ }in the Far East {based on the} ETOPO1 grid. {The }extensive experimental results on mapping {of the }raster images by scripts{ }show that GRASS GIS outperforms the traditional software in terms of automation of data processing which increase the speed and accuracy of cartographic plotting{ and, specifically, modelling the morphometric parameters. The~latter include} slope, aspect, and~curvature in both the down‐slope and across‐slope directions, which is presented in this case study based on the GRASS GIS~modules. 
+
+The results show the effective application of the GRASS GIS techniques for cartographic data processing. Using the console by scripting mode, we identified topographic variability in the target area through spatial analysis of the processed data and visualised raster grids in various cartographic projections. We have also shown that the geodetic transformation of the dataset in various cartographic projections performs well using GDAL utility and PROJ library, while the choice of the cartographic projections is wholly due to the spatial location of the study area controlled by the possible distortions in sizes, angles, distances, and directions of the visualized objects. We demonstrated the method of flexible changing of projections using the integration of GRASS GIS and GDAL. With~regard to addressing the cartographic plotting, GRASS GIS shows robustness and effectiveness of data handling both using the GUI interface and from the console in a series of presented listings. We believe that techniques of GRASS GIS for handling geospatial data can be further extended to deal with spatial datasets using scripts presented in this study. {Thus, the~advantage of this study is that it provides the scripts in the GitHub open repository that can be reused in similar studies for repeatability. These scripts are sequential use of algorithms from the GRASS GIS and composed with the use of several modules for topographic modelling and mapping.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\authorcontributions{Supervision, conceptualization, methodology, software, resources, funding acquisition, and~project administration, O.D.; writing---original draft preparation, methodology, software, data curation, visualization, formal analysis, validation, writing---review and editing, and~investigation, P.L. All authors have read and agreed to the published version of the~manuscript.}
+
+\funding{The publication was funded by the Editorial Office of \textit{Technologies}, Multidisciplinary Digital Publishing Institute (MDPI), by~providing 100\% discount for the APC of this manuscript. This project was supported by the Federal Public Planning Service Science Policy or Belgian Science Policy Office, Federal Science Policy - BELSPO (B2/202/P2/SEISMOSTORM).}
+
+\institutionalreview{Not applicable.}
+
+\informedconsent{Not applicable.}
+
+\dataavailability{Not applicable.} 
+
+\acknowledgments{The authors thank the anonymous reviewers of \textit{Land} for reading, their suggestions, and their comments that improved an earlier version of this~manuscript.}
+
+\conflictsofinterest{The authors declare no conflicts of~interest.} 
+
+\abbreviations{Abbreviations}{
+The following abbreviations are used in this manuscript:\\
+
+\noindent 
+\begin{tabular}{@{}ll}
+ASCII & American Standard Code for Information Interchange \\
+AOI & Area of Interest \\
+CLI & Command Line Interface \\
+DEM & Digital Elevation Model \\
+EGM96 & Earth Gravitational Model of 1996 \\
+EGM2008 & Earth Gravitational Model of 2008 \\
+ENVI & Environment for Visualizing Images \\
+EPSG & European Petroleum Survey Group \\
+ETOPO1 & Earth's surface topography \\
+GDAL & Geospatial Data Abstraction Library \\
+GEBCO & General Bathymetric Chart of the Oceans\\
+GIS & Geographic Information System \\
+GMT & Generic Mapping Tools \\
+GRASS & Geographic Resources Analysis Support System \\
+GUI & Graphical User Interface \\
+NOAA & National Oceanic and Atmospheric Administration \\
+PROJ & a library for performing conversions between cartographic projections \\
+QGIS & Quantum GIS \\ 
+SAGA & System for Automated Geoscientific Analyses \\
+SRS & Spatial Reference System \\
+SRTM & Shuttle Radar Topography Mission\\
+TIFF & Tag Image File Format \\
+UTM & Universal Transverse Mercator \\
+WGS84 & World Geodetic System 1984\\
+WESN & West East South North
+\end{tabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{adjustwidth}{-\extralength}{0cm}
+%\printendnotes[custom] % Un-comment to print a list of endnotes
+
+\reftitle{References}
+\begin{thebibliography}{999}
+	
+	\bibitem[Minár \em{et~al.}(2020)Minár, Evans, and Jenčo]{MINAR2020103414}
+	Minár, J.; Evans, I.S.; Jenčo, M.
+	\newblock A comprehensive system of definitions of land surface (topographic)
+	curvatures, with implications for their application in geoscience modelling
+	and prediction.
+	\newblock {\em Earth-Sci. Rev.} {\bf 2020}, {\em 211},~103414.
+	\newblock {\url{https://doi.org/10.1016/j.earscirev.2020.103414}}.
+	
+	\bibitem[Maxwell and Shobe(2022)]{MAXWELL2022103944}
+	Maxwell, A.E.; Shobe, C.M.
+	\newblock Land-surface parameters for spatial predictive mapping and modeling.
+	\newblock {\em Earth-Sci. Rev.} {\bf 2022}, {\em 226},~103944.
+	\newblock {\url{https://doi.org/10.1016/j.earscirev.2022.103944}}.
+	
+	\bibitem[Zhou(2021)]{ZHOU2021281}
+	Zhou, W.
+	\newblock GIS for Earth Sciences. In {\em Encyclopedia of Geology}, 2nd ed.;  Alderton, D., Elias, S.A., Eds.; Academic
+	Press: Oxford, UK, 2021; pp. 281--293.
+	\newblock {\url{https://doi.org/10.1016/B978-0-08-102908-4.00018-7}}.
+	
+	\bibitem[Ruzickova \em{et~al.}(2021)Ruzickova, Ruzicka, and
+	Bitta]{RUZICKOVA2021101109}
+	Ruzickova, K.; Ruzicka, J.; Bitta, J.
+	\newblock A new GIS-compatible methodology for visibility analysis in digital
+	surface models of earth sites.
+	\newblock {\em Geosci. Front.} {\bf 2021}, {\em 12},~101109.
+	\newblock {\url{https://doi.org/10.1016/j.gsf.2020.11.006}}.
+	
+	\bibitem[Deseilligny \em{et~al.}(1993)Deseilligny, Le~Men, and Stamon]{395647}
+	Deseilligny, M.; Le~Men, H.; Stamon, G.
+	\newblock Map understanding for GIS data capture: Algorithms for road network
+	graph reconstruction.
+	\newblock In Proceedings of 2nd International Conference on
+	Document Analysis and Recognition (ICDAR '93), \hl{Tsukuba, Japan, 20--22 October}%MDPI: Newly added information. Please confirm. The following highlights are the same.
+	1993; pp. 676--679.
+	\newblock {\url{https://doi.org/10.1109/ICDAR.1993.395647}}.
+	
+	\bibitem[Sasso and Biles(2008)]{4736372}
+	Sasso, D.; Biles, W.E.
+	\newblock An object-oriented programming approach for a GIS data-driven
+	simulation model of traffic on an inland waterway.
+	\newblock In Proceedings of the 2008 Winter Simulation Conference, \hl{Miami, FL, USA, 7--10 December} 2008; pp.
+	2590--2594.
+	\newblock {\url{https://doi.org/10.1109/WSC.2008.4736372}}.
+	
+	\bibitem[Rathod \em{et~al.}(2018)Rathod, Subramanian, and Sundaresan]{8647473}
+	Rathod, N.; Subramanian, R.; Sundaresan, R.
+	\newblock Data-Driven and GIS-Based Coverage Estimation in a Heterogeneous
+	Propagation Environment.
+	\newblock In Proceedings of the 2018 IEEE Global Communications Conference
+	(GLOBECOM), \hl{Abu Dhabi, United Arab Emirates, 9--13 December} 2018; pp. 1--6.
+	\newblock {\url{https://doi.org/10.1109/GLOCOM.2018.8647473}}.
+	
+	\bibitem[Shrestha \em{et~al.}(2014)Shrestha, Devarakonda, and
+	Palanisamy]{7004495}
+	Shrestha, B.; Devarakonda, R.; Palanisamy, G.
+	\newblock An open source framework to add spatial extent and geospatial
+	visibility to Big Data.
+	\newblock In Proceedings of the 2014 IEEE International Conference on Big Data
+	(Big Data), \hl{Washington, DC, USA, 27--30 October} 2014; pp. 64--66.
+	\newblock {\url{https://doi.org/10.1109/BigData.2014.7004495}}.
+	
+	\bibitem[Scott \em{et~al.}(2015)Scott, Angelov, Reinig, Gaudiello, and
+	England]{7325718}
+	Scott, G.J.; Angelov, G.A.; Reinig, M.L.; Gaudiello, E.C.; England, M.R.
+	\newblock cvTile: Multilevel parallel geospatial data processing with OpenCV
+	and CUDA.
+	\newblock In Proceedings of the 2015 IEEE International Geoscience and Remote
+	Sensing Symposium (IGARSS), \hl{ Milan, Italy, 26--31 July} 2015; pp. 139--142.
+	\newblock {\url{https://doi.org/10.1109/IGARSS.2015.7325718}}.
+	
+	\bibitem[Scott \em{et~al.}(2014)Scott, Backus, and Anderson]{6946974}
+	Scott, G.J.; Backus, K.; Anderson, D.T.
+	\newblock A multilevel parallel and scalable single-host GPU cluster framework
+	for large-scale geospatial data processing.
+	\newblock In Proceedings of the 2014 IEEE Geoscience and Remote Sensing
+	Symposium, \hl{Quebec City, QC, Canada,  13--18 July} 2014; pp. 2475--2478.
+	\newblock {\url{https://doi.org/10.1109/IGARSS.2014.6946974}}.
+	
+	\bibitem[Chen \em{et~al.}(2008)Chen, Yuan, Yang, and Chen]{4659762}
+	Chen, T.; Yuan, H.y.; Yang, R.; Chen, J.
+	\newblock Integration of GIS and Computational Models for Emergency Management.
+	\newblock In Proceedings of the 2008 International Conference on Intelligent
+	Computation Technology and Automation (ICICTA), \hl{Changsha, China, 20--22 October } 2008; Volume~2, pp. 255--258.
+	\newblock {\url{https://doi.org/10.1109/ICICTA.2008.25}}.
+	
+	\bibitem[Li \em{et~al.}(2008)Li, Zhang, and Wang]{5172778}
+	Li, G.; Zhang, J.; Wang, N.
+	\newblock Construction and Implementation of Spatial Analysis Model Based on
+	Geographic Information System (GIS)---A Case Study of Simulation for Urban
+	Thermal Field.
+	\newblock In Proceedings of the 2008 International Conference on Computational
+	Intelligence for Modelling Control \& Automation, \hl{Vienna, Austria, 10--12 December} 2008; pp. 1095--1098.
+	\newblock {\url{https://doi.org/10.1109/CIMCA.2008.88}}.
+	
+	\bibitem[Zhang \em{et~al.}(2010)Zhang, Luo, Yuan, and Mei]{5497752}
+	Zhang, J.; Luo, W.; Yuan, L.; Mei, W.
+	\newblock Shortest path algorithm in GIS network analysis based on Clifford
+	algebra.
+	\newblock In Proceedings of the 2010 2nd International Conference on Future
+	Computer and Communication, \hl{Wuhan, China, 21--24 May} 2010; Volume~1, pp. 432--436.
+	\newblock {\url{https://doi.org/10.1109/ICFCC.2010.5497752}}.
+	
+	\bibitem[Huang and Fang(2010)]{5653068}
+	Huang, Z.; Fang, Y.
+	\newblock A novel approach for geospatial computational task processing in Grid
+	environment.
+	\newblock In Proceedings of the 2010 IEEE International Geoscience and Remote
+	Sensing Symposium, \hl{Honolulu, HI, USA, 25--30 July} 2010; pp. 3980--3982.
+	\newblock {\url{https://doi.org/10.1109/IGARSS.2010.5653068}}.
+	
+	\bibitem[Franges and Zupan(2001)]{938657}
+	\textls[-25]{Franges, S.; Zupan, R.
+		\newblock New encouragement on cartographic visualisation.
+		\newblock In Proceedings of the ISPA 2001---Proceedings of the 2nd International
+		Symposium on Image and Signal Processing and Analysis---In conjunction with
+		23rd International Conference on Information Technology Interfaces (IEEE
+		Cat., \hl{Pula, Croatia, 19--21 June} 2001; pp. 368--372.
+		\newblock {\url{https://doi.org/10.1109/ISPA.2001.938657}}.}
+	
+	\bibitem[Zhang \em{et~al.}(2012)Zhang, Ran, and Yu]{6349625}
+	Zhang, B.; Ran, H.; Yu, J.
+	\newblock Visualizaiton of water system based on the cartographic presentation.
+	\newblock In Proceedings of the 2012 International Symposium on Geomatics for
+	Integrated Water Resource Management, \hl{Lanzhou, China, 19--21 October} 2012; pp. 1--4.
+	\newblock {\url{https://doi.org/10.1109/GIWRM.2012.6349625}}.
+	
+	\bibitem[Yamaguchi(2012)]{6234685}
+	Yamaguchi, N.
+	\newblock Visualizing states in autoregressive hidden Markov models using
+	generative topographic mapping.
+	\newblock In Proceedings of the 2012 8th International Conference on Natural
+	Computation, \hl{Chongqing, China, 29--31 May} 2012; pp. 138--142.
+	\newblock {\url{https://doi.org/10.1109/ICNC.2012.6234685}}.
+	
+	\bibitem[Pazouki(2023)]{PAZOUKI2023108046}
+	Pazouki, E.
+	\newblock A smart surface irrigation design based on the topographical and
+	geometrical shape characteristics of the land.
+	\newblock {\em Agric. Water Manag.} {\bf 2023}, {\em 275},~108046.
+	\newblock {\url{https://doi.org/10.1016/j.agwat.2022.108046}}.
+	
+	\bibitem[Moreira and Valeriano(2014)]{MOREIRA2014208}
+	Moreira, E.P.; Valeriano, M.M.
+	\newblock Application and evaluation of topographic correction methods to
+	improve land cover mapping using object-based classification.
+	\newblock {\em Int. J. Appl. Earth Obs. Geoinf.} {\bf 2014}, {\em 32},~208--217.
+	\newblock {\url{https://doi.org/10.1016/j.jag.2014.04.006}}.
+	
+	\bibitem[Chowdhury(2023)]{CHOWDHURY2023102062}
+	Chowdhury, M.S.
+	\newblock Modelling hydrological factors from DEM using GIS.
+	\newblock {\em MethodsX} {\bf 2023}, {\em 10},~102062.
+	\newblock {\url{https://doi.org/10.1016/j.mex.2023.102062}}.
+	
+	\bibitem[Boulton and Stokes(2018)]{Boulton}
+	Boulton, S.J.; Stokes, M.
+	\newblock {Which DEM is best for analyzing fluvial landscape development in
+		mountainous terrains?}
+	\newblock {\em Geomorphology} {\bf 2018}, {\em 310},~168--187.
+	\newblock {\url{https://doi.org/10.1016/J.GEOMORPH.2018.03.002}}.
+	
+	\bibitem[Buterez \em{et~al.}(2016)Buterez, Olariu, Mihai, Rujoiu-Mare, and
+	Cruceru]{Buterez}
+	Buterez, C.; Olariu, B.; Mihai, B.; Rujoiu-Mare, M.; Cruceru, I.
+	\newblock {General topography of Prahova County, Romania}.
+	\newblock {\em J. Maps} {\bf 2016}, {\em 12},~541--545.
+	\newblock {\url{https://doi.org/10.1080/17445647.2016.1197162}}.
+	
+	\bibitem[Duncan and Regan(2016)]{Duncan}
+	Duncan, D.T.; Regan, S.D.
+	\newblock {Mapping multi-day GPS data: A cartographic study in NYC}.
+	\newblock {\em J. Maps} {\bf 2016}, {\em 12},~668--670.
+	\newblock {\url{https://doi.org/10.1080/17445647.2015.1060180}}.
+	
+	\bibitem[Duarte \em{et~al.}(2021)Duarte, Teodoro, Sousa, and
+	Pádua]{agronomy11050952}
+	Duarte, L.; Teodoro, A.C.; Sousa, J.J.; Pádua, L.
+	\newblock QVigourMap: A GIS Open Source Application for the Creation of Canopy
+	Vigour Maps.
+	\newblock {\em Agronomy} {\bf 2021}, {\em 11}, \hl{952}.
+	\newblock {\url{https://doi.org/10.3390/agronomy11050952}}.
+	
+	\bibitem[Armstrong(2000)]{Armstrong}
+	Armstrong, M.P.
+	\newblock {Geography and computational science}.
+	\newblock {\em Ann. Am. Assoc. Geogr.} {\bf 2000},
+	{\em 90},~146--156.
+	\newblock {\url{https://doi.org/10.1111/0004-5608.00190}}.
+	
+	\bibitem[Duarte \em{et~al.}(2016)Duarte, Teodoro, Maia, and
+	Barbosa]{ijgi5110209}
+	Duarte, L.; Teodoro, A.C.; Maia, D.; Barbosa, D.
+	\newblock Radio Astronomy Demonstrator: Assessment of the Appropriate Sites
+	through a GIS Open Source Application.
+	\newblock {\em ISPRS Int. J. Geo-Inf.} {\bf 2016}, {\em
+		5}, \hl{209}.
+	\newblock {\url{https://doi.org/10.3390/ijgi5110209}}.
+	
+	\bibitem[Brovelli \em{et~al.}(2012)Brovelli, Mitasova, Neteler, and
+	Raghavan]{Brovelli}
+	Brovelli, M.A.; Mitasova, H.; Neteler, M.; Raghavan, V.
+	\newblock {Free and open source desktop and Web GIS solutions}.
+	\newblock {\em Appl. Geomat.} {\bf 2012}, {\em 4},~65--66.
+	\newblock {\url{https://doi.org/10.1007/s12518-012-0082-4}}.
+	
+	\bibitem[A.(2008)]{Christl}
+	Christl, A.  {Free Software and Open Source Business Models}.
+	\newblock In {\em {Open Source Approaches in Spatial Data Handling}}; Advances
+	in Geographic Information Science; Hall G.B., Leahy M.G., Eds.; Springer: Berlin, Germany,  2008;
+	Chapter~2, pp. 21–48.
+	{\url{https://doi.org/10.1007/978-3-540-74831-1_2}}.
+	
+	\bibitem[Turton(2008)]{Turton}
+	Turton, I. Geo Tools.
+	\newblock In {\em Open Source Approaches in Spatial Data Handling}; Springer: Berlin, Heidelberg,  2008; pp. 153--169.
+	\newblock {\url{https://doi.org/10.1007/978-3-540-74831-1_8}}.
+	
+	\bibitem[Barnes(2010)]{Barnes}
+	Barnes, N.
+	\newblock {Publish your computer code: It is good enough}.
+	\newblock {\em Nature} {\bf 2010}, {\em 467},~753--753.
+	\newblock {\url{https://doi.org/10.1038/467753a}}.
+	
+	\bibitem[Issaka and Kumi-Boateng(2020)]{Issaka}
+	Issaka, Y.; Kumi-Boateng, B.
+	\newblock {Artificial intelligence techniques for predicting tidal effects
+		based on geographic locations in Ghana}.
+	\newblock {\em Geod. Cartogr.} {\bf 2020}, {\em 46},~1--7.
+	\newblock {\url{https://doi.org/10.3846/gac.2020.7696}}.
+	
+	\bibitem[Lemenkova and Debeir(2023)]{land12010261}
+	Lemenkova, P.; Debeir, O.
+	\newblock {Quantitative Morphometric 3D Terrain Analysis of Japan Using Scripts
+		of GMT and R}.
+	\newblock {\em Land} {\bf 2023}, {\em 12},~261.
+	\newblock {\url{https://doi.org/10.3390/land12010261}}.
+	
+	\bibitem[Ajvazi and Czimber(2019)]{Ajvazi}
+	Ajvazi, B.; Czimber, K.
+	\newblock {A comparative analysis of different DEM interpolation methods in
+		GIS: Case study of Rahovec, Kosovo}.
+	\newblock {\em Geod. Cartogr.} {\bf 2019}, {\em 45},~43--48.
+	\newblock {\url{https://doi.org/10.3846/gac.2019.7921}}.
+	
+	\bibitem[Guan \em{et~al.}(2018)Guan, Hu, Liu, and Yun]{Guan}
+	Guan, Q.; Hu, S.; Liu, Y.; Yun, S., High-Performance GeoComputation with the
+	Parallel Raster Processing Library.
+	\newblock In {\em GeoComputational Analysis and Modeling of Regional Systems};
+	Springer International Publishing: Cham, Switzerland, 2018; pp. 55--74.
+	\newblock {\url{https://doi.org/10.1007/978-3-319-59511-5_5}}.
+	
+	\bibitem[Kralidis(2008)]{Kralidis}
+	Kralidis, A.T., Geospatial Open Source and Open Standards Convergences.
+	\newblock In {\em Open Source Approaches in Spatial Data Handling}; Springer: Berlin, Heidelberg,  2008; pp. 1--20.
+	\newblock {\url{https://doi.org/10.1007/978-3-540-74831-1_1}}.
+	
+	\bibitem[Basith and Prastyani(2020)]{Basith}
+	Basith, A.; Prastyani, R.
+	\newblock {Evaluating ACOMP, FLAASH and QUAC on Worldview-3 for satellite
+		derived bathymetry (SDB) in shallow water}.
+	\newblock {\em Geod. Cartogr.} {\bf 2020}, {\em 46},~151--158.
+	\newblock {\url{https://doi.org/10.3846/gac.2020.11426}}.
+	
+	\bibitem[Habib \em{et~al.}(2019)Habib, Alfugara, and Pradhan]{Habib}
+	Habib, M.; Alfugara, A.; Pradhan, B.
+	\newblock {A low-cost spatial tool for transforming feature positions of
+		CAD-based topographic mapping}.
+	\newblock {\em Geod. Cartogr.} {\bf 2019}, {\em 45},~161--168.
+	\newblock {\url{https://doi.org/10.3846/gac.2019.10322}}.
+	
+	\bibitem[Yin \em{et~al.}(2021)Yin, Li, Liu, Xie, Zhang, Wang, Sun, and
+	Zhang]{YIN2021102457}
+	Yin, Z.; Li, J.; Liu, Y.; Xie, Y.; Zhang, F.; Wang, S.; Sun, X.; Zhang, B.
+	\newblock Water clarity changes in Lake Taihu over 36 years based on Landsat
+	TM and OLI observations.
+	\newblock {\em Int. J. Appl. Earth Obs. Geoinf.} {\bf 2021}, {\em 102},~102457.
+	\newblock {\url{https://doi.org/10.1016/j.jag.2021.102457}}.
+	
+	\bibitem[Chen \em{et~al.}(2023)Chen, Ma, Lian, Zhang, Yu, and Lin]{app13042525}
+	\textls[-35]{Chen, L.; Ma, Y.; Lian, Y.; Zhang, H.; Yu, Y.; Lin, Y.
+		\newblock Radiometric Normalization Using a Pseudo-Invariant Polygon
+		Features-Based Algorithm with Contemporaneous Sentinel-2A and Landsat-8 OLI
+		Imagery.
+		\newblock {\em Appl. Sci.} {\bf 2023}, {\em 13}, \hl{2525}.
+		\newblock {\url{https://doi.org/10.3390/app13042525}}.}
+	
+	\bibitem[Rey(2018)]{Rey}
+	\textls[-20]{Rey, S.J., Code as Text: Open Source Lessons for Geospatial Research and
+		Education.
+		\newblock In {\em GeoComputational Analysis and Modeling of Regional Systems};
+		Springer International Publishing: Cham, Switzerland, 2018; pp. 7--21.
+		\newblock {\url{https://doi.org/10.1007/978-3-319-59511-5_2}}.}
+	
+	\bibitem[Zhang \em{et~al.}(2019)Zhang, Li, Tu, Mai, Yao, and
+	Chen]{ZHANG2019101374}
+	Zhang, Y.; Li, Q.; Tu, W.; Mai, K.; Yao, Y.; Chen, Y.
+	\newblock Functional urban land use recognition integrating multi-source
+	geospatial data and cross-correlations.
+	\newblock {\em Comput. Environ. Urban Syst.} {\bf 2019}, {\em
+		78},~101374.
+	\newblock {\url{https://doi.org/10.1016/j.compenvurbsys.2019.101374}}.
+	
+	\bibitem[Kim \em{et~al.}(2023)Kim, Hoang, Yu, and Kanwar]{KIM2023100368}
+	Kim, S.; Hoang, Y.; Yu, T.T.; Kanwar, Y.S.
+	\newblock GeoYCSB: A Benchmark Framework for the Performance and Scalability
+	Evaluation of Geospatial NoSQL Databases.
+	\newblock {\em Big Data Res.} {\bf 2023}, {\em 31},~100368.
+	\newblock {\url{https://doi.org/10.1016/j.bdr.2023.100368}}.
+	
+	\bibitem[Teixeira \em{et~al.}(2013)Teixeira, Chaminé, Carvalho,
+	Pérez-Alberti, and Rocha]{Teixeira}
+	Teixeira, J.; Chaminé, H.I.; Carvalho, J.M.; Pérez-Alberti, A.; Rocha, F.
+	\newblock {Hydrogeomorphological mapping as a tool in groundwater exploration}.
+	\newblock {\em J. Maps} {\bf 2013}, {\em 9},~263--273.
+	\newblock {\url{https://doi.org/10.1080/17445647.2013.776506}}.
+	
+	\bibitem[Sâvulescu and Mihai(2011)]{Savulescu}
+	Sâvulescu, I.; Mihai, B.
+	\newblock {Mapping forest landscape change in Iezer Mountains, Romanian
+		Carpathians. A GIS approach based on cartographic heritage, forestry data and
+		remote sensing imagery}.
+	\newblock {\em J. Maps} {\bf 2011}, {\em 7},~429--446.
+	\newblock {\url{https://doi.org/10.4113/jom.2011.1170}}.
+	
+	\bibitem[Hernández-Santana \em{et~al.}(2016)Hernández-Santana,
+	Méndez-Linares, López-Portillo, and Preciado-López]{Hernandez}
+	Hernández-Santana, J.R.; Méndez-Linares, A.P.; López-Portillo, J.A.;
+	Preciado-López, J.C.
+	\newblock {Coastal geomorphological cartography of Veracruz State, Mexico}.
+	\newblock {\em J. Maps} {\bf 2016}, {\em 12},~316--323.
+	\newblock {\url{https://doi.org/10.1080/17445647.2015.1016128}}.
+	
+	\bibitem[Ribeiro \em{et~al.}(2017)Ribeiro, Viveiros, Ferreira, Lopez-Gil,
+	Dominguez-Lopez, Martins, Perez-Herrera, Lopez-Aldaba, Duarte, Pinto,
+	Martin-Lopez, Baierl, Jamier, Rougier, Auguste, Teodoro, Gonçalves, Esteban,
+	Santos, Roy, Lopez-Amo, Gonzalez-Herraez, Baptista, and Flores]{app7090956}
+	Ribeiro, J.; Viveiros, D.; Ferreira, J.; Lopez-Gil, A.; Dominguez-Lopez, A.;
+	Martins, H.F.; Perez-Herrera, R.; Lopez-Aldaba, A.; Duarte, L.; Pinto, A.;
+	et~al.
+	\newblock ECOAL Project—Delivering Solutions for Integrated Monitoring of
+	Coal-Related Fires Supported on Optical Fiber Sensing Technology.
+	\newblock {\em Appl. Sci.} {\bf 2017}, {\em 7}, \hl{956}.
+	\newblock {\url{https://doi.org/10.3390/app7090956}}.
+	
+	\bibitem[Kiani \em{et~al.}(2020)Kiani, Chegini, Safari, and Nazari]{Kiani}
+	Kiani, M.; Chegini, N.; Safari, A.; Nazari, B.
+	\newblock {Spheroidal spline interpolation and its application in geodesy}.
+	\newblock {\em Geod. Cartogr.} {\bf 2020}, {\em 46},~123--135.
+	\newblock {\url{https://doi.org/10.3846/gac.2020.11316}}.
+	
+	\bibitem[Bivand(2000)]{Bivand2000}
+	Bivand, R.
+	\newblock {Using the R statistical data analysis language on GRASS 5.0 GIS
+		database files}.
+	\newblock {\em Comput. Geosci.} {\bf 2000}, {\em 26},~1043--1052.
+	\newblock {\url{https://doi.org/10.1016/S0098-3004(00)00057-1}}.
+	
+	\bibitem[Bivand(1999)]{Bivand1999}
+	Bivand, R.S.
+	\newblock \emph{Integrating GRASS 5.0 and R: GIS and Modern Statistics for Data
+		Analysis};
+	\newblock Technical Report 228; University of Bergen, Department of Geography:
+	Bergen, Norway,  1999.
+	
+	\bibitem[Lemenkova and Debeir(2022)]{app122412554}
+	Lemenkova, P.; Debeir, O.
+	\newblock {R Libraries for Remote Sensing Data Classification by K-Means
+		Clustering and NDVI Computation in Congo River Basin, DRC}.
+	\newblock {\em Appl. Sci.} {\bf 2022}, {\em 12},~12554.
+	\newblock {\url{https://doi.org/10.3390/app122412554}}.
+	
+	\bibitem[Grohmann(2004)]{Grohmann}
+	Grohmann, C.H.
+	\newblock {Morphometric analysis in Geographic Information Systems:
+		applications of free software GRASS and R}.
+	\newblock {\em Comput. Geosci.} {\bf 2004}, {\em 30},~1055--1067.
+	\newblock {\url{https://doi.org/10.1016/j.cageo.2004.08.002}}.
+	
+	\bibitem[Chapman(1952)]{Chapman}
+	\textls[-30]{Chapman, C.A.
+		\newblock {A new quantitative method of topographic analysis}.
+		\newblock {\em Am. J. Sci.} {\bf 1952}, {\em 250},~428--452.
+		\newblock {\url{https://doi.org/10.2475/ajs.250.6.428}}.}
+	
+	\bibitem[Hofierka \em{et~al.}(2009)Hofierka, Mitasova, and
+	Neteler]{Hofierka2009}
+	Hofierka, J.; Mitasova, H.; Neteler, M., {Geomorphometry in GRASS GIS}.
+	\newblock In {\em {Geomorphometry: Concepts, Software, Applications---Developments in Soil Science}}; Elsevier:  \hl{Amsterdam, The Netherlands,} 2009; Volume~33, pp. 387--410.
+	\newblock {\url{https://doi.org/10.1016/S0166-2481(08)00017-2}}.
+	
+	\bibitem[Hofierka and Súri(2002)]{HofierkaSuri}
+	Hofierka, J.; Súri, M.
+	\newblock {The solar radiation model for Open Source GIS: Implementation and
+		applications}.
+	\newblock In Proceedings of Open Source Free Software GIS---GRASS Users Conference, \hl{Trento, Italy, 11--13 September} 2002; pp. 11--13.
+	
+	\bibitem[Mitas and Mitasova(1999)]{Mitas1999}
+	Mitas, L.; Mitasova, H., {Spatial interpolation}.
+	\newblock In {\em {Geographical Information Systems: Principles, Techniques,
+			Management and Applications}}; Longley, P., Goodchild, M., Maguire, D., Rhind, D., Eds.; Wiley: New York, NY, USA, 1999; pp. 481--492.
+	
+	
+	\bibitem[Mitasova \em{et~al.}(1996)Mitasova, Hofierka, Zlocha, and
+	Iverson]{Mitasovaetal1996}
+	Mitasova, H.; Hofierka, J.; Zlocha, M.; Iverson, L.
+	\newblock {Modeling topographic potential for erosion and deposition using
+		GIS}.
+	\newblock {\em Int. J. Geogr. Inf. Sci.} {\bf
+		1996}, {\em 10},~629--641.
+	\newblock {\url{https://doi.org/10.1080/02693799608902101}}.
+	
+	\bibitem[Lemenkova and Debeir(2022)]{jimaging8120317}
+	Lemenkova, P.; Debeir, O.
+	\newblock {Satellite Image Processing by Python and R Using Landsat 9 OLI/TIRS
+		and SRTM DEM Data on Côte d'Ivoire, West Africa}.
+	\newblock {\em J. Imaging} {\bf 2022}, {\em 8},~317.
+	\newblock {\url{https://doi.org/10.3390/jimaging8120317}}.
+	
+	\bibitem[Lemenkova(2020)]{Lemenkova2020e}
+	Lemenkova, P.
+	\newblock {Geodynamic setting of Scotia Sea and its effects on geomorphology of
+		South Sandwich Trench, Southern Ocean}.
+	\newblock {\em Pol. Polar Res.} {\bf 2020}, {\em 42},~1--23.
+	\newblock {\url{https://doi.org/10.24425/ppr.2021.136510}}.
+	
+	\bibitem[Clarke(1986)]{Clarke}
+	Clarke, K.C.
+	\newblock {Computation of the fractal dimension of topographic surfaces using
+		the triangular prism surface area method}.
+	\newblock {\em Comput. Geosci.} {\bf 1986}, {\em 12},~713--722.
+	\newblock {\url{https://doi.org/10.1016/0098-3004(86)90047-6}}.
+	
+	\bibitem[Sofia(2020)]{Sofia}
+	Sofia, G.
+	\newblock {Combining geomorphometry, feature extraction techniques and
+		Earth-surface processes research: The way forward}.
+	\newblock {\em Geomorphology} {\bf 2020}, {\em 355},~107055.
+	\newblock {\url{https://doi.org/10.1016/j.geomorph.2020.107055}}.
+	
+	\bibitem[Lemenkova and Debeir(2022{\natexlab{a}})]{su142315966}
+	\textls[-15]{Lemenkova, P.; Debeir, O.
+		\newblock {Seismotectonics of Shallow-Focus Earthquakes in Venezuela with Links
+			to Gravity Anomalies and Geologic Heterogeneity Mapped by a GMT Scripting
+			Language}.
+		\newblock {\em Sustainability} {\bf 2022}, {\em 14},~15966.
+		\newblock {\url{https://doi.org/10.3390/su142315966}}.}
+	
+	\bibitem[Lemenkova and Debeir(2022{\natexlab{b}})]{LemenkovaDebeir2022JAES}
+	Lemenkova, P.; Debeir, O.
+	\newblock {Satellite Altimetry and Gravimetry Data for Mapping Marine Geodetic
+		and Geophysical Setting of the Seychelles and the Somali Sea, Indian Ocean}.
+	\newblock {\em J. Appl. Eng. Sci.} {\bf 2022}, {\em
+		12},~191--202.
+	\newblock {\url{https://doi.org/10.2478/jaes-2022-0026}}.
+	
+	\bibitem[Malinverno(1995)]{Malinverno}
+	Malinverno, A., Fractals and Ocean Floor Topography: A Review and a Model.
+	\newblock In {\em Fractals in the Earth Sciences}; Springer US: Boston, MA, USA,
+	1995; pp. 107--130.
+	\newblock {\url{https://doi.org/10.1007/978-1-4899-1397-5_6}}.
+	
+	\bibitem[Cui \em{et~al.}(2023)Cui, Zhou, Liu, Gao, Li, and
+	Zhang]{CUI2023117967}
+	Cui, Q.; Zhou, Y.; Liu, L.; Gao, Y.; Li, G.; Zhang, S.
+	\newblock The topography of the 660-km discontinuity beneath the
+	Kuril-Kamchatka: Implication for morphology and dynamics of the northwestern
+	Pacific slab.
+	\newblock {\em Earth Planet. Sci. Lett.} {\bf 2023}, {\em
+		602},~117967.
+	\newblock {\url{https://doi.org/10.1016/j.epsl.2022.117967}}.
+	
+	\bibitem[Neteler and Mitasova(2008)]{NetelerMitasova2008}
+	Neteler, M.; Mitasova, H.
+	\newblock {\em {Open Source GIS---A GRASS GIS Approach}}, 3rd ed.; Springer: New Yok, NY, USA, 2008.
+	
+	\bibitem[Neteler \em{et~al.}(2008)Neteler, Beaudette, Cavallini, Lami, and
+	Cepicky]{Neteleretal2008}
+	Neteler, M.; Beaudette, D.; Cavallini, P.; Lami, L.; Cepicky, J., GRASS GIS.
+	\newblock In {\em Open Source Approaches in Spatial Data Handling}; Springer: Berlin, Heidelberg,  2008; pp. 171--199.
+	\newblock {\url{https://doi.org/10.1007/978-3-540-74831-1_9}}.
+	
+	\bibitem[Neteler(2000)]{Neteler2000}
+	Neteler, M.
+	\newblock Geosynthesis 11: Der Praktische Leitfaden zum Geographischen
+	Informationssystem GRASS. In \emph{GRASS-Handbuch};
+	\newblock University of Hannover: \hl{Hannover, Germany, }2000.
+	
+	\bibitem[Wessel \em{et~al.}(2019)Wessel, Luis, Uieda, Scharroo, Wobbe, Smith,
+	and Tian]{Wesseletal2019}
+	Wessel, P.; Luis, J.F.; Uieda, L.; Scharroo, R.; Wobbe, F.; Smith, W.H.F.;
+	Tian, D.
+	\newblock {The Generic Mapping Tools version 6}.
+	\newblock {\em Geochem. Geophys. Geosystems} {\bf 2019}, {\em
+		20},~5556--5564.
+	\newblock {\url{https://doi.org/10.1029/2019GC008515}}.
+	
+	\bibitem[contributors(2020)]{GDAL}
+	\hl{GDAL/OGR Contributors.} %MDPI: Please confirm if the author name is correct.
+	\newblock \emph{GDAL/OGR Geospatial Data Abstraction Software Library};
+	\newblock Open Source Geospatial Foundation: \hl{Chicago, IL, USA,} 2020.
+	
+	\bibitem[{Defense Mapping Agency}(1991)]{Defense}
+	{Defense Mapping Agency}.
+	\newblock \emph{Department of Defense World Geodetic System 1984: Its Definition and
+		Relationships with Local Geodetic Systems: Technical Report};
+	\newblock Technical Report 8350; Defense Mapping Agency:\hl{ Fairfax, VA, USA},  1991.
+	
+	\bibitem[Brown \em{et~al.}(1995)Brown, Astley, Baker, and Mitasova]{Brown}
+	Brown, W.; Astley, M.; Baker, T.; Mitasova, H.
+	\newblock {GRASS as an integrated GIS and visualization environment for
+		spatio-temporal modeling}.
+	\newblock In Proceedings Auto-Carto XII, ACSM/ASPRS, \hl{Charlotte, NC, USA, 27 February--2 March}
+	1995; Volume 1, pp. 89--99.
+	
+	
+	\bibitem[{Golden Software, Inc.}(2014)]{Golden}
+	{Golden Software, Inc.}
+	\newblock \emph{{Full User’s Guide: Surfer 12---Powerful Contouring, Gridding, and
+			Surface Mapping}}; \hl{Golden Software, Inc.: Golden, CO, USA, 2014.}
+	
+	
+	\bibitem[Schmidt \em{et~al.}(2003)Schmidt, Evans, and Brinkmann]{Schmidt}
+	Schmidt, J.; Evans, I.S.; Brinkmann, J.
+	\newblock {Comparison of polynomial models for land surface curvature
+		calculation}.
+	\newblock {\em Int. J. Geogr. Inf. Sci.} {\bf
+		2003}, {\em 17},~797--814.
+	\newblock {\url{https://doi.org/10.1080/13658810310001596058}}.
+	
+	\bibitem[Gallant \em{et~al.}(1994)Gallant, Moore, Hutchinson, and
+	Gessler]{Gallant}
+	Gallant, J.C.; Moore, I.D.; Hutchinson, M.F.; Gessler, P.
+	\newblock {Estimating fractal dimension of profiles: A comparison of methods}.
+	\newblock {\em Math. Geol.} {\bf 1994}, {\em 26},~455--481.
+	\newblock {\url{https://doi.org/10.1007/BF02083489}}.
+	
+	\bibitem[Hodgson(1995)]{Hodgson1995}
+	Hodgson, M.E.
+	\newblock {What cell size does the computed slope/aspect angle represent?}
+	\newblock {\em Photogramm. Eng. Remote Sens.} {\bf 1995}, {\em
+		61},~513--517.
+	
+	\bibitem[Hodgson(1998)]{Hodgson1998}
+	Hodgson, M.E.
+	\newblock Comparison of Angles from Surface Slope/Aspect Algorithms.
+	\newblock {\em Cartogr. Geogr. Inf. Syst.} {\bf 1998}, {\em
+		25},~173--185.
+	\newblock {\url{https://doi.org/10.1559/152304098782383106}}.
+	
+	\bibitem[Zevenbegen and Thorne(1987)]{Zevenbegen}
+	Zevenbegen, L.W.; Thorne, C.R.
+	\newblock {Quantitative analysis of land surface topography}.
+	\newblock {\em Earth Surf. Process. Landforms} {\bf 1987}, {\em
+		12},~47--56.
+	\newblock {\url{https://doi.org/10.1002/esp.3290120107}}.
+	
+	\bibitem[Dikau(1989)]{Dikau}
+	Dikau, R., {The application of a digital relief model to landform analysis in
+		geomorphology}.
+	\newblock In {\em {Three Dimensional Applications in Geographic Information
+			Systems}}; Taylor \& Francis: London, UK,  1989; pp. 51--77.
+	\newblock {\url{https://doi.org/10.1002/esp.3290150515}}.
+	
+	\bibitem[Dunn and Hickey(1998)]{Dunn}
+	Dunn, M.; Hickey, R.
+	\newblock {The Effect of Slope Algorithms on Slope estimates within a GIS}.
+	\newblock {\em Cartography} {\bf 1998}, {\em 27},~9--15.
+	\newblock {\url{https://doi.org/10.1080/00690805.1998.9714086}}.
+	
+	\bibitem[Guth(1995)]{Guth}
+	Guth, P.L.
+	\newblock {Slope and aspect calculations on gridded digital elevation models:
+		Examples from a geomorphometric toolbox for personal computers}.
+	\newblock {\em Z. Geomorphol.} {\bf 1995}, {\em 101},~31--52.
+	
+	\bibitem[Heerdegan and Beran(1982)]{Heerdegan}
+	Heerdegan, R.G..; Beran, M.A.
+	\newblock {Quantifying source areas through land surface curvature and shape}.
+	\newblock {\em J. Hydrol.} {\bf 1982}, {\em 57},~359--373.
+	\newblock {\url{https://doi.org/10.1016/0022-1694(82)90155-X}}.
+	
+	\bibitem[Mitasova \em{et~al.}(1995)Mitasova, Mitas, Brown, Gerdes, Kosinovsky,
+	and Baker]{Mitasovaetal1995}
+	Mitasova, H.; Mitas, L.; Brown, W.; Gerdes, D.; Kosinovsky, I.; Baker, T.
+	\newblock {Modeling spatially and temporally distributed phenomena: New methods
+		and tools for GRASS GIS}.
+	\newblock {\em Int. J. Geogr. Inf. Sci.} {\bf
+		1995}, {\em 9},~433--446.
+	\newblock {\url{https://doi.org/10.1080/02693799508902048}}.
+	
+	\bibitem[Evers and Knudsen(2017)]{EversKnudsen}
+	\textls[-25]{Evers, K.; Knudsen, T.
+		\newblock {Transformation pipelines for PROJ.4}. In \emph{Surveying
+			the World of Tomorrow---From Digitalisation to Augmented Reality, Prceedings of the FIG Working Week 2017, Helsinki, Finland, 29 May--2 June 2017};\hl{ Gim International: Latina, Italy, 2017}; pp. 1--13.}
+	
+	\bibitem[Snyder(1987)]{Snyder}
+	Snyder, J.P.
+	\newblock \emph{Map Projections---A Working Manual}; 
+	\newblock l. U.S. Geological Professional Paper; \hl{U.S. Government Printing Office: Washington, DC, USA}, 1987; \hl{385p.}
+	
+	\bibitem[Evenden(1990)]{Evenden}
+	Evenden, G.I.
+	\newblock \emph{Cartographic Projection Procedures for the UNIX Environment---A
+		User's Manual};
+	\newblock Technical Report 90-284, USGS Open-File Report; USGS: Reston, VA, USA, 1990.
+	
+	
+	\bibitem[Dassau \em{et~al.}(2005)Dassau, Holl, Neteler, and Redslob]{Dassau}
+	Dassau, O.; Holl, S.; Neteler, M.; Redslob, M.
+	\newblock \emph{An Introduction to the Practical use of the Free Geographical
+		Information System GRASS 6.0. version 1.2}; \hl{GDF Hannover: Hannover, Germany, }2005.
+	
+	\bibitem[Mitasova(1985)]{Mitasova1985}
+	Mitasova, H.
+	\newblock Cartographic Aspects of Computer Surface Modeling.
+	\newblock Ph.D. Thesis, Slovak Technical University, Bratislava, Slovakia,  1985.
+	
+	
+	\bibitem[Horn(1981)]{Horn}
+	Horn, B.K.P.
+	\newblock {Hill Shading and the Reflectance Map}.
+	\newblock In \emph{Proceedings of the IEEE}; IEEE: \hl{New York, NY, USA,} 1981; Volume 69, pp. 14--47.
+	{\url{https://doi.org/10.1109/PROC.1981.11918}}.
+	
+	\bibitem[Antrop \em{et~al.}(2013)Antrop, De~Maeyer, Neutens, and {Van de
+		Weghe}]{Antrop}
+	Antrop, M.; De~Maeyer, P.; Neutens, T.; {Van de Weghe}, N.
+	\newblock {\em Geografische Informatiesystemen}; Academia Press: Belgium, Gent,
+	2013.
+	
+	\clearpage
+	
+	\bibitem[Bailey and Gatrell(1995)]{Bailey}
+	\textls[-15]{Bailey, T.; Gatrell, A.
+		\newblock {\em Interactive Spatial Data Analysis};
+		Longman Scientific: Harlow, UK;  John Wiley \& Sons: New York, NY, USA, 1995.}
+	
+	\bibitem[Burrough and McDonnell(1998)]{Burrough}
+	Burrough, P.A.; McDonnell, R.A.
+	\newblock {\em Principles of Geographical Information Systems}; Oxford
+	University Press: Oxford, UK,  1998.
+	
+\end{thebibliography}
+\PublishersNote{}
+%=====================================
+% References, variant A: external bibliography
+%=====================================
+%\bibliography{TechBib.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{adjustwidth}
+\end{document}
